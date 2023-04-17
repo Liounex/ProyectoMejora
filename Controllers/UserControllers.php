@@ -1,5 +1,4 @@
 <?php
-
 class UserControllers {    
     private $model;
         

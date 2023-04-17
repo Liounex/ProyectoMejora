@@ -19,8 +19,8 @@ class UserModels
 			$statement->bindParam(':password', $password);
 			$statement->execute();
 			$result = $statement->rowCount();
-			$this->PDO = null;
 			return ($result > 0) ? true : false;
+			$this->PDO = null;
 		} catch (PDOException $e) {
 			echo "Error al conectar a la base de datos: " . $e->getMessage();
 		}

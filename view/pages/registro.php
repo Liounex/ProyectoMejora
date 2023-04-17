@@ -6,9 +6,9 @@
                   <p class="mb-0">Complete los datos correspondientes</p>
                 </div>
                 <div class="card-body">
-                  <form role="form" action="./view/action/store.php" method="POST" autocomplete="off">
+                  <form role="form" action="../content/actions/new.php" method="POST" autocomplete="off">
                   <div class="mb-3">
-                    <select name="tprocedure" id="tprocedure" class="form-control form-control-lg" aria-label="tipo_tramite" required>
+                    <select name="tprocedure" id="tprocedure" class="form-control form-control-lg" aria-label="tipo_tramite" >
                       <option value="" disabled selected>Seleccione el tipo de tramite</option>
                       <option value="1">Certificado</option>
                       <option value="2">Constancia</option>
@@ -17,16 +17,16 @@
                     </select>
                     </div>
                     <div class="mb-3">
-                      <input type="text" class="form-control form-control-lg" placeholder="Dni" aria-label="Dni" name="dni" required>
+                      <input type="text" class="form-control form-control-lg" placeholder="Dni" aria-label="Dni" name="dni" >
                     </div>
                     <div class="mb-3">
-                      <input type="text" class="form-control form-control-lg" placeholder="Nombre" aria-label="nombre" name="nombre" required>
+                      <input type="text" class="form-control form-control-lg" placeholder="Nombre" aria-label="nombre" name="nombre" >
                     </div>
                     <div class="mb-3">
-                      <input type="text" class="form-control form-control-lg" placeholder="Correo" aria-label="correo" name="correo" required>
+                      <input type="text" class="form-control form-control-lg" placeholder="Correo" aria-label="correo" name="correo" >
                     </div>
                     <div class="mb-3">
-                      <input type="text" class="form-control form-control-lg" placeholder="Numero de celular" aria-label="celular" name="celular" required>
+                      <input type="text" class="form-control form-control-lg" placeholder="Numero de celular" aria-label="celular" name="celular" >
                     </div>
                     <div class="mb-3">
                       <input type="hidden" class="form-control form-control-lg" placeholder="" aria-label="" name="idtipo" value="3">
