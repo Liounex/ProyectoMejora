@@ -1,0 +1,91 @@
+* {
+    font-family: bold;
+}
+.modal {
+    text-align: center;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}                
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 25px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 35%;
+    border-radius: 20px;
+}                
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}                
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.titulo {
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 20px;
+    color: green;
+}
+
+.parrafo {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.codigo {
+    border: 1px solid #198754;
+    display: block;
+    border-radius: 20px;
+    font-size: 30px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #198754;
+    color: white;
+}
+
+.subtitulo {
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.boton {
+    width: 20%;
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.boton:hover{
+    opacity: 0.8;
+}
