@@ -10,15 +10,15 @@ class ProcedureControllers
         $this->model = new ProcedureModels();
     }
 
-    public function newprocedure($dni, $nombre, $correo, $celular, $idtipo)
+    public function newprocedure($usuario_id, $dni, $nombre, $correo, $celular, $idtipo)
     {
-        $stament = $this->model->newprocedure($dni, $nombre, $correo, $celular, $idtipo);
+        $stament = $this->model->newprocedure($usuario_id, $dni, $nombre, $correo, $celular, $idtipo);
         return ($stament != false) ? true: false;
 
     }
-    public function code($codigo) 
+    public function code($codigo, $usuario_id) 
     {
-        $stament = $this->model->code($codigo);
+        $stament = $this->model->code($codigo, $usuario_id);
         if ($stament){
             include '../../pages/modal.php';
         }

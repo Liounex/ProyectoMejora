@@ -11,19 +11,20 @@ class ProcedureModels
         $this->PRO = $con->conectar();
     }
 
-    public function newprocedure($dni, $nombre, $correo, $celular, $idtipo)
+    public function newprocedure($usuario_id ,$dni, $nombre, $correo, $celular, $idtipo)
     {
         try
         {
-        $stament = $this->PRO->prepare('INSERT INTO usuario (dni,nombres, correo, telefono, tipo_usuario_id)
-                                        VALUES(:dni, :nombres, :correo, :telefono, :tipo_usuario_id)');
-        $stament->bindParam(':dni', $dni);
-        $stament->bindParam(':nombres', $nombre);
-        $stament->bindParam(':correo', $correo);
-        $stament->bindParam('telefono', $celular);
-        $stament->bindParam(':tipo_usuario_id', $idtipo);
-        return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
-        $this->PRO = null;
+            $stament = $this->PRO->prepare('INSERT INTO usuario (usuario_id, dni, nombres, correo, telefono, tipo_usuario_id)
+                                            VALUES(:usuario_id, :dni, :nombres, :correo, :telefono, :tipo_usuario_id)');
+            $stament->bindParam(':usuario_id', $usuario_id);
+            $stament->bindParam(':dni', $dni);
+            $stament->bindParam(':nombres', $nombre);
+            $stament->bindParam(':correo', $correo);
+            $stament->bindParam('telefono', $celular);
+            $stament->bindParam(':tipo_usuario_id', $idtipo);
+            return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
+            $this->PRO = null;
         } 
         catch (PDOException $e)
         {
@@ -31,14 +32,15 @@ class ProcedureModels
 		}
     }
 
-    public function code($codigo)
+    public function code($codigo, $usuario_id)
     {
         try
         {
-        $stament = $this->PRO->prepare('INSERT INTO tramite (pago_id) VALUE(:pago)');
-        $stament->bindParam(':pago', $codigo);
-        return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
-        $this->PRO = null;
+            $stament = $this->PRO->prepare('INSERT INTO tramite (pago_id, usuario_id) VALUE(:pago, :usuario_id)');
+            $stament->bindParam(':pago', $codigo);
+            $stament->bindParam(':usuario_id', $usuario_id);
+            return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
+            $this->PRO = null;
         } 
         catch (PDOException $e)
         {
@@ -46,7 +48,4 @@ class ProcedureModels
 		}
     }
 
-    public function codeshow($id) {
-
-    }
 }

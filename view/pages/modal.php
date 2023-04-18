@@ -14,6 +14,7 @@
             <div class="parrafo">El tramite que usted solicito esta en proceso</div>            
             <div class="subtitulo">Copie su Codigo de Pago</div>
             <div class="codigo"><?= $codigo ?></div>
+            <input type="hidden" value="<?= $usuario_id ?>">
             <a class="boton btn-success" href="../../pages/registro.php" >Pagar Ahora</a>
             <a class="boton btn-danger" href="../../pages/registro.php" >Salir</a>
         </div>
