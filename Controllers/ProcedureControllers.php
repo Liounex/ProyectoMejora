@@ -13,12 +13,20 @@ class ProcedureControllers
     public function newprocedure($usuario_id, $dni, $nombre, $correo, $celular, $idtipo)
     {
         $stament = $this->model->newprocedure($usuario_id, $dni, $nombre, $correo, $celular, $idtipo);
-        return ($stament != false) ? true: false;
+        return ($stament != false) ? true : false;
 
     }
-    public function code($codigo, $usuario_id, $tipo_tramite_id) 
+
+    public function cash($codigo, $usuario_id, $tipo_tramite_id, $fecha_now)
     {
-        $stament = $this->model->code($codigo, $usuario_id, $tipo_tramite_id);
+        $stament = $this->model->cash($codigo, $usuario_id, $tipo_tramite_id, $fecha_now);
+        return ($stament != false) ? true : false;
+    }
+
+
+    public function code($codigo, $usuario_id, $tipo_tramite_id, $default) 
+    {
+        $stament = $this->model->code($codigo, $usuario_id, $tipo_tramite_id, $default);
         if ($stament){
             include '../../pages/modal.php';
         }

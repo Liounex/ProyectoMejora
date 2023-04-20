@@ -1,15 +1,10 @@
 <?php
-
 class Conexion {
 
-	private $host = 'localhost';
-	private $user = 'root';
-	private $password = '';
-	private $database = 'tesis';
-	
 	public function conectar() {
+		require_once('config.php');
 		try {
-			$PDO = new PDO('mysql:host='.$this->host.';dbname='.$this->database, $this->user, $this->password);
+			$PDO = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASSWORD);
 			$PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			return $PDO;
 		} catch (PDOException $e){
