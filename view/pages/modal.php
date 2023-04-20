@@ -11,12 +11,11 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="titulo">PERFECTO</span>
-            <div class="parrafo">El tramite que usted solicito esta en proceso</div>            
+            <div class="parrafo">El tramite que usted solicito esta en proceso</div>
             <div class="subtitulo">Copie su Codigo de Pago</div>
             <div class="codigo"><?= $codigo ?></div>
-            <input type="hidden" value="<?= $usuario_id ?>">
-            <a class="boton btn-success" href="../../pages/registro.php" >Pagar Ahora</a>
-            <a class="boton btn-danger" href="../../pages/registro.php" >Salir</a>
+            <a class="boton btn-success" href="../../pages/registro" >Pagar Ahora</a>
+            <a class="boton btn-danger" href="../../pages/registro" >Salir</a>
         </div>
     </div>
     <script src="../../../assets/js/propio.js"></script>

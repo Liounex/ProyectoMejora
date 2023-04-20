@@ -6,7 +6,7 @@ class ProcedureModels
 
     public function __construct()
     {
-        require 'C:/xampp/htdocs/Practicas/config/Database.php';
+        require 'C:/xampp/htdocs/proyectomejora/config/Database.php';
         $con = new Conexion();
         $this->PRO = $con->conectar();
     }
@@ -32,13 +32,14 @@ class ProcedureModels
 		}
     }
 
-    public function code($codigo, $usuario_id)
+    public function code($codigo, $usuario_id, $tipo_tramite_id)
     {
         try
         {
-            $stament = $this->PRO->prepare('INSERT INTO tramite (pago_id, usuario_id) VALUE(:pago, :usuario_id)');
+            $stament = $this->PRO->prepare('INSERT INTO tramite (pago_id, usuario_id, tipo_tramite_id) VALUE(:pago, :usuario_id, :tipo_tramite_id)');
             $stament->bindParam(':pago', $codigo);
             $stament->bindParam(':usuario_id', $usuario_id);
+            $stament->bindParam(':tipo_tramite_id', $tipo_tramite_id);
             return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
             $this->PRO = null;
         } 

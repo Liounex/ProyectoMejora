@@ -16,9 +16,9 @@ class ProcedureControllers
         return ($stament != false) ? true: false;
 
     }
-    public function code($codigo, $usuario_id) 
+    public function code($codigo, $usuario_id, $tipo_tramite_id) 
     {
-        $stament = $this->model->code($codigo, $usuario_id);
+        $stament = $this->model->code($codigo, $usuario_id, $tipo_tramite_id);
         if ($stament){
             include '../../pages/modal.php';
         }

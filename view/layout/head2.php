@@ -29,11 +29,11 @@
 		<!--======================================== Links de navegación ========================================-->
 		<nav class="full-reset navigation">
 			<ul class="full-reset list-unstyled">
-            <li><a href="../index.php">INICIO</a></li>
-				<li><a href="./institucion.php">INSTITUCION</a></li>
-				<li><a href="./secretaria.php">SECRETARIA</a></li>
-				<li><a href="./servicios.php">SERVICIOS</a></li>
-				<li><a href="./galeria.php">GALERIA</a></li>
+            <li><a href="../index">INICIO</a></li>
+				<li><a href="./institucion">INSTITUCION</a></li>
+				<li><a href="./secretaria">SECRETARIA</a></li>
+				<li><a href="./servicios">SERVICIOS</a></li>
+				<li><a href="./galeria">GALERIA</a></li>
 				<li><a href="#" class="btm-mega-menu"><i class="fa fa-caret-down"></i></a></li>
 			</ul>
 		</nav>
@@ -44,8 +44,8 @@
 						<span class="full-reset titles">Menu de Opciones</span>
 						<ul class="list-unstyled full-reset">
 							<!-- <li><a href="#!" class="open-link-newTab"><i class="fa fa-university"></i>&nbsp; Dirección</a></li> -->
-							<li><a href="./pages/index.php" class="open-link-newTab"><i class="fa fa-graduation-cap"></i> Inicia Session</a></li>
-							<li><a href="" class="open-link-newTab"><i class="fa fa-file"></i> Iniciar Tramite</a></li>
+							<li><a href="./pages/index" class="open-link-newTab"><i class="fa fa-graduation-cap"></i> Inicia Session</a></li>
+							<li><a href="./pages/registro" class="open-link-newTab"><i class="fa fa-file"></i> Iniciar Tramite</a></li>
 							<li><a href="https://indi.unsch.edu.pe/index/reglamento" class="open-link-newTab"><i class="fa fa-file-text-o"></i> Matriculate</a></li>
 							<li><a href=""><i class="fa fa-gavel"></i> Realizar pagos</a></li>				
 						</ul>
