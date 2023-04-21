@@ -18,16 +18,28 @@ class UserControllers {
             }
             else {
                 $stament= $this->model->login($username, $password);
+                
                 if ($stament) {
-                    session_start();
-                    $_SESSION['correo'] = $username;
                     header('Location: ../content/index.php');
+                    exit();
                 }
                 else {
                     echo '<link rel="icon" type="image/png" href="./assets/img/favicon.png">';
                     echo '<div class="alert alert-warning text-white">Usuario No Existe</div>';
                 }
             }
+        }
+    }
+
+    public function showdata()
+    {
+        if (isset($_SESSION['dni_user'])) {
+            $userid = $_SESSION['dni_user'];
+            $data = $this->model->getshow($userid);
+            return $data;
+        }
+        else {
+            exit();
         }
     }
 }

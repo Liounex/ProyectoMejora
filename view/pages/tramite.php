@@ -38,7 +38,7 @@
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
-                    <a href="./registro.php" class="text-primary text-gradient font-weight-bold">Volver</a>
+                    <a href="./registro" class="text-primary text-gradient font-weight-bold">Volver</a>
 
                   </p>
                 </div>
