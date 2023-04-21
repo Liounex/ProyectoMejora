@@ -48,6 +48,6 @@ class UserModels
         $query->bindParam(':code' , $code);
         $query->execute();
         return $query->fetchAll();
-        $query->close();
+		$this->PDO = null;
     }
 }
