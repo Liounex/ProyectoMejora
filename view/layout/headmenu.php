@@ -5,7 +5,7 @@
       header('Location: ../pages/index');
   }
 ?>
-<?php if (isset($_SESSION['correo'])) {?>
+<?php if (isset($_SESSION['dni_user'])) {?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -63,8 +63,6 @@
     $data = new UserControllers();
     $data->showdata();
 ?>
-
-
 <table width=100 border=1>
   <thead>
     <tr>
@@ -79,6 +77,9 @@
     <?php endforeach ?>
   </tbody>
   </table>
+
+
+  
     <div class="container-fluid py-4">
       <div class="row">
         <h5>ESTADO DE MIS TRAMITES PENDIENTES</h5>
