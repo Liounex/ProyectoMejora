@@ -1,17 +1,3 @@
-<?php
-/*require_once 'C:/xampp/htdocs/Practicas/controller/UserController.php';
-session_start();
-  //para no regresar al index cuando inicie sesion
-//Codigo que presenta un error
-/*if ($_SESSION['correo']) {
-  header('Location: view/pages/dashboard.php');
-} else {
-}
-if (isset($_POST['username']) && isset($_POST['password'])) {
-  $user = new UserController();
-  echo $user->login($_POST['username'], $_POST['password']);
-}*/
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

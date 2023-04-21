@@ -30,16 +30,9 @@ class UserControllers {
             }
         }
     }
-
-    public function showdata()
+    public function show($code)
     {
-        if (isset($_SESSION['dni_user'])) {
-            $userid = $_SESSION['dni_user'];
-            $data = $this->model->getshow($userid);
-            return $data;
-        }
-        else {
-            exit();
-        }
+        $statement = $this->model->show($code);
+        return $statement;
     }
 }

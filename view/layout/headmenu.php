@@ -1,11 +1,12 @@
 <?php
-  session_start();
+session_start();
   if (isset($_POST['cerrarSesion'])){
       session_destroy();
       header('Location: ../pages/index');
   }
 ?>
 <?php if (isset($_SESSION['dni_user'])) {?>
+ 
 <!DOCTYPE html>
 <html lang="en">
 

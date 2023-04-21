@@ -1,15 +1,13 @@
 <?php
 class UserModels
 {
-	private $PDO;	
-
+	private $PDO;
 	public function __construct()
 	{
 		require 'C:/xampp/htdocs/proyectomejora/config/Database.php';
 		$con = new Conexion();
 		$this->PDO = $con->conectar();
 	}
-
 	public function login($username, $password)
 	{
 		try {
@@ -38,16 +36,12 @@ class UserModels
 			echo "Error al conectar a lsa base de datos: " . $e->getMessage();
 		}
 	}
-
-	public function getshow($code) {
-		try {
-			$statement = $this->PDO->prepare('SELECT * FROM usuario WHERE dni_user = :code');
-			$statement->bindParam(':code', $code);
-			$statement->execute();
-			return $statement->fetch(PDO::FETCH_ASSOC);
-			$this->PDO = null;
-		} catch (PDOException $e) {
-			echo "Error al conectar a la base de datos". $e->getMessage();
-		}
-	}
+    public function show($code) {
+        $sql = "SELECT * FROM tramite WHERE dni_user = :code";
+        $query = $this->PDO->prepare($sql);
+        $query->bindParam(':code' , $code);
+        $query->execute();
+        return $query->fetchAll();
+        $query->close();
+    }
 }
