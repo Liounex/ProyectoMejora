@@ -69,12 +69,20 @@
                             <div class="row">
                                 <div class="col-8">
                                     <div class="numbers">
-                                        <p class="text-sm mb-0 text-uppercase font-weight-bold"><?= $value['tipo_tramite_id'] ?> </p>
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold"><?= $value['nombre'] ?> </p>
                                         Codigo de pago
                                         <p class="text-sm mb-0 text-uppercase font-weight-bold"><?= $value['pago_id'] ?> </p>
                                         <h5 class="font-weight-bolder"></h5>
                                         <p class="mb-0">
-                                            <span class="text-danger text-sm font-weight-bolder"><?= $value['estado_id'] ?></span>
+                                            <?php if ($value['estado_id'] == 1) :?>
+                                                <span class="text-primary text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                                            <?php elseif ($value['estado_id'] == 2) :?>
+                                                <span class="text-secondary text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                                            <?php elseif ($value['estado_id'] == 3) :?>
+                                                <span class="text-danger text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                                            <?php else : ?>
+                                                <span class="text-success text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                                            <?php endif; ?>
                                         </p>
                                     </div>
                                 </div>
