@@ -2,4 +2,4 @@
 trabajo del proyecto de mejora
 
 
-falta model y controller de tramites y generar codigo de pago
+No muestra los datos de los usuarios en un tabla
