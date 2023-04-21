@@ -2,6 +2,7 @@
     require '../layout/headmenu.php';
     require '../layout/nav.php';
 ?>
+<?php if ($_SESSION['tipo_usuario_id'] == 1) :?>
   <div class="container-fluid py-4">
         <div class="row">
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -125,7 +126,7 @@
             <div class="card card-carousel overflow-hidden h-100 p-0">
               <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
                 <div class="carousel-inner border-radius-lg h-100">
-                  <div class="carousel-item h-100 active" style="background-image: url('../assets/img/carousel-1.jpg');
+                  <div class="carousel-item h-100 active" style="background-image: url('../../assets/img/carousel-1.jpg');
         background-size: cover;">
                     <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                       <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
@@ -135,7 +136,7 @@
                       <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
                     </div>
                   </div>
-                  <div class="carousel-item h-100" style="background-image: url('../assets/img/carousel-2.jpg');
+                  <div class="carousel-item h-100" style="background-image: url('../../assets/img/carousel-2.jpg');
         background-size: cover;">
                     <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                       <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
@@ -145,7 +146,7 @@
                       <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
                     </div>
                   </div>
-                  <div class="carousel-item h-100" style="background-image: url('../assets/img/carousel-3.jpg');
+                  <div class="carousel-item h-100" style="background-image: url('../../assets/img/carousel-3.jpg');
         background-size: cover;">
                     <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                       <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
@@ -376,6 +377,11 @@
             </div>
           </div>
         </div>
+<?php elseif ($_SESSION['tipo_usuario_id'] == 2) : ?>
+<?php endif; ?>
+    <div class="container-fluid py-4">
+      <h1 class="text-white">Ventana Usuario </h1>
+    </div>
 <?php
     require '../layout/footermenu.php';
 ?>

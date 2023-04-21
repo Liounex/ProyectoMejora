@@ -6,7 +6,6 @@ session_start();
   }
 ?>
 <?php if (isset($_SESSION['dni_user'])) {?>
- 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,43 +39,59 @@ session_start();
         <span class="ms-1 font-weight-bold">INDI UNSH</span>
       </a>
     </div>
+    <?php if ($_SESSION['tipo_usuario_id'] == 1) :?>
+      <hr class="horizontal dark mt-0">
+      <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./tramite">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa fa-file text-primary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Tramites</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./certificados">
+              <div class="fas fa-certificate icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class=""></i>
+              </div>
+              <span class="nav-link-text ms-1">Certificados</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./constancias">
+              <div class="fas fa-book-open icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class=""></i>
+              </div>
+              <span class="nav-link-text ms-1">Constancias</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./examenes">
+              <div class="fas fa-book icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class=""></i>
+              </div>
+              <span class="nav-link-text ms-1">Examenes</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+  <?php elseif ($_SESSION['tipo_usuario_id'] == 2) : ?>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="./tramite">
+        <li class="nav-item"">
+          <a class="nav-link" href="./tramite">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-file text-primary text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Tramites</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link " href="./certificados">
-            <div class="fas fa-certificate icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class=""></i>
-            </div>
-            <span class="nav-link-text ms-1">Certificados</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="./constancias">
-            <div class="fas fa-book-open icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class=""></i>
-            </div>
-            <span class="nav-link-text ms-1">Constancias</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="./examenes">
-            <div class="fas fa-book icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class=""></i>
-            </div>
-            <span class="nav-link-text ms-1">Examenes</span>
-          </a>
-        </li>
       </ul>
     </div>
+  <?php endif; ?>
   </aside>
 <main class="main-content position-relative border-radius-lg ">
 <?php } else { 
