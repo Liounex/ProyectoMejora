@@ -37,7 +37,13 @@ class UserModels
 		}
 	}
     public function show($code) {
-        $sql = "SELECT * FROM tramite WHERE dni_user = :code";
+        $sql = "SELECT t1.tramite_id, t1.pago_id, t1.dni_user, t1.voucher, t1.estado_id, t1.id_detalle, t1.tipo_tramite_id, 
+        t2.nombre, t2.descripcion, t2.costo, t2.id_requisito, 
+        t3.descripcion
+        FROM tramite t1
+        JOIN tipo_tramite t2 ON t1.tipo_tramite_id = t2.tipo_tramite_id 
+        JOIN estado t3 ON t1.estado_id = t3.estado_id WHERE t1.dni_user = :code";
+        //$sql = "SELECT * FROM tramite WHERE dni_user = :code";
         $query = $this->PDO->prepare($sql);
         $query->bindParam(':code' , $code);
         $query->execute();
