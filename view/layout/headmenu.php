@@ -15,7 +15,26 @@ session_start();
   <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
   <title>
-    Dashboard
+    <?php
+      #echo (empty($_GET['dni_user']))
+      if (empty($_GET['dni_user'])) {
+        if (strpos($_SERVER['REQUEST_URI'], 'index')) {
+          echo 'Dashboard';
+        } 
+        elseif (strpos($_SERVER['REQUEST_URI'], 'tramite')) {
+          echo 'Tramite';
+        } 
+        elseif (strpos($_SERVER['REQUEST_URI'], 'certificados')) {
+          echo 'Certificados';
+        }
+        elseif (strpos($_SERVER['REQUEST_URI'], 'constancias')) {
+          echo 'Constancias';
+        }
+        else {
+          echo 'Examenes';
+        }
+      }
+    ?>
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
