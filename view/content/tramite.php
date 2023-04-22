@@ -8,7 +8,7 @@
 
 <?php if ($_SESSION['tipo_usuario_id'] == 1) :?>
 <div class="container-fluid py-4 mb-5">
-    <h1 class="text-white">Ventana Para Administrador</h1>
+    <h1 class="text-white">Edicios de Tramites para el Administrador</h1>
 </div>
 <?php elseif ($_SESSION['tipo_usuario_id'] == 2) :?>
     <div class="container-fluid py-4 mb-5">
@@ -79,12 +79,20 @@
                                             <h5 class="font-weight-bolder"></h5>
                                             <p class="mb-0">
                                                 <?php if ($value['estado_id'] == 1) :?>
+                                                    <?php $bg = 'icon icon-shape bg-gradient-primary shadow-warning text-center rounded-circle'; ?>
+                                                    <?php $ico = 'fa fa-get-pocket opacity-10'; ?>
                                                     <span class="text-primary text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                                                 <?php elseif ($value['estado_id'] == 2) :?>
+                                                  <?php $bg = 'icon icon-shape bg-gradient-info shadow-warning text-center rounded-circle'; ?>
+                                                  <?php $ico = 'fa fa-clock-o opacity-10'; ?>
                                                     <span class="text-secondary text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                                                 <?php elseif ($value['estado_id'] == 3) :?>
+                                                  <?php $bg = 'icon icon-shape bg-gradient-danger shadow-warning text-center rounded-circle'; ?>
+                                                  <?php $ico = 'fa fa-eye opacity-10'; ?>
                                                     <span class="text-danger text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                                                 <?php else : ?>
+                                                  <?php $bg = 'icon icon-shape bg-gradient-success shadow-warning text-center rounded-circle'; ?>
+                                                  <?php $ico = 'fa fa-thumbs-o-up opacity-10'; ?>
                                                     <span class="text-success text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                                                 <?php endif; ?>
                                             </p>
@@ -92,8 +100,8 @@
                                     </div>
                                     <div class="col-4 text-end">
                                         <a href="">
-                                            <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                                <i class="fa fa-clock-o opacity-10" aria-hidden="true"></i>
+                                            <div class="<?= $bg ?>">
+                                                <i class="<?= $ico ?>" aria-hidden="true"></i>
                                             </div>
                                         </a>
                                     </div>
@@ -106,7 +114,7 @@
                 <p class="text-sm mb-0 text-uppercase font-weight-bold">SIN TRAMITES INICIADOS </p>
             <?php endif;?>
         </div>
-        <?php endif;?>
+<?php endif;?>
 </div>
 <?php
     require '../layout/footermenu.php';
