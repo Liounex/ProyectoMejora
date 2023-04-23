@@ -17,16 +17,16 @@ class ProcedureControllers
 
     }
 
-    public function cash($codigo, $dni, $tipo_tramite_id, $fecha_now)
+    public function cash($codigo, $dni, $tipo_tramite_id, $cantidad, $fecha_now)
     {
-        $stament = $this->model->cash($codigo, $dni, $tipo_tramite_id, $fecha_now);
+        $stament = $this->model->cash($codigo, $dni, $tipo_tramite_id, $cantidad, $fecha_now);
         return ($stament != false) ? true : false;
     }
 
 
-    public function code($codigo, $dni, $tipo_tramite_id, $default) 
+    public function code($codigo, $dni, $voucher, $tipo_tramite_id, $default) 
     {
-        $stament = $this->model->code($codigo, $dni, $tipo_tramite_id, $default);
+        $stament = $this->model->code($codigo, $dni, $voucher, $tipo_tramite_id, $default);
         if ($stament){
             include '../../pages/modal.php';
         }

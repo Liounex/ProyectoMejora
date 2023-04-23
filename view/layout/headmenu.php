@@ -48,7 +48,7 @@ session_start();
   <link id="pagestyle" href="../../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
 </head>
 
-<body class="g-sidenav-show   bg-gray-100">
+<body class="g-sidenav-show bg-gray-100">
   <div class="min-height-300 bg-primary position-absolute w-100"></div>
   <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
@@ -58,9 +58,10 @@ session_start();
         <span class="ms-1 font-weight-bold">INDI UNSH</span>
       </a>
     </div>
+    <!-- Ventana para el Administrador-->
     <?php if ($_SESSION['tipo_usuario_id'] == 1) :?>
       <hr class="horizontal dark mt-0">
-      <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="./tramite">
@@ -96,6 +97,7 @@ session_start();
           </li>
         </ul>
       </div>
+      <!-- Ventana para el Usuario-->
   <?php elseif ($_SESSION['tipo_usuario_id'] == 2) : ?>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">

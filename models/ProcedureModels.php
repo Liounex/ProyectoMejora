@@ -29,13 +29,14 @@ class ProcedureModels
 		}
     }
 
-    public function code($codigo, $dni, $tipo_tramite_id, $default)
+    public function code($codigo, $dni, $voucher, $tipo_tramite_id, $default)
     {
         try {
-            $stament = $this->PRO->prepare('INSERT INTO tramite (pago_id, dni_user, tipo_tramite_id, estado_id)
-                                            VALUE(:pago, :usuario_id, :tipo_tramite_id, :estado_id)');
+            $stament = $this->PRO->prepare('INSERT INTO tramite (pago_id, dni_user, voucher, tipo_tramite_id, estado_id)
+                                            VALUE(:pago, :usuario_id, :voucher, :tipo_tramite_id, :estado_id)');
             $stament->bindParam(':pago', $codigo);
             $stament->bindParam(':usuario_id', $dni);
+            $stament->bindParam(':voucher', $voucher);
             $stament->bindParam(':tipo_tramite_id', $tipo_tramite_id);
             $stament->bindParam(':estado_id', $default);
             return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
@@ -46,14 +47,15 @@ class ProcedureModels
 		}
     }
 
-    public function cash($codigo, $dni, $tipo_tramite_id, $fecha_now)
+    public function cash($codigo, $dni, $tipo_tramite_id, $cantidad, $fecha_now)
     {
         try {
-            $pago = $this->PRO->prepare('INSERT INTO pago (pago_id, dni_user, tipo_tramite_id, fecha_presentacion)
-                                        VALUES (:pago_id, :usuario_id, :tipo_tramite_id, :fecha_presentacion)');
+            $pago = $this->PRO->prepare('INSERT INTO pago (pago_id, dni_user, tipo_tramite_id, cantidad, fecha_presentacion)
+                                        VALUES (:pago_id, :usuario_id, :tipo_tramite_id, :cantidad, :fecha_presentacion)');
             $pago->bindParam(':pago_id', $codigo);
             $pago->bindParam(':usuario_id', $dni);
             $pago->bindParam(':tipo_tramite_id', $tipo_tramite_id);
+            $pago->bindParam(':cantidad', $cantidad);
             $pago->bindParam(':fecha_presentacion', $fecha_now);
             return ($pago->execute()) ? $this->PRO->lastInsertId() : false;
             $this->PRO = null;

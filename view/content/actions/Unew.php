@@ -17,6 +17,6 @@ $default = 1;
 $pago_id = strtoupper(uniqid() . bin2hex(8));
 date_default_timezone_set('America/Lima');
 $date = date('Y-m-d H:i:s');
-$user->code($pago_id, $_POST['dni'], $_POST['tprocedure'], $default);
-$user->cash($pago_id, $_POST['dni'], $_POST['tprocedure'], $date);
+$user->code($pago_id, $_POST['dni'], 0, $_POST['tprocedure'], $default);
+$user->cash($pago_id, $_POST['dni'], 1, $_POST['tprocedure'], $date);
 
