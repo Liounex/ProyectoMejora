@@ -11,6 +11,7 @@ class ProcedureModels
         $this->PRO = $con->conectar();
     }
 
+    // Nuevo Usuario
     public function newprocedure($dni, $nombre, $correo, $celular, $idtipo)
     {
         try {
@@ -29,16 +30,18 @@ class ProcedureModels
 		}
     }
 
-    public function code($codigo, $dni, $voucher, $tipo_tramite_id, $default)
+    //Codigo de Pago e inicio de un tramite
+    public function code($codigo, $dni, $voucher, $tipo_tramite_id, $default, $codet)
     {
         try {
-            $stament = $this->PRO->prepare('INSERT INTO tramite (pago_id, dni_user, voucher, tipo_tramite_id, estado_id)
-                                            VALUE(:pago, :usuario_id, :voucher, :tipo_tramite_id, :estado_id)');
+            $stament = $this->PRO->prepare('INSERT INTO tramite (pago_id, dni_user, voucher, tipo_tramite_id, estado_id, id_detalle)
+                                            VALUE(:pago, :usuario_id, :voucher, :tipo_tramite_id, :estado_id, :id_detalle)');
             $stament->bindParam(':pago', $codigo);
             $stament->bindParam(':usuario_id', $dni);
             $stament->bindParam(':voucher', $voucher);
             $stament->bindParam(':tipo_tramite_id', $tipo_tramite_id);
             $stament->bindParam(':estado_id', $default);
+            $stament->bindParam(':id_detalle', $codet);
             return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
             $this->PRO = null;
         } 
@@ -47,6 +50,7 @@ class ProcedureModels
 		}
     }
 
+    //Datos para la tabla pago
     public function cash($codigo, $dni, $tipo_tramite_id, $cantidad, $fecha_now)
     {
         try {
@@ -63,6 +67,24 @@ class ProcedureModels
         catch (PDOException $e) {
             echo "Error al conectar a la base de datos: " . $e->getMessage();
         }
+    }
+
+    public function detail($id_tramite, $idioma, $nivel, $año, $f_init) {
+        try {
+            $statement = $this->PRO->prepare('INSERT INTO detalle_tramite (id_detalle, idioma, nivel, year, fechainit)
+                                                    VALUES (:id_tramite, :idioma, :nivel, :year, :f_init)');
+            $statement->bindParam(':id_tramite' , $id_tramite);
+            $statement->bindParam(':idioma', $idioma);
+            $statement->bindParam(':nivel', $nivel);
+            $statement->bindParam(':year', $año);
+            $statement->bindParam(':f_init', $f_init);
+            return ($statement->execute()) ? $this->PRO->lastInsertId() : false;
+            $this->PRO = null;
+        } catch (PDOException $e) {
+            echo "Error al conectar a la base de datos: " . $e->getMessage();
+        }
+
+
     }
 
 }
