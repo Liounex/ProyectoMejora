@@ -54,10 +54,12 @@
                             <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
                           </td>
                           <td>
-                            <p class="text-xs text-secondary mb-0">Aceptar</p>
-                            <p class="text-xs text-secondary mb-0">Observar</p>
-                            <p class="text-xs text-secondary mb-0">Declinar</p>
-                            <p class="text-xs text-secondary mb-0"></p>
+                            <p class="text-lg-center text-secondary mb-0">
+                              <a href=""><i class="fa fa-check-circle-o"></i></a>
+                              <a href=""><i class="fa fa-eye"></i></a>
+                              <a href=""><i class="fa fa-ban"></i></a>
+                              <!--<a href=""><i class="fa fa-check-circle"></i></a> -->
+                            </p>
                           </td>
                         </tr>
                         <?php endforeach; ?>
@@ -72,6 +74,7 @@
             </div>
           </div>
         </div>
+</div>
 
 <!-- Todo para el usuario-->
 <?php elseif ($_SESSION['tipo_usuario_id'] == 2) :?>

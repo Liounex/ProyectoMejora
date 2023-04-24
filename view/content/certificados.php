@@ -1,255 +1,77 @@
 <?php
     require '../layout/headmenu.php';
     require '../layout/nav.php';
+    require 'C:/xampp/htdocs/proyectomejora/Controllers/UserControllers.php';
+    $obj = new UserControllers();
+    $datos = $obj->showdata($_GET['id']);
+
 ?>
 
- <div class="container-fluid py-4">
-      <div class="row" style="justify-content: center;text-align: center;">
-        <!-------------------------TITULO DE INGLES BASICO------------------------------------>
-        <h4><i>CERTIFICADOS DEL INGLES BASICO</i></h4>
-          <!-- ------------------------------------------------------------------------------->
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">INGLES BASICO</p>
-                    <h5 class="font-weight-bolder">
-                      Nivel I
-                    </h5>
-                    <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">Nota </span>
-                      16
-                    </p>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                    <a href="cert_pdf.html" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
-                  </div>
-                </div>
+<div class="container-fluid py-4">
+<div class="row">
+      <h5 class="text-white">CERTIFICADOS EN LISTA</h5>
+      <div class="col-12">
+          <div class="card mb-4">
+              <div class="table-responsive p-0">
+                <table class="table mb-0 text-center">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TIPO DE TRAMITE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ESTADO</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">DETALLE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">PAGO</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SOLICITANTE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">FECHA DE PRESENTACION</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ACCIONES</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php if ($datos) : ?>
+                    <?php foreach ($datos as $key => $value2) : ?>
+                        <tr>
+                          <td>
+                            <h6 class="mb-0 text-sm"><?= $value2['nombre']?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['descripciont']?></p>
+                          </td>
+                          <td>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['descripcion'] ?></p>
+                          </td>
+                          <td>
+                            <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] .' '. $value2['year'] ?></p>
+                          </td>
+                          <td>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['total'] ?></p>
+                          </td>
+                          <td>
+                            <h6 class="mb-0 text-sm"><?= $value2['nombres'] ?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['ap_paterno'] .' '. $value2['ap_materno'] ?></p>
+                          </td>
+                          <td>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
+                          </td>
+                          <td>
+                            <p class="text-lg-center text-secondary mb-0">
+                              <a href=""><i class="fa fa-check-circle-o"></i></a>
+                              <a href=""><i class="fa fa-eye"></i></a>
+                              <a href=""><i class="fa fa-ban"></i></a>
+                              <!--<a href=""><i class="fa fa-check-circle"></i></a> -->
+                            </p>
+                          </td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php else : ?>
+                        <td colspan="7" >
+                            <p class="text-xs text-secondary mb-0">Sin Registros</p>
+                        </td>
+                      <?php endif; ?>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">INGLES BASICO</p>
-                    <h5 class="font-weight-bolder">
-                      Nivel II
-                    </h5>
-                    <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">Nota</span>
-                      15
-                    </p>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                    <a href="cert_pdf.html" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">INGLES BASICO</p>
-                    <h5 class="font-weight-bolder">
-                      Nivel III
-                    </h5>
-                    <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">Nota</span>
-                      15
-                    </p>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                    <a href="cert_pdf.html" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>        
-      </div>     
-    </div> 
-
-        <!-- ---------------------------- CERTIFICADOS DE INGLES INTERMEDIO---------------------------------->
-        <div class="container-fluid py-4">
-          <div class="row" style="justify-content: center; text-align: center;">
-          <!-------------------------TITULO DE INGLES INTERMEDIO------------------------------------>
-          <h4><i>CERTIFICADOS DEL INGLES INTERMEDIO</i></h4>
-          <!-- --------------------------------------------------------------------------------->
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-              <div class="card">
-                <div class="card-body p-3">
-                  <div class="row">
-                    <div class="col-8">
-                      <div class="numbers">
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">INGLES INTERMEDIO</p>
-                        <h5 class="font-weight-bolder">
-                          Nivel IV
-                        </h5>
-                        <p class="mb-0">
-                          <span class="text-success text-sm font-weight-bolder">Nota </span>
-                          18
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-4 text-end">
-                      <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                        <a href="cert_pdf.html" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-              <div class="card">
-                <div class="card-body p-3">
-                  <div class="row">
-                    <div class="col-8">
-                      <div class="numbers">
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">INGLES INTERMEDIO</p>
-                        <h5 class="font-weight-bolder">
-                          Nivel V
-                        </h5>
-                        <p class="mb-0">
-                          <span class="text-success text-sm font-weight-bolder">Nota</span>
-                          14
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-4 text-end">
-                      <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                        <a href="cert_pdf.html" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-              <div class="card">
-                <div class="card-body p-3">
-                  <div class="row">
-                    <div class="col-8">
-                      <div class="numbers">
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">INGLES INTERMEDIO</p>
-                        <h5 class="font-weight-bolder">
-                          Nivel VI
-                        </h5>
-                        <p class="mb-0">
-                          <span class="text-success text-sm font-weight-bolder">Nota</span>
-                          17
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-4 text-end">
-                      <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                        <a href="cert_pdf.html" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>        
-          </div>     
-        </div> 
-
-    <!-- -----------------------------CERTIFICADOS DE QUECHUA-------------------------------------- -->
-    <div class="container-fluid py-4">
-      <div class="row" style="justify-content: center; text-align: center;">
-        <!-------------------------TITULO DE INGLES BASICO------------------------------------>
-          <h4><i>CERTIFICADOS DEL QUECHUA BASICO</i></h4>
-        <!-- --------------------------------------------------------------------------------->
-        <div class="col-xl-3 col-sm-6">
-              <div class="card">
-                <div class="card-body p-3">
-                  <div class="row">
-                    <div class="col-8">
-                      <div class="numbers">
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">QUECHUA BASICO</p>
-                        <h5 class="font-weight-bolder">
-                          Nivel básico
-                        </h5>
-                        <p class="mb-0">
-                          <span class="text-success text-sm font-weight-bolder">Nota</span> 17
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-4 text-end">
-                      <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                        <a href="cert_pdf.html" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-sm-6">
-              <div class="card">
-                <div class="card-body p-3">
-                  <div class="row">
-                    <div class="col-8">
-                      <div class="numbers">
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">QUECHUA INTERMEDIO</p>
-                        <h5 class="font-weight-bolder">
-                          Nivel intermedio
-                        </h5>
-                        <p class="mb-0">
-                          <span class="text-success text-sm font-weight-bolder">Nota</span> 16
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-4 text-end">
-                      <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                        <a href="cert_pdf.html" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-sm-6">
-              <div class="card">
-                <div class="card-body p-3">
-                  <div class="row">
-                    <div class="col-8">
-                      <div class="numbers">
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">QUECHUA AVANZADO</p>
-                        <h5 class="font-weight-bolder">
-                          Nivel avanzado
-                        </h5>
-                        <p class="mb-0">
-                          <span class="text-success text-sm font-weight-bolder">Nota</span> 15
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-4 text-end">
-                      <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                        <a href="cert_pdf.html" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-    </div>
+</div>
 <?php
     require '../layout/footermenu.php';
 ?>

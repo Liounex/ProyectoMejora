@@ -1,111 +1,75 @@
 <?php
     require '../layout/headmenu.php';
     require '../layout/nav.php';
+    require 'C:/xampp/htdocs/proyectomejora/Controllers/UserControllers.php';
+    $obj = new UserControllers();
+    $datos = $obj->showdata($_GET['id']);
 ?>
+
 <div class="container-fluid py-4">
-    <div class="row">
-        <div class="col-12">
+<div class="row">
+      <h5 class="text-white">CERTIFICADOS EN LISTA</h5>
+      <div class="col-12">
           <div class="card mb-4">
-            <div class="card-header pb-0">
-              <h6>RESULTADO DE LOS EXAMENES</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
+                <table class="table mb-0 text-center">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TIPO</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">FECHA</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ESTADO</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NOTA</th>
-                      <th class="text-secondary opacity-7"></th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TIPO DE TRAMITE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ESTADO</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">DETALLE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">PAGO</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SOLICITANTE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">FECHA DE PRESENTACION</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ACCIONES</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Examen</h6>
-                            <p class="text-xs text-secondary mb-0">Suficiencia</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">24/04/2023</p>
-                        <p class="text-xs text-secondary mb-0">10:00 am</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Aprobado</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">18</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Examen</h6>
-                            <p class="text-xs text-secondary mb-0">Suficiencia</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">12/03/2023</p>
-                        <p class="text-xs text-secondary mb-0">10:00 am</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Desaprobado</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">11</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Examen</h6>
-                            <p class="text-xs text-secondary mb-0">Ubicación</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">14/02/2023</p>
-                        <p class="text-xs text-secondary mb-0">10:00 am</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Aprobado</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">17</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>                  
-                    
-                    
+                  <?php if ($datos) : ?>
+                    <?php foreach ($datos as $key => $value2) : ?>
+                        <tr>
+                          <td>
+                            <h6 class="mb-0 text-sm"><?= $value2['nombre']?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['descripciont']?></p>
+                          </td>
+                          <td>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['descripcion'] ?></p>
+                          </td>
+                          <td>
+                            <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] .' '. $value2['year'] ?></p>
+                          </td>
+                          <td>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['total'] ?></p>
+                          </td>
+                          <td>
+                            <h6 class="mb-0 text-sm"><?= $value2['nombres'] ?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['ap_paterno'] .' '. $value2['ap_materno'] ?></p>
+                          </td>
+                          <td>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
+                          </td>
+                          <td>
+                            <p class="text-lg-center text-secondary mb-0">
+                              <a href=""><i class="fa fa-check-circle-o"></i></a>
+                              <a href=""><i class="fa fa-eye"></i></a>
+                              <a href=""><i class="fa fa-ban"></i></a>
+                              <!--<a href=""><i class="fa fa-check-circle"></i></a> -->
+                            </p>
+                          </td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php else : ?>
+                        <td colspan="7" >
+                            <p class="text-xs text-secondary mb-0">Sin Registros</p>
+                        </td>
+                      <?php endif; ?>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
 </div>
 

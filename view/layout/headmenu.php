@@ -72,7 +72,7 @@ session_start();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./certificados">
+            <a class="nav-link" href="./certificados?id=certificado">
               <div class="fas fa-certificate icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class=""></i>
               </div>
@@ -80,7 +80,7 @@ session_start();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./constancias">
+            <a class="nav-link" href="./constancias?id=constancia">
               <div class="fas fa-book-open icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class=""></i>
               </div>
@@ -88,7 +88,7 @@ session_start();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examenes">
+            <a class="nav-link" href="./examenes?id=examen">
               <div class="fas fa-book icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class=""></i>
               </div>

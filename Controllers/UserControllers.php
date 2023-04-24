@@ -40,4 +40,9 @@ class UserControllers {
         $statement = $this->model->showadmin();
         return $statement;
     }
+
+    public function showdata($data) {
+        $statement = $this->model->showdocs($data);
+        return $statement;
+    }
 }
