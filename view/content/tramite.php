@@ -4,12 +4,76 @@
     require 'C:/xampp/htdocs/proyectomejora/Controllers/UserControllers.php';
     $obj = new UserControllers();
     $datos = $obj->show($_SESSION['dni_user']);
+
+    $datos2 = $obj->showadmin();
 ?>
 
+<!-- Todo para el Administrador-->
 <?php if ($_SESSION['tipo_usuario_id'] == 1) :?>
 <div class="container-fluid py-4 mb-5">
-    <h1 class="text-white">Vista de Tramites para el Administrador</h1>
-</div>
+<div class="row">
+      <h5 class="text-white">TRAMITES EN LISTA</h5>
+      <div class="col-12">
+          <div class="card mb-4">
+              <div class="table-responsive p-0">
+                <table class="table mb-0 text-center">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TIPO DE TRAMITE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ESTADO</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">DETALLE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">PAGO</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SOLICITANTE</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">FECHA DE PRESENTACION</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ACCIONES</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php if ($datos2) : ?>
+                    <?php foreach ($datos2 as $key => $value2) : ?>
+                        <tr>
+                          <td>
+                            <h6 class="mb-0 text-sm"><?= $value2['nombre']?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['descripciont']?></p>
+                          </td>
+                          <td>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['descripcion'] ?></p>
+                          </td>
+                          <td>
+                            <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] .' '. $value2['year'] ?></p>
+                          </td>
+                          <td>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['total'] ?></p>
+                          </td>
+                          <td>
+                            <h6 class="mb-0 text-sm"><?= $value2['nombres'] ?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['ap_paterno'] .' '. $value2['ap_materno'] ?></p>
+                          </td>
+                          <td>
+                            <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
+                          </td>
+                          <td>
+                            <p class="text-xs text-secondary mb-0">Aceptar</p>
+                            <p class="text-xs text-secondary mb-0">Observar</p>
+                            <p class="text-xs text-secondary mb-0">Declinar</p>
+                            <p class="text-xs text-secondary mb-0"></p>
+                          </td>
+                        </tr>
+                        <?php endforeach; ?>
+                      <?php else : ?>
+                        <td colspan="7" >
+                            <p class="text-xs text-secondary mb-0">Sin Registros</p>
+                        </td>
+                      <?php endif; ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!-- Todo para el usuario-->
 <?php elseif ($_SESSION['tipo_usuario_id'] == 2) :?>
   <div class="container-fluid py-4 mb-5">
     <div class="row">

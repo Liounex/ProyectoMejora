@@ -35,4 +35,9 @@ class UserControllers {
         $statement = $this->model->show($code);
         return $statement;
     }
+
+    public function showadmin() {
+        $statement = $this->model->showadmin();
+        return $statement;
+    }
 }
