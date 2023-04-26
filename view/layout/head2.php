@@ -47,7 +47,7 @@
 							<li><a href="./pages/index"><i class="fa fa-graduation-cap"></i> Inicia Session</a></li>
 							<li><a href="./pages/registro"><i class="fa fa-file"></i> Iniciar Tramite</a></li>
 							<li><a href="https://indi.unsch.edu.pe/index/reglamento" class="open-link-newTab"><i class="fa fa-file-text-o"></i> Matriculate</a></li>
-							<li><a href=""><i class="fa fa-gavel"></i> Realizar pagos</a></li>				
+							<li><a href="./content/pago"><i class="fa fa-gavel"></i> Realizar pagos</a></li>				
 						</ul>
 					</div>
 				</div>

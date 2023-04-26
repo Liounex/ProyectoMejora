@@ -118,8 +118,7 @@
         </div>
       </div>
       <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-        <span style="color: white;">Boton de Prueba (Puede o no puede estar)</span>
-        <button class="btn btn-success" type="button">Pagar un Tramite</button>
+        <a href="./pago" class="btn btn-success" type="button"><i class="fa fa-money"></i> Realizar Pago</a>
       </div>
     </div>
   </div>
