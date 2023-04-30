@@ -4,7 +4,6 @@
     require 'C:/xampp/htdocs/proyectomejora/Controllers/UserControllers.php';
     $obj = new UserControllers();
     $datos = $obj->show($_SESSION['dni_user']);
-
     $datos2 = $obj->showadmin();
 ?>
 
@@ -122,7 +121,6 @@
       </div>
     </div>
   </div>
-
   <!-- ESTADO DE LOS TRAMITES -->
   <div class="container-fluid py-4">
     <h5>ESTADO DE MIS TRAMITES</h5>
@@ -161,7 +159,8 @@
                                 data-bs-toggle="collapse" href="#collapseExample" 
                                 role="button" aria-expanded="false" aria-controls="collapseExample">
                         Detalle
-                      </a>
+                      </a>&nbsp;  
+                      <i class="fa fa-money"></i>
                     </p>
                     <div class="collapse" id="collapseExample">
                       <?php if ($value['total'] == 0) :?>

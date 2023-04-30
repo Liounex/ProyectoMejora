@@ -1,5 +1,4 @@
 # ProyectoMejora
 trabajo del proyecto de mejora
 
-
-Filtrar los resultados mostrados por categoria
+Metodos de pago para usuarios y guardar en base de datos

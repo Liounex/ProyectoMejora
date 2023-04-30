@@ -18,7 +18,7 @@
                       <input type="text" class="form-control form-control-lg" placeholder="Nombre" aria-label="nombre" name="">
                     </div>
                     <div class="mb-3">
-                      <input type="text" class="form-control form-control-lg" placeholder="Correo" aria-label="correo" name="">
+                      <input type="email" class="form-control form-control-lg" placeholder="Correo" aria-label="correo" name="">
                     </div>
                     <div class="mb-3">
                       <input type="text" class="form-control form-control-lg" placeholder="Numero de celular" aria-label="celular" name="">
