@@ -1,5 +1,5 @@
 <?php
-    require './layout/head2.php';
+    require './layout/head.php';
 ?>
 	<section class="full-reset" style="background-color: #fff; padding: 20px 0;">
 		<div class="container">
