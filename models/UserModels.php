@@ -103,4 +103,30 @@ class UserModels
             echo 'Error al conectar a la base de datos' , $e->getMessage();
         }
     }
+
+	public function accept($code, $status) {
+		try {
+			$statement = $this->PDO->prepare('UPDATE tramite SET estado_id = :statusid WHERE tramite_id = :code');
+			$statement->bindParam(':code', $code);
+			$statement->bindParam(':statusid', $status);
+			//$this->PDO->lastInsertId() 
+			return ($statement->execute()) ? true : false;
+			$this->PDO = null;
+		} catch (PDOException $e) {
+			echo 'Error al conectar a la base de datos' , $e->getMessage();
+		}
+	}
+
+	public function decline($code, $status) {
+		try {
+			$statement = $this->PDO->prepare('UPDATE tramite SET estado_id = :statusid WHERE tramite_id = :code');
+			$statement->bindParam(':code', $code);
+			$statement->bindParam(':statusid', $status);
+			//$this->PDO->lastInsertId() 
+			return ($statement->execute()) ? true : false;
+			$this->PDO = null;
+		} catch (PDOException $e) {
+			echo 'Error al conectar a la base de datos' , $e->getMessage();
+		}
+	}
 }

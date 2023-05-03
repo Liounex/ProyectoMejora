@@ -1,4 +1,4 @@
-<footer class="full-reset footer">
+<footer class="full-reset footer" style="background-image:url(/proyectomejora/assets/img/fondo.jpg);">
 		<div class="full-reset" style="padding: 15px 0;">
 			<div class="container">
 				<div class="row">

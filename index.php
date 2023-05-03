@@ -1,15 +1,14 @@
 <?php
     require './view/layout/head.php';
 ?>
-
-<section class="full-reset font-cover" style="background-image: url(assets/img/fondo1.jpg);">
+	<section class="full-reset font-cover" style="background-image: url(assets/img/fondo1.jpg); text-align:center;">
 		<div class="full-reset" style="height: 100%; padding-top: 100%; background-color: rgba(255, 255, 255, 0.466); padding: 250px 0;">
 			<h1 class="text-center tls">INDI UNSCH</h1>
 			<figure class="Logo-Ins-Index">
 				<img src="assets/img/logo-indi/logo-indi.png" alt="Logo" class="img-responsive">
 			</figure>
 			<p class="text-center tls">
-				"Instituto de idiomas de la Universidad Nacional San Cristobal de Huamanga"
+			<h4 style="font-family: 'Lemon', cursive;"> "Instituto de idiomas de la Universidad Nacional San Cristobal de Huamanga" </h4> 
 			</p>
 		</div>
 	</section>
@@ -120,7 +119,9 @@
 				      <img src="assets/gallery/quechua.jpg" alt="IMG" class="img-responsive img-rounded">
 				      <div class="caption">
 				        <h3 class="text-center">QUECHUA</h3>
-				        <p class="text-justify">Uno de los factores es la importancia que le damos al idioma quechua. Esta importancia es determinada por parámetros, como el número de habitantes nativos que tiene, en qué medida está geográficamente extendida, su importancia como vehículo de comunicación, así como la influencia económica y política de quienes la hablan.</p>
+				        <p class="text-justify">Uno de los factores es la importancia que le damos al idioma quechua. Esta importancia es determinada por parámetros&hellip;
+							<!--como el número de habitantes nativos que tiene, en qué medida está geográficamente 
+							extendida, su importancia como vehículo de comunicación, así como la influencia económica y política de quienes la hablan.--></p>
 				        <p class="text-center"><a href="#" class="btn btn-primary" role="button">Ver imágenes</a></p>
 				      </div>
 				    </div>
@@ -131,7 +132,8 @@
 				      <img src="assets/gallery/frances.jpg" alt="IMG" class="img-responsive img-rounded">
 				      <div class="caption">
 				        <h3 class="text-center">FRANCÉS</h3>
-				        <p class="text-justify">Con alrededor de 200 millones de hablantes en todo el mundo, el francés es uno de los idiomas más hablados en el mundo por lo que podrás estar conectado con miles de personas.</p>
+				        <p class="text-justify">Con alrededor de 200 millones de hablantes en todo el mundo, el francés es uno de los idiomas 
+							más hablados en el mundo&hellip; <!-- por lo que podrás estar conectado con miles de personas.--></p>
 				        <p class="text-center"><a href="#" class="btn btn-primary" role="button">Ver imágenes</a></p>
 				      </div>
 				    </div>
@@ -140,6 +142,13 @@
 		</div>
 	</section>
 	<div class="divider-general"></div>
+		<!--======================================== Horarios de atencion ========================================-->
+		<section class="text-center important-links-index">
+			<img src="assets/img/reloj.png" alt="" width="200" style="position: absolute; left: 450px; ">
+			<h2 class="titles">Horarios de Atención</h2>			
+			<h2>Mañana: 8:00 am - 1:00 pm</h2>
+			<h2>Tarde: 2:00 pm - 4:00 pm</h2>
+		</section>
 	<!--======================================== Enlaces importantes ========================================-->
 	<section class="text-center important-links-index">
 		<h2 class="titles">Sitios y enlaces importantes</h2>

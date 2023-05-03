@@ -1,7 +1,7 @@
 <?php
     require './layout/head2.php';
 ?>
-<section class="full-reset" style="background-color: #fff; padding: 20px 0;">
+	<section class="full-reset" style="background-color: #fff; padding: 20px 0;">
 		<div class="container">
 			<div class="row">
 				<section class="col-xs-12 col-sm-8 col-md-9 info-section-ins">

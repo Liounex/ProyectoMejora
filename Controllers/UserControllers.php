@@ -20,7 +20,7 @@ class UserControllers {
                 $stament= $this->model->login($username, $password);
                 
                 if ($stament) {
-                    header('Location: ../content/index.php');
+                    header('Location: ../content/index');
                     exit();
                 }
                 else {
@@ -44,5 +44,16 @@ class UserControllers {
     public function showdata($data) {
         $statement = $this->model->showdocs($data);
         return $statement;
+
+    }
+
+    public function accept($code, $status) {
+        $statement = $this->model->accept($code, $status);
+        return ($statement != false) ? header('Location: ../tramite') : false;
+    }
+
+    public function decline($code, $status) {
+        $statement = $this->model->decline($code, $status);
+        return ($statement != false) ? header('Location: ../tramite') : false;
     }
 }

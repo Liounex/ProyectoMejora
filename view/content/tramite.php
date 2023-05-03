@@ -54,9 +54,9 @@
                           </td>
                           <td>
                             <p class="text-lg-center text-secondary mb-0">
-                              <a href=""><i class="fa fa-check-circle-o"></i></a>
-                              <a href=""><i class="fa fa-eye"></i></a>
-                              <a href=""><i class="fa fa-ban"></i></a>
+                              <a class="btn" href="./actions/accept?id=<?= $value2['tramite_id'] ?>"><i class="fa fa-check-circle-o"></i></a>
+                              <a class="btn" href=""><i class="fa fa-eye"></i></a>
+                              <a class="btn" href="./actions/decline?id=<?= $value2['tramite_id'] ?>"><i class="fa fa-ban"></i></a>
                               <!--<a href=""><i class="fa fa-check-circle"></i></a> -->
                             </p>
                           </td>
@@ -147,35 +147,47 @@
                           <?php $ico = 'fa fa-clock-o opacity-10'; ?>
                           <span class="text-secondary text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                         <?php elseif ($value['estado_id'] == 3) :?>
-                          <?php $bg = 'icon icon-shape bg-gradient-danger shadow-warning text-center rounded-circle'; ?>
+                          <?php $bg = 'icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle'; ?>
                           <?php $ico = 'fa fa-eye opacity-10'; ?>
-                          <span class="text-danger text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
-                        <?php else : ?>
+                          <span class="text-warning text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                        <?php elseif ($value['estado_id'] == 4) :?>
                           <?php $bg = 'icon icon-shape bg-gradient-success shadow-warning text-center rounded-circle'; ?>
                           <?php $ico = 'fa fa-thumbs-o-up opacity-10'; ?>
                           <span class="text-success text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                        <?php else :?>
+                          <?php $bg = 'icon icon-shape bg-gradient-danger shadow-warning text-center rounded-circle'; ?>
+                          <?php $ico = 'fa fa-ban opacity-10'; ?>
+                          <span class="text-danger text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                         <?php endif; ?>
                       &nbsp;<a class="text-primary text-sm font-weight-bolder" 
                                 data-bs-toggle="collapse" href="#collapseExample" 
                                 role="button" aria-expanded="false" aria-controls="collapseExample">
                         Detalle
                       </a>&nbsp;  
-                      <i class="fa fa-money"></i>
                     </p>
                     <div class="collapse" id="collapseExample">
+                      <span><?= $value['descripciont']?></span><br>
                       <?php if ($value['total'] == 0) :?>
                           <?php $statepage = 'No Pago' ?>
                       <?php else : ?>
                           <?php $statepage = 'Pagado' ?>
                       <?php endif; ?>
                       Idioma: 
-                      <span class="text-sm font-weight-bolder"><?= $value['idioma']?></span><br>
-                      Nivel: 
-                      <span class="text-sm font-weight-bolder"><?= $value['nivel']?></span><br>
-                      Año: 
-                      <span class="text-sm font-weight-bolder"><?= $value['year']?></span><br>
+                      <span class="text-sm font-weight-bolder"><?= $value['idioma']?></span><br>                 
+                      <?php if ($value['nivel'] == 0 ) :?>
+                      <?php else: ?>
+                        Nivel: 
+                        <span class="text-sm font-weight-bolder"><?= $value['nivel'] ?></span><br>
+                      <?php endif; ?>
+
+                      <?php if ($value['year'] == '0000-00-00' ) :?>
+                      <?php else: ?>
+                        Año: 
+                        <span class="text-sm font-weight-bolder"><?= $value['year'] ?></span><br>
+                      <?php endif; ?>
                       Pago: 
                       <span class="text-sm font-weight-bolder"></span><?= $statepage ?><br>
+                      <i class="fa fa-money"></i>
                     </div>
                     </div>
                   </div>
