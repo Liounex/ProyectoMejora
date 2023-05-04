@@ -12,10 +12,10 @@
 	<!--<link rel="stylesheet" href="./assets/css/style.css"> -->
 	<link rel="stylesheet" href="/proyectomejora/assets/css/style.css">
 	<script src="/ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/proyectomejora/assets/js/jquery-1.11.2.min.js"><\/script>')</script>
 	<script src="/proyectomejora/assets/js/modernizr.js"></script>
 	<script src="/proyectomejora/assets/js/bootstrap.min.js"></script>
-	<script src="/proyectomejora//assets/js/main.js"></script>
+	<script src="/proyectomejora/assets/js/main.js"></script>
 
 <!--TIPO DE LETRA LOGO UNSCH EN LA ESQUINA -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +62,7 @@
 							<li><a href="/proyectomejora/view/pages/index" class=""><i class="fa fa-graduation-cap"></i>&nbsp; Inicia Sessión</a></li>
 							<li><a href="https://indi.unsch.edu.pe/index/reglamento" class="open-link-newTab"><i class="fa fa-file-text-o"></i>&nbsp; Matriculate</a></li>
 							<li><a href="/proyectomejora/view/pages/registro" target=""><i class="fa fa-star-o"></i>&nbsp; Inicia Trámite</a></li>
-							<li><a href="/proyectomejora/view/content/pago" target=""><i class="fa fa-gavel"></i>&nbsp; Realizar pagos</a></li>				
+							<li><a href="/proyectomejora/view/pages/pago" target=""><i class="fa fa-gavel"></i>&nbsp; Realizar pagos</a></li>				
 						</ul>
 					</div>
 				</div>

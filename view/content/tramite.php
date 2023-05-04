@@ -30,6 +30,7 @@
                   <tbody>
                   <?php if ($datos2) : ?>
                     <?php foreach ($datos2 as $key => $value2) : ?>
+                      <?php $collapseId = "collapse" . $value2['tramite_id'] ?>
                         <tr>
                           <td>
                             <h6 class="mb-0 text-sm"><?= $value2['nombre']?></h6>
@@ -54,10 +55,23 @@
                           </td>
                           <td>
                             <p class="text-lg-center text-secondary mb-0">
-                              <a class="btn" href="./actions/accept?id=<?= $value2['tramite_id'] ?>"><i class="fa fa-check-circle-o"></i></a>
-                              <a class="btn" href=""><i class="fa fa-eye"></i></a>
-                              <a class="btn" href="./actions/decline?id=<?= $value2['tramite_id'] ?>"><i class="fa fa-ban"></i></a>
-                              <!--<a href=""><i class="fa fa-check-circle"></i></a> -->
+                              <a class="btn" href="./actions/accept?id=<?= $value2['tramite_id']?>=&cod=<?= $_GET['id']?>"><i class="fa fa-check-circle-o"></i></a>
+                              <a class="btn" href="./actions/decline?id=<?= $value2['tramite_id']?>=&cod=<?= $_GET['id']?>"><i class="fa fa-ban"></i></a>
+                              <!--Boton de Observacion y un collapse -->
+                              <a class="btn" data-bs-toggle="collapse" href="#<?= $collapseId ?>" 
+                                role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>">
+                                <i class="fa fa-eye"></i>
+                              </a>
+                              <div class="collapse" id="<?= $collapseId ?>">
+                                <form action="./actions/observation?id=<?= $value2['tramite_id'] ?>=&cod=<?= $_GET['id']?>" method="post">
+                                  <div class="mb-3">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Observacion" aria-label="Observacion" name="obser" required>
+                                  </div>
+                                  <div class="mb-3">
+                                    <button type="submit" class="btn btn-success">Enviar</button>
+                                  </div>
+                                </form>
+                              </div>
                             </p>
                           </td>
                         </tr>
@@ -127,6 +141,7 @@
     <div class="row">
       <?php if ($datos) : ?>
         <?php foreach ($datos as $key => $value) : ?>
+          <?php $collapseId = "collapse" . $value['tramite_id'] ?>
           <div class="col-xl-3 col-sm-6 mb-xl-2 mb-4">
             <div class="card">
               <div class="card-body p-3">
@@ -160,12 +175,12 @@
                           <span class="text-danger text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                         <?php endif; ?>
                       &nbsp;<a class="text-primary text-sm font-weight-bolder" 
-                                data-bs-toggle="collapse" href="#collapseExample" 
-                                role="button" aria-expanded="false" aria-controls="collapseExample">
+                                data-bs-toggle="collapse" href="#<?= $collapseId ?>" 
+                                role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>">
                         Detalle
                       </a>&nbsp;  
                     </p>
-                    <div class="collapse" id="collapseExample">
+                    <div class="collapse" id="<?= $collapseId ?>">
                       <span><?= $value['descripciont']?></span><br>
                       <?php if ($value['total'] == 0) :?>
                           <?php $statepage = 'No Pago' ?>
@@ -179,7 +194,6 @@
                         Nivel: 
                         <span class="text-sm font-weight-bolder"><?= $value['nivel'] ?></span><br>
                       <?php endif; ?>
-
                       <?php if ($value['year'] == '0000-00-00' ) :?>
                       <?php else: ?>
                         Año: 
@@ -187,6 +201,11 @@
                       <?php endif; ?>
                       Pago: 
                       <span class="text-sm font-weight-bolder"></span><?= $statepage ?><br>
+                      <?php if ($value['obser'] == '' ) :?>
+                      <?php else: ?>
+                        Obser.
+                        <span class="text-sm font-weight-bolder"><?= $value['obser'] ?></span><br>
+                      <?php endif; ?>
                       <i class="fa fa-money"></i>
                     </div>
                     </div>

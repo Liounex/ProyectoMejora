@@ -1,5 +1,5 @@
 <?php
-    require './layout/head2.php';
+    require './layout/head.php';
 ?>
 <section class="full-reset" style="min-height: 850px;">
 		<div class="jumbotron">

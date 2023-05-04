@@ -49,11 +49,52 @@ class UserControllers {
 
     public function accept($code, $status) {
         $statement = $this->model->accept($code, $status);
-        return ($statement != false) ? header('Location: ../tramite') : false;
+        if ($_GET['cod'] == 'all'){
+            header('Location: ../tramite?id='. $_GET['cod']);
+        }
+        if ($_GET['cod'] == 'certificado'){
+            header('Location: ../certificados?id='. $_GET['cod']);
+        }
+        if ($_GET['cod'] == 'constancia'){
+            header('Location: ../constancias?id='. $_GET['cod']);
+        }
+        if ($_GET['cod'] == 'examen'){
+            header('Location: ../examenes?id='. $_GET['cod']);
+        }
+        return $statement;
     }
 
     public function decline($code, $status) {
         $statement = $this->model->decline($code, $status);
-        return ($statement != false) ? header('Location: ../tramite') : false;
+        if ($_GET['cod'] == 'all'){
+            header('Location: ../tramite?id='. $_GET['cod']);
+        }
+        if ($_GET['cod'] == 'certificado'){
+            header('Location: ../certificados?id='. $_GET['cod']);
+        }
+        if ($_GET['cod'] == 'constancia'){
+            header('Location: ../constancias?id='. $_GET['cod']);
+        }
+        if ($_GET['cod'] == 'examen'){
+            header('Location: ../examenes?id='. $_GET['cod']);
+        }
+        return $statement;
+    }
+
+    public function observation($code, $status, $obser) {
+        $statement = $this->model->observation($code, $status, $obser);
+        if ($_GET['cod'] == 'all'){
+            header('Location: ../tramite?id='. $_GET['cod']);
+        }
+        if ($_GET['cod'] == 'certificado'){
+            header('Location: ../certificados?id='. $_GET['cod']);
+        }
+        if ($_GET['cod'] == 'constancia'){
+            header('Location: ../constancias?id='. $_GET['cod']);
+        }
+        if ($_GET['cod'] == 'examen'){
+            header('Location: ../examenes?id='. $_GET['cod']);
+        }
+        return $statement;
     }
 }

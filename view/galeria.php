@@ -1,5 +1,5 @@
 <?php
-    require './layout/head2.php';
+    require './layout/head.php';
 ?>
 <section class="full-reset section-gallery-ins">
 		<!--======================================== Eventos del 2023 ========================================-->

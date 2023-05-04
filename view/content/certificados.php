@@ -27,35 +27,49 @@
                   </thead>
                   <tbody>
                   <?php if ($datos) : ?>
-                    <?php foreach ($datos as $key => $value2) : ?>
+                    <?php foreach ($datos as $key => $value) : ?>
+                      <?php $collapseId = "collapse" . $value['tramite_id'] ?>
                         <tr>
                           <td>
-                            <h6 class="mb-0 text-sm"><?= $value2['nombre']?></h6>
-                            <p class="text-xs text-secondary mb-0"><?= $value2['descripciont']?></p>
+                            <h6 class="mb-0 text-sm"><?= $value['nombre']?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value['descripciont']?></p>
                           </td>
                           <td>
-                            <p class="text-xs text-secondary mb-0"><?= $value2['descripcion'] ?></p>
+                            <p class="text-xs text-secondary mb-0"><?= $value['descripcion'] ?></p>
                           </td>
                           <td>
-                            <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
-                            <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] .' '. $value2['year'] ?></p>
+                            <h6 class="mb-0 text-sm"><?= $value['idioma'] ?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value['nivel'] .' '. $value['year'] ?></p>
                           </td>
                           <td>
-                            <p class="text-xs text-secondary mb-0"><?= $value2['total'] ?></p>
+                            <p class="text-xs text-secondary mb-0"><?= $value['total'] ?></p>
                           </td>
                           <td>
-                            <h6 class="mb-0 text-sm"><?= $value2['nombres'] ?></h6>
-                            <p class="text-xs text-secondary mb-0"><?= $value2['ap_paterno'] .' '. $value2['ap_materno'] ?></p>
+                            <h6 class="mb-0 text-sm"><?= $value['nombres'] ?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $value['ap_paterno'] .' '. $value['ap_materno'] ?></p>
                           </td>
                           <td>
-                            <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
+                            <p class="text-xs text-secondary mb-0"><?= $value['fechainit'] ?></p>
                           </td>
                           <td>
-                            <p class="text-lg-center text-secondary mb-0">
-                              <a href=""><i class="fa fa-check-circle-o"></i></a>
-                              <a href=""><i class="fa fa-eye"></i></a>
-                              <a href=""><i class="fa fa-ban"></i></a>
-                              <!--<a href=""><i class="fa fa-check-circle"></i></a> -->
+                          <p class="text-lg-center text-secondary mb-0">
+                              <a class="btn" href="./actions/accept?id=<?= $value['tramite_id']?>=&cod=<?= $_GET['id']?>"><i class="fa fa-check-circle-o"></i></a>
+                              <a class="btn" href="./actions/decline?id=<?= $value['tramite_id'] ?>=&cod=<?= $_GET['id']?>"><i class="fa fa-ban"></i></a>
+                              <!--Boton de Observacion y un collapse -->
+                              <button class="btn" data-bs-toggle="collapse" href="#<?= $collapseId ?>" 
+                                role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>">
+                                <i class="fa fa-eye"></i>
+                              </button>
+                              <div class="collapse" id="<?= $collapseId ?>">
+                                <form action="./actions/observation?id=<?= $value['tramite_id'] ?>=&cod=<?= $_GET['id']?>" method="post">
+                                  <div class="mb-3">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Observacion" aria-label="Observacion" name="obser" required>
+                                  </div>
+                                  <div class="mb-3">
+                                    <button type="submit" class="btn btn-success">Enviar</button>
+                                  </div>
+                                </form>
+                              </div>
                             </p>
                           </td>
                         </tr>

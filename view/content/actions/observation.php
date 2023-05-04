@@ -1,5 +1,4 @@
 <?php
 require 'C:/xampp/htdocs/proyectomejora/Controllers/UserControllers.php';
 $obj = new UserControllers();
-$obj->accept($_GET['id'], 2);
-
+$obj->observation($_GET['id'], 3, $_POST['obser']);

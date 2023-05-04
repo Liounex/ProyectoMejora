@@ -36,7 +36,7 @@ class UserModels
 
     public function show($code) {
 		try {
-			$sql = "SELECT t1.pago_id, t1.dni_user, t1.estado_id,
+			$sql = "SELECT t1.pago_id, t1.obser, t1.dni_user, t1.estado_id, t1.tramite_id,
 			t2.nombre, t2.descripciont, t2.costo,
 			t3.descripcion,
 			t4.idioma, t4.nivel, t4.year, t4.fechainit,
@@ -128,5 +128,19 @@ class UserModels
 		} catch (PDOException $e) {
 			echo 'Error al conectar a la base de datos' , $e->getMessage();
 		}
+	}
+
+	public function observation($code, $status, $obser) {
+		try {
+			$statement = $this->PDO->prepare('UPDATE tramite SET estado_id = :statusid, obser = :obser WHERE tramite_id = :code');
+			$statement->bindParam(':code', $code);
+			$statement->bindParam(':statusid', $status);
+			$statement->bindParam(':obser', $obser);
+			return ($statement->execute() ? true : false);
+			$this->PDO = null;
+		} catch (PDOException $e) {
+			echo 'Error al conectar a la base de datos' , $e->getMessage();
+		}
+
 	}
 }
