@@ -1,8 +1,9 @@
 <?php
+require_once __DIR__ . '/../../config/config.php';
 session_start();
   if (isset($_POST['cerrarSesion'])){
       session_destroy();
-      header('Location: ../pages/index');
+      header('Location: '.APP_URL . '/view/login' . '');
   }
 ?>
 <?php if (isset($_SESSION['dni_user'])) {?>
@@ -18,10 +19,10 @@ session_start();
       if (empty($_GET['dni_user'])) {
         if (strpos($_SERVER['REQUEST_URI'], 'index')) {
           echo 'Dashboard';
-        } 
+        }
         elseif (strpos($_SERVER['REQUEST_URI'], 'tramite')) {
           echo 'Tramite';
-        } 
+        }
         elseif (strpos($_SERVER['REQUEST_URI'], 'certificados')) {
           echo 'Certificados';
         }
@@ -51,8 +52,8 @@ session_start();
   <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href="./index" target="">
-        <img src="../../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+      <a class="navbar-brand m-0" href="<?= APP_URL . '/view/dashboard'?>" target="">
+        <img src="<?= APP_URL . '/assets/img/logo-ct-dark.png'?>" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">INDI UNSCH</span>
       </a>
     </div>
@@ -62,7 +63,7 @@ session_start();
       <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="./tramite?id=all">
+            <a class="nav-link" href="<?= APP_URL . '/view/tramiteus?id=all'?>">
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fa fa-file text-primary text-sm opacity-10"></i>
               </div>
@@ -70,7 +71,7 @@ session_start();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./certificados?id=certificado">
+            <a class="nav-link" href="<?= APP_URL . '/view/certificados?id=certificado'?>">
               <div class="fas fa-certificate icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class=""></i>
               </div>
@@ -78,7 +79,7 @@ session_start();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./constancias?id=constancia">
+            <a class="nav-link" href="<?= APP_URL . '/view/constancias?id=constancia'?>">
               <div class="fas fa-book-open icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class=""></i>
               </div>
@@ -86,7 +87,7 @@ session_start();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./examenes?id=examen">
+            <a class="nav-link" href="<?= APP_URL . '/view/examenes?id=examen'?>">
               <div class="fas fa-book icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                 <i class=""></i>
               </div>
@@ -101,7 +102,7 @@ session_start();
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item"">
-          <a class="nav-link" href="./tramite">
+          <a class="nav-link" href="<?= APP_URL . '/view/tramiteus'?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-file text-primary text-sm opacity-10"></i>
             </div>
@@ -113,6 +114,6 @@ session_start();
   <?php endif; ?>
   </aside>
 <main class="main-content position-relative border-radius-lg ">
-<?php } else { 
+<?php } else {
   header('Location: /proyectomejora/index'); ?>
 <?php } ?>

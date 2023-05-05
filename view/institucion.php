@@ -1,6 +1,5 @@
-<?php
-    require './layout/head.php';
-?>
+<?php include_once __DIR__ . '/layout/head.php'; ?>
+<!-- Contenido de Pagina-->
 	<section class="full-reset" style="background-color: #fff; padding: 20px 0;">
 		<div class="container">
 			<div class="row">
@@ -108,6 +107,6 @@
 			</div>
 		</div>
 	</section>
+<!-- Fin de contenido-->
+<?php include_once __DIR__ . '/layout/footer.php'; ?>
 
-<?php
-    require './layout/footer.php';

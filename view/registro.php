@@ -1,3 +1,5 @@
+<?php include_once __DIR__ . '/layout/headlogin.php' ?>
+
 <h4 class="font-weight-bolder">Nuevo Tramite</h4>
 <p class="mb-0">Complete los datos correspondientes</p>
 </div>
@@ -35,7 +37,8 @@
 <div class="card-footer text-center pt-0 px-lg-2 px-1">
   <p class="mb-4 text-sm mx-auto">
     Usuarios con cuenta 
-  <a href="./index" class="text-primary text-gradient font-weight-bold">Ingrese aqui</a>&nbsp;&nbsp;&nbsp;
-  <a href="./tramite" class="text-primary text-gradient font-weight-bold">Continuar</a>
+  <a href="<?= APP_URL . '/view/login'?>" class="text-primary text-gradient font-weight-bold">Ingrese aqui</a>&nbsp;&nbsp;&nbsp;
+  <a href="<?= APP_URL . '/view/tramite' ?>" class="text-primary text-gradient font-weight-bold">Continuar</a>
   </p>
 </div>
+<?php include_once __DIR__ . '/layout/footerlogin.php' ?>

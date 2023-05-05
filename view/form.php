@@ -1,5 +1,5 @@
 <div class="card-body">
-    <form role="form" action="../content/actions/new" method="POST" autocomplete="off">
+    <form role="form" action="<?= APP_URL . '/view/content/new'?>" method="POST" autocomplete="off">
         <div class="mb-3">
             <select name="tprocedure" id="tprocedure" class="form-control form-control-lg" aria-label="tipo_tramite" required>
                 <option value="" disabled selected>Seleccione el tipo de tramite</option>
@@ -37,7 +37,7 @@
         const opcionSeleccionada = select.value;
 
         if (opcionSeleccionada === '1') {
-            inputContainer.innerHTML = 
+            inputContainer.innerHTML =
             '<div class="mb-3"><input type="text" class="form-control form-control-lg" placeholder="Idioma" aria-label="Idioma" name="idioma" required></div>' +
             '<div class="mb-3"><input type="text" class="form-control form-control-lg" placeholder="Nivel" aria-label="Nivel" name="nivel" required></div>' +
             '<div class="mb-3"><input type="date" class="form-control form-control-lg" placeholder="Año" aria-label="Año" name="year" required></div>';

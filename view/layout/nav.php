@@ -4,12 +4,12 @@
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
           <?php
             if (empty($_GET['dni_user'])) {
-              if (strpos($_SERVER['REQUEST_URI'], 'index')) {
+              if (strpos($_SERVER['REQUEST_URI'], 'dashboard')) {
                 $paginacion = 'Dashboard';
-              } 
+              }
               elseif (strpos($_SERVER['REQUEST_URI'], 'tramite')) {
                 $paginacion = 'Tramite';
-              } 
+              }
               elseif (strpos($_SERVER['REQUEST_URI'], 'certificados')) {
                 $paginacion = 'Certificados';
               }
@@ -21,7 +21,7 @@
               }
             }
           ?>
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">View</a></li>
             <li class="breadcrumb-item text-sm text-white active" aria-current="page"><?= $paginacion ?></li>
           </ol>
           <h6 class="font-weight-bolder text-white mb-0"><?= $paginacion ?></h6>
@@ -50,7 +50,7 @@
                     <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                 </a>
                 </li>
-                
+
                 <li class="nav-item px-3 d-flex align-items-center">
                   <form action="" method="POST">
                       <button type="submit" class="nav-link text-white p-0" style="background: transparent; border: none;" name="cerrarSesion"><i class="fa fa-sign-out cursor-pointer"></i></button>

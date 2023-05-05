@@ -1,12 +1,13 @@
-<?php 
+<?php
 
+require_once __DIR__ . '/../config/config.php';
+require_once (APP_ROOT . '/../config/Database.php');
 class ProcedureModels
 {
     private $PRO;
 
     public function __construct()
     {
-        require 'C:/xampp/htdocs/proyectomejora/config/Database.php';
         $con = new Conexion();
         $this->PRO = $con->conectar();
     }
@@ -24,7 +25,7 @@ class ProcedureModels
             $stament->bindParam(':tipo_usuario_id', $idtipo);
             return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
             $this->PRO = null;
-        } 
+        }
         catch (PDOException $e) {
 			echo "Error al conectar a la base de datos: " . $e->getMessage();
 		}
@@ -44,7 +45,7 @@ class ProcedureModels
             $stament->bindParam(':id_detalle', $codet);
             return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
             $this->PRO = null;
-        } 
+        }
         catch (PDOException $e) {
 			echo "Error al conectar a la base de datos: " . $e->getMessage();
 		}
@@ -63,7 +64,7 @@ class ProcedureModels
             $pago->bindParam(':fecha_presentacion', $fecha_now);
             return ($pago->execute()) ? $this->PRO->lastInsertId() : false;
             $this->PRO = null;
-        } 
+        }
         catch (PDOException $e) {
             echo "Error al conectar a la base de datos: " . $e->getMessage();
         }

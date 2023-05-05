@@ -1,6 +1,7 @@
 <?php
 //include
-require 'C:/xampp/htdocs/proyectomejora/Controllers/ProcedureControllers.php';
+require_once __DIR__ . '/../../config/config.php';
+require_once(APP_ROOT . '/../Controllers/ProcedureControllers.php');
 //llama a la clase
 $user = new ProcedureControllers();
 $num = rand(10000000, 99999999);

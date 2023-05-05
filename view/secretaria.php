@@ -1,6 +1,5 @@
-<?php
-    require './layout/head.php';
-?>
+<?php include_once __DIR__ . '/layout/head.php'; ?>
+<!-- Contenido de Pagina-->
 <section class="full-reset" style="min-height: 850px;">
 		<div class="jumbotron">
 		  <h2 class="text-center titles">Matricula</h2>
@@ -126,5 +125,6 @@
 			</div>
 		</article>
 	</section>
-<?php
-    require './layout/footer.php';
+<!-- Fin de contenido-->
+<?php include_once __DIR__ . '/layout/footer.php'; ?>
+
