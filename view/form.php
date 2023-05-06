@@ -29,7 +29,7 @@
             <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Proceder</button>
         </div>
     </form>
-    <script>
+<script>
         const select = document.getElementById('tprocedure');
         const inputContainer = document.getElementById('prueba');
 

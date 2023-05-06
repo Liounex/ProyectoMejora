@@ -4,7 +4,7 @@
 <p class="mb-0">Complete los datos correspondientes</p>
 </div>
 <div class="card-body">
-  <form role="form" action="../content/actions/Unew" method="POST" autocomplete="off">
+  <form role="form" action="<?= APP_URL . '/view/content/Unew'?>" method="POST" autocomplete="off">
     <div class="mb-3">
       <select name="tprocedure" id="tprocedure" class="form-control form-control-lg" aria-label="tipo_tramite" required>
         <option value="" disabled selected>Seleccione el tipo de tramite</option>
@@ -36,7 +36,7 @@
 </div>
 <div class="card-footer text-center pt-0 px-lg-2 px-1">
   <p class="mb-4 text-sm mx-auto">
-    Usuarios con cuenta 
+    Usuarios con cuenta
   <a href="<?= APP_URL . '/view/login'?>" class="text-primary text-gradient font-weight-bold">Ingrese aqui</a>&nbsp;&nbsp;&nbsp;
   <a href="<?= APP_URL . '/view/tramite' ?>" class="text-primary text-gradient font-weight-bold">Continuar</a>
   </p>

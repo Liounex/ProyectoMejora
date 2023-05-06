@@ -6,3 +6,18 @@ window.onclick = function(event) {
         }
 }
 modal.style.display = "block";
+
+
+
+
+var boton = document.getElementById("basic-addon2");
+boton.addEventListener("click", function() {
+  var input = document.getElementById("code");
+  input.select();
+  document.execCommand("copy");
+  notificacion.textContent = "Codigo de pago copiado al portapapeles";
+  notificacion.style.display = "block";
+  setTimeout(function() {
+    notificacion.style.display = "none";
+  }, 3000);
+});
