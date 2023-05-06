@@ -21,6 +21,9 @@ class UserSearchControllers
             "nombre" => $row["nombres"],
             "correo" => $row["correo"],
             "telefono" => $row["telefono"],
+            "ap_paterno" => $row["ap_paterno"],
+            "ap_materno" => $row["ap_materno"],
+            "id_tramite" => $row["tipo_tramite_id"]
         );
         return $data;
     }

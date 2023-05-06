@@ -9,18 +9,22 @@ function buscar() {
             data: {
                 codigo: codigo
             },
-            success: function(data) {
+            success: function (data) {
                 var datos = JSON.parse(data);
                 if (datos == null) {
                     alert('El código no se encuentra registrado');
                 } else {
+                    console.log(data);
                     $('#dni').val(datos.dni);
                     $('#nombre').val(datos.nombre);
                     $('#correo').val(datos.correo);
                     $('#telefono').val(datos.telefono);
+                    $('#ap_paterno').val(datos.ap_paterno);
+                    $('#ap_materno').val(datos.ap_materno);
+                    $('#tprocedure').val(datos.id_tramite);
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.error(error);
             }
         });
@@ -28,8 +32,8 @@ function buscar() {
 
 }
 
-$(document).ready(function() {
-    $('#btn-buscar').click(function() {
+$(document).ready(function () {
+    $('#btn-buscar').click(function () {
         buscar();
     });
 });

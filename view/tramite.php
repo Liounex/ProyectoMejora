@@ -21,16 +21,24 @@ include_once __DIR__ . '/layout/headlogin.php';
             <input type="email" class="form-control form-control-lg" placeholder="Correo" aria-label="correo" name="correo" id="correo">
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control form-control-lg" placeholder="Numero de celular" aria-label="celular" name="telefono" id="telefono">
+            <input type="text" class="form-control form-control-lg" placeholder="Telefono" aria-label="telefono" name="telefono" id="telefono">
         </div>
         <div class="mb-3">
-            <select name="tprocedure" id="tprocedure" class="form-control form-control-lg" aria-label="tipo_tramite">
+            <input type="text" class="form-control form-control-lg" placeholder="Apellido Paterno" aria-label="ap_paterno" name="ap_paterno" id="ap_paterno">
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Apellido Materno" aria-label="ap_materno" name="ap_materno" id="ap_materno">
+        </div>
+        <div class="mb-3">
+            <select name="tprocedure" id="tprocedure" class="form-control form-control-lg" aria-label="tipo_tramite" required>
                 <option value="" disabled selected>Seleccione el tipo de tramite</option>
-                <option value="">Certificado</option>
-                <option value="">Constancia</option>
-                <option value="">Examen</option>
+                <option value="1" required>Certificado</option>
+                <option value="2">Constancia</option>
+                <option value="3">Examen de Suficiencia</option>
+                <option value="4">Examen de Ubicacion</option>
             </select>
         </div>
+        <div id="prueba"></div>
         <div class="text-center">
             <button type="submit" name="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Solicitar</button>
         </div>
@@ -41,6 +49,8 @@ include_once __DIR__ . '/layout/headlogin.php';
         <a href="<?= APP_URL . '/view/registro' ?>" class="text-primary text-gradient font-weight-bold">Volver</a>
     </p>
 </div>
+<script src="<?= APP_URL . '/assets/js/select.js' ?>"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<?= APP_URL . '/assets/js/validate.js' ?>"></script>
+
 <?php include_once __DIR__ . '/layout/footerlogin.php' ?>
