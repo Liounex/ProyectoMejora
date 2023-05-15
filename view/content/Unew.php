@@ -16,13 +16,13 @@ if (strlen($str) < 8) {
 //id de usuario
 //$id_codigo = str_pad(mt_rand(0, 999999), 8, '0', STR_PAD_LEFT);
 //nuevo usuario
-$user->newprocedure($_POST['dni'],$_POST['nombre'], $_POST['correo'], $_POST['celular'],$_POST['idtipo']);
+$user->newprocedure($_POST['dni'],$_POST['nombre'], $_POST['ap_paterno'],$_POST['ap_materno'], $_POST['correo'], $_POST['celular'],$_POST['idtipo']);
 // nuevo tramite y genera el pago con la fecha de ahora
 $default = 1;
 $pago_id = strtoupper(uniqid() . bin2hex(8));
 date_default_timezone_set('America/Lima');
 $date = date('Y-m-d H:i:s');
-$user->code($pago_id, $_POST['dni'], 0, $_POST['tprocedure'], $default, $str);
-$user->cash($pago_id, $_POST['dni'], 1, $_POST['tprocedure'], $date);
-//detalle de tramite
-$user->detail($str, 'en proceso', 'en proceso', '', $date);
+// $user->code($pago_id, $_POST['dni'], 0, $_POST['tprocedure'], $default, $str);
+$user->cash($pago_id, $_POST['dni'], $_POST['tprocedure']);
+// //detalle de tramite
+// $user->detail($str, 'en proceso', 'en proceso', '', $date);

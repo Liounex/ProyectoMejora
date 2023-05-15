@@ -13,13 +13,14 @@ class ProcedureModels
     }
 
     // Nuevo Usuario
-    public function newprocedure($dni, $nombre, $correo, $celular, $idtipo)
+    public function newprocedure($dni, $nombre, $ap_paterno, $ap_materno , $correo, $celular, $idtipo)
     {
         try {
-            $stament = $this->PRO->prepare('INSERT INTO usuario (dni_user, nombres, correo, telefono, tipo_usuario_id)
-                                            VALUES(:dni_user, :nombres, :correo, :telefono, :tipo_usuario_id)');
+            $stament = $this->PRO->prepare('INSERT INTO usuario (dni_user, nombres, ap_paterno, ap_materno, correo, telefono, tipo_usuario_id) VALUES(:dni_user, :nombres, :ap_paterno, :ap_materno, :correo, :telefono, :tipo_usuario_id)');
             $stament->bindParam(':dni_user', $dni);
             $stament->bindParam(':nombres', $nombre);
+            $stament->bindParam(':ap_paterno', $ap_paterno);
+            $stament->bindParam(':ap_materno', $ap_materno);
             $stament->bindParam(':correo', $correo);
             $stament->bindParam('telefono', $celular);
             $stament->bindParam(':tipo_usuario_id', $idtipo);
@@ -52,16 +53,14 @@ class ProcedureModels
     }
 
     //Datos para la tabla pago
-    public function cash($codigo, $dni, $tipo_tramite_id, $cantidad, $fecha_now)
+    public function cash($codigo, $dni, $tipo_tramite_id)
     {
         try {
-            $pago = $this->PRO->prepare('INSERT INTO pago (pago_id, dni_user, tipo_tramite_id, cantidad, fecha_presentacion)
-                                        VALUES (:pago_id, :usuario_id, :tipo_tramite_id, :cantidad, :fecha_presentacion)');
+            $pago = $this->PRO->prepare('INSERT INTO pago (pago_id, dni_user, tipo_tramite_id)
+                                        VALUES (:pago_id, :usuario_id, :tipo_tramite_id');
             $pago->bindParam(':pago_id', $codigo);
             $pago->bindParam(':usuario_id', $dni);
             $pago->bindParam(':tipo_tramite_id', $tipo_tramite_id);
-            $pago->bindParam(':cantidad', $cantidad);
-            $pago->bindParam(':fecha_presentacion', $fecha_now);
             return ($pago->execute()) ? $this->PRO->lastInsertId() : false;
             $this->PRO = null;
         }

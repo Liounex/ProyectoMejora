@@ -11,7 +11,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 <p class="mb-0">Ingrese su Correo y contraseña</p>
 </div>
 <div class="card-body">
-  <form role="form" action="" method="POST" autocomplete="off">
+  <form role="form" action="" method="POST" autocomplete="on">
     <div class="mb-3">
       <input type="email" class="form-control form-control-lg" placeholder="example12@gmail.com" aria-label="username" name="username">
     </div>

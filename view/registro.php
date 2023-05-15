@@ -21,6 +21,12 @@
       <input type="text" class="form-control form-control-lg" placeholder="Nombre" aria-label="nombre" name="nombre" required>
     </div>
     <div class="mb-3">
+      <input type="text" class="form-control form-control-lg" placeholder="Apellido Paterno" name="ap_paterno" required>
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control form-control-lg" placeholder="Apellido Materno" name="ap_materno" required>
+    </div>
+    <div class="mb-3">
       <input type="email" class="form-control form-control-lg" placeholder="Correo" aria-label="correo" name="correo" required>
     </div>
     <div class="mb-3">

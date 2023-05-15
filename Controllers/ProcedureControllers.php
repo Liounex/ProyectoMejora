@@ -11,16 +11,20 @@ class ProcedureControllers
         $this->model = new ProcedureModels();
     }
 
-    public function newprocedure($dni, $nombre, $correo, $celular, $idtipo)
+    public function newprocedure($dni, $nombre, $ap_paterno, $ap_materno, $correo, $celular, $idtipo)
     {
-        $stament = $this->model->newprocedure($dni, $nombre, $correo, $celular, $idtipo);
+        $stament = $this->model->newprocedure($dni, $nombre,  $ap_paterno, $ap_materno, $correo, $celular, $idtipo);
         return ($stament != false) ? true : false;
     }
 
-    public function cash($codigo, $dni, $tipo_tramite_id, $cantidad, $fecha_now)
+    public function cash($codigo, $dni, $tipo_tramite_id)
     {
-        $stament = $this->model->cash($codigo, $dni, $tipo_tramite_id, $cantidad, $fecha_now);
-        return ($stament != false) ? true : false;
+        $stament = $this->model->cash($codigo, $dni, $tipo_tramite_id);
+        // return ($stament != false) ? true : false;
+
+        if ($stament) {
+            include_once APP_ROOT . '/../view/modal.php';
+        }
     }
 
 

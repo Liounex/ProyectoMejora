@@ -21,7 +21,8 @@ class UserModels
 			if ($result > 0) {
 				$user = $statement->fetch(PDO::FETCH_ASSOC);
 				session_start();
-				$_SESSION['dni_user'] = $user['dni_user'];
+				$_SESSION['user_id'] = $user['usuario_id'];
+				$_SESSION['dni_user'] = $user['dni'];
 				$_SESSION['nombres'] = $user['nombres'];
 				$_SESSION['ap_paterno'] = $user['ap_paterno'];
 				$_SESSION['ap_materno'] = $user['ap_materno'];

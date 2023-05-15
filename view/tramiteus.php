@@ -3,7 +3,8 @@ include_once __DIR__ . '/layout/headmenu.php';
 include_once __DIR__ . '/layout/nav.php';
 require_once(APP_ROOT . '/../Controllers/UserControllers.php');
 $obj = new UserControllers();
-$datos = $obj->show($_SESSION['dni_user']);
+// $datos = $obj->show($_SESSION['dni_user']);
+$datos = $obj->show($_SESSION['user_id']);
 $datos2 = $obj->showadmin();
 ?>
 
