@@ -17,9 +17,9 @@ class ProcedureControllers
         return ($stament != false) ? true : false;
     }
 
-    public function cash($codigo, $dni, $tipo_tramite_id)
+    public function cash($codigo, $dni, $tipo_tramite_id, $cantidad, $total)
     {
-        $stament = $this->model->cash($codigo, $dni, $tipo_tramite_id);
+        $stament = $this->model->cash($codigo, $dni, $tipo_tramite_id, $cantidad, $total);
         // return ($stament != false) ? true : false;
 
         if ($stament) {
@@ -28,18 +28,43 @@ class ProcedureControllers
     }
 
 
-    public function code($codigo, $dni, $voucher, $tipo_tramite_id, $default, $codet)
+    public function code($tramite_id, $pago_id, $imagen, $idioma, $fecha)
     {
-        $stament = $this->model->code($codigo, $dni, $voucher, $tipo_tramite_id, $default, $codet);
-        if ($stament) {
-            include_once APP_ROOT . '/../view/modal.php';
-        }
+        $stament = $this->model->code($tramite_id, $pago_id, $imagen, $idioma, $fecha);
+        // if ($stament) {
+        //     include_once APP_ROOT . '/../view/modal.php';
+        // }
     }
 
-    public function detail($id_tramite, $idioma, $nivel, $año, $f_init)
+    public function detail($tramite_id, $nivel, $anio)
     {
+        // $stament = $this->model->detail($id_tramite, strtoupper($idioma), strtoupper($nivel), $año, $f_init);
+        // return ($stament != false) ? true : false;
 
-        $stament = $this->model->detail($id_tramite, strtoupper($idioma), strtoupper($nivel), $año, $f_init);
-        return ($stament != false) ? true : false;
+        $stament = $this->model->detail($tramite_id, $nivel, $anio);
+        // return $stament;
+    }
+
+    // 
+    public function detailExamenOne($tramite_id, $nivel)
+    {
+        // $stament = $this->model->detail($id_tramite, strtoupper($idioma), strtoupper($nivel), $año, $f_init);
+        // return ($stament != false) ? true : false;
+
+        $stament = $this->model->detailExamenOne($tramite_id, $nivel);
+        // return $stament;
+    }
+    // public function detailExamenTwo($tramite_id)
+    // {
+    //     // $stament = $this->model->detail($id_tramite, strtoupper($idioma), strtoupper($nivel), $año, $f_init);
+    //     // return ($stament != false) ? true : false;
+
+    //     $stament = $this->model->detailExamenTwo($tramite_id);
+    //     // return $stament;
+    // }
+
+    public function getUserId($number) {
+        $stament = $this->model->getUserId($number);
+        return $stament; 
     }
 }

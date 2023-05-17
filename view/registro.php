@@ -15,6 +15,9 @@
       </select>
     </div>
     <div class="mb-3">
+      <input type="number" class="form-control form-control-lg" placeholder="Cantidad" aria-label="Cantidad" name="cantidad" id="cantidadDocs" value="1" min="1" max="5" required>
+    </div>
+    <div class="mb-3">
       <input type="text" class="form-control form-control-lg" placeholder="Dni" aria-label="Dni" name="dni" required>
     </div>
     <div class="mb-3">
@@ -48,3 +51,27 @@
   </p>
 </div>
 <?php include_once __DIR__ . '/layout/footerlogin.php' ?>
+
+<script>
+  const selectedOption = document.querySelector("#tprocedure");
+  const testOption = document.querySelector("#cantidadDocs");
+  // const
+  selectedOption.addEventListener("change", ()=> {
+
+    // alert(selectedOption.value);
+
+    let numberOption = selectedOption.value;
+    console.dir(testOption);
+    if (numberOption == 3 || numberOption == 4) {
+      testOption.readOnly = true;
+      // console.log("Im here");
+      console.dir(testOption);
+    }
+    else if (numberOption == 1 || numberOption == 2) {
+      testOption.readOnly = false;
+    }
+
+
+  });
+
+</script>

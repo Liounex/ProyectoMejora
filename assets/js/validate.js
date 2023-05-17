@@ -1,3 +1,5 @@
+const infoContainer = document.querySelector(".infoBox");
+
 function buscar() {
     var codigo = $('#codigo').val();
     if (codigo === '') {
@@ -21,7 +23,43 @@ function buscar() {
                     $('#telefono').val(datos.telefono);
                     $('#ap_paterno').val(datos.ap_paterno);
                     $('#ap_materno').val(datos.ap_materno);
-                    $('#tprocedure').val(datos.id_tramite);
+                    $('#tprocedure').val(datos.tipotramite);
+                    $('#cantidad').val(datos.cantidad);
+
+                    let cantidad = datos.cantidad;
+                    let tipoTramite = datos.tipotramite;
+
+                    if (tipoTramite == 'Certificado de Estudios' || tipoTramite == 'Constancia de Estudios') {
+                        // repetir
+                      for (let index = 1; index <= cantidad; index++) {
+                        // const element = array[index];
+                        // console.log(cantidad);
+
+                        let tempBox = '';
+                        tempBox = document.createElement("div");
+                        
+                        // tempBox.innerHTML = "<input type='text' name='doc" + index + "'>"; 
+
+                        let inputOne = "<input type='text' placeholder='Ingrese Nivel' name='doc" + index + "'>";
+                        let inputTwo = "<input type='text' placeholder='Ingrese Año' name='doci" + index + "'>";
+                        tempBox.innerHTML = inputOne + inputTwo;
+
+                        infoContainer.appendChild(tempBox);
+                      }
+                    }
+                    else if (tipoTramite == "Examen de Suficiencia") {
+                      let tempBox = '';
+                      tempBox = document.createElement("div");
+                      
+                      // tempBox.innerHTML = "<input type='text' name='doc" + index + "'>"; 
+
+                      let inputOne = "<input type='text' placeholder='Ingrese Nivel' name='doc1'>";
+
+                      tempBox.innerHTML = inputOne;
+                      infoContainer.appendChild(tempBox);
+                    }
+
+                    
                 }
             },
             error: function (error) {
