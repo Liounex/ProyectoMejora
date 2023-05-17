@@ -60,16 +60,7 @@ $datos2 = $obj->showadmin();
                           <i class="fa fa-eye"></i>
                         </a>
                         <a class="btn" href="<?= APP_URL . '/view/content/decline?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Rechazar"><i class="fa fa-ban"></i></a>
-                        <!--Boton de Observacion y un collapse -->
-                        <div class="collapse" id="<?= $collapseId ?>">
-                          <form action="<?= APP_URL . '/view/content/observation?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" method="post">
-                            <div>
-                              <!-- form-control form-control-lg -->
-                              <input type="text" class="form-control mb-1" placeholder="Observacion" aria-label="Observacion" name="obser" required>
-                              <button type="submit" class="btn btn-success">Enviar</button>
-                            </div>
-                          </form>
-                        </div>
+                        
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -137,7 +128,59 @@ $datos2 = $obj->showadmin();
     <h5>ESTADO DE MIS TRAMITES</h5>
     <div class="row">
       <?php if ($datos) : ?>
-        <?php var_dump($datos); ?>
+        <?php //var_dump($datos); ?>
+        <?php foreach ($datos as $key => $value) : ?>
+          <?php //$collapseId = "collapse" . $value['tramite_id'] ?>
+          <div class="col-xl-3 col-sm-6 mb-xl-2 mb-4">
+            <div class="card">
+              <div class="card-body p-3">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="numbers">
+                      <p class="text-sm mb-0 text-uppercase font-weight-bold"><?= $value['nombre'] ?></p>
+                      Codigo de pago
+                      <p class="text-sm mb-0 text-uppercase font-weight-bold"><?= $value['pago_id'] ?> </p>
+                      <h5 class="font-weight-bolder"></h5>
+                      <p class="mb-0">
+                        <?php if ($value['estado_id'] == 1) : ?>
+                          <?php $bg = 'icon icon-shape bg-gradient-primary shadow-warning text-center rounded-circle'; ?>
+                          <?php $ico = 'fa fa-get-pocket opacity-10'; ?>
+                          <span class="text-primary text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                        <?php elseif ($value['estado_id'] == 2) : ?>
+                          <?php $bg = 'icon icon-shape bg-gradient-info shadow-warning text-center rounded-circle'; ?>
+                          <?php $ico = 'fa fa-clock-o opacity-10'; ?>
+                          <span class="text-secondary text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                        <?php elseif ($value['estado_id'] == 3) : ?>
+                          <?php $bg = 'icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle'; ?>
+                          <?php $ico = 'fa fa-eye opacity-10'; ?>
+                          <span class="text-warning text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                        <?php elseif ($value['estado_id'] == 4) : ?>
+                          <?php $bg = 'icon icon-shape bg-gradient-success shadow-warning text-center rounded-circle'; ?>
+                          <?php $ico = 'fa fa-thumbs-o-up opacity-10'; ?>
+                          <span class="text-success text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                        <?php else : ?>
+                          <?php $bg = 'icon icon-shape bg-gradient-danger shadow-warning text-center rounded-circle'; ?>
+                          <?php $ico = 'fa fa-ban opacity-10'; ?>
+                          <span class="text-danger text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                        <?php endif; ?>
+                        &nbsp;
+                        <a class="text-primary text-sm font-weight-bolder" href="tramiteus/<?=$value['tramite_id']?>"">
+                          Detalle
+                        </a>&nbsp;
+                      </p>
+                      
+                    </div>
+                  </div>
+                  <div class="col-4 text-end">
+                    <div class="<?= $bg ?>">
+                      <i class="<?= $ico ?>" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
       <?php else : ?>
         <p class="text-sm mb-0 text-uppercase font-weight-bold">SIN TRAMITES INICIADOS </p>
       <?php endif; ?>
