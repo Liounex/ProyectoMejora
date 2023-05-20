@@ -38,6 +38,12 @@ class UserControllers
         return $statement;
     }
 
+    public function showDetail($code)
+    {
+        $statement = $this->model->showDetail($code);
+        return $statement;
+    }
+
     public function showadmin()
     {
         $statement = $this->model->showadmin();

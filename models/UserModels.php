@@ -75,6 +75,27 @@ class UserModels
 		}
 	}
 
+	public function showDetail($codigo)
+	{
+		try {
+
+			$sql = "SELECT t.tramite_id, t.voucher, t.copia,  tt.nombre, t.idioma, p.pago_id, p.total, t.observacion
+			FROM tramite t 
+				INNER JOIN pago p
+				ON t.pago_id = p.pago_id
+				INNER JOIN tipo_tramite tt
+				ON tt.tipo_tramite_id = p.tipo_tramite_id
+			WHERE t.tramite_id = :codigo";
+			$query = $this->PDO->prepare($sql);
+			$query->bindParam(':codigo', $codigo);
+			$query->execute();
+			return $query->fetch(PDO::FETCH_ASSOC);
+			$this->PDO = null;
+		} catch (PDOException $e) {
+			echo "Error al conectar a lsa base de datos: " . $e->getMessage();
+		}
+	}
+
 
 	public function showadmin()
 	{

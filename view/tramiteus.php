@@ -5,7 +5,7 @@ require_once(APP_ROOT . '/../Controllers/UserControllers.php');
 $obj = new UserControllers();
 // $datos = $obj->show($_SESSION['dni_user']);
 $datos = $obj->show($_SESSION['user_id']);
-$datos2 = $obj->showadmin();
+// $datos2 = $obj->showadmin();
 ?>
 
 <!-- Todo para el Administrador-->
@@ -31,7 +31,7 @@ $datos2 = $obj->showadmin();
               <tbody>
                 <?php if ($datos2) : ?>
                   <?php foreach ($datos2 as $key => $value2) : ?>
-                    <?php $collapseId = "collapse" . $value2['tramite_id'] ?>
+                    <?php // $collapseId = "collapse" . $value2['tramite_id'] ?>
                     <tr>
                       <td>
                         <h6 class="mb-0 text-sm"><?= $value2['nombre'] ?></h6>
@@ -164,7 +164,7 @@ $datos2 = $obj->showadmin();
                           <span class="text-danger text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                         <?php endif; ?>
                         &nbsp;
-                        <a class="text-primary text-sm font-weight-bolder" href="tramiteus/<?=$value['tramite_id']?>"">
+                        <a class="text-primary text-sm font-weight-bolder" href="./detail.php?id=<?=$value['tramite_id']?>"">
                           Detalle
                         </a>&nbsp;
                       </p>

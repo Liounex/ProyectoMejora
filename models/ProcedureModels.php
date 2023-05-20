@@ -25,6 +25,8 @@ class ProcedureModels
 			echo "Error al conectar a la base de datos: " . $e->getMessage();
 		}
     }
+    // 
+
 
     // Nuevo Usuario
     public function newprocedure($dni, $nombre, $ap_paterno, $ap_materno , $correo, $celular, $idtipo)
