@@ -44,6 +44,12 @@ class UserControllers
         return $statement;
     }
 
+    public function showDetailTramite($code)
+    {
+        $statement = $this->model->showDetailTramite($code);
+        return $statement;
+    }
+
     public function showadmin()
     {
         $statement = $this->model->showadmin();

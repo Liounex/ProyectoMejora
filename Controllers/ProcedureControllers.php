@@ -67,4 +67,11 @@ class ProcedureControllers
         $stament = $this->model->getUserId($number);
         return $stament; 
     }
+
+    public function updateImagenPago($number) {
+        $stament = $this->model->updateImagenPago($number);
+        return $stament; 
+    }
+
+
 }

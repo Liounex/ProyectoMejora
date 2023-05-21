@@ -142,6 +142,24 @@ class ProcedureModels
 
     }
 
+    public function updateImagenPago($imagePath ) {
+        try {
+
+            $statement = $this->PRO->prepare('INSERT INTO detalle_tramite (tramite_id, nivel)
+            VALUES (:tramite_id, :nivel)');
+            $statement->bindParam(':tramite_id', $tramite_id);
+            $statement->bindParam(':nivel', $nivel);
+            return ($statement->execute()) ? $this->PRO->lastInsertId() : false;
+            $this->PRO = null;
+
+
+        } catch (PDOException $e) {
+            echo "Error al conectar a la base de datos: " . $e->getMessage();
+        }
+
+
+    }
+
     // public function detailExamenTwo($tramite_id, $nivel) {
     //     try {
 

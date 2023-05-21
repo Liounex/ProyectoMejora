@@ -1,25 +1,5 @@
 <style>
-  .detailContainer {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-
-  }
-  .detailContainer div {
-    /* width: 500px; */
-  }
-  .detailContainer .docsContainer {
-    /* display: flex; */
-    /* flex-direction: column; */
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-  }
-  .docsContainer .imagenPago {
-    display: block;
-    width: 90%;
-  }
-  .docsContainer object {
-    width: 80%;
-  }
+  
 </style>
 
 <?php
@@ -54,6 +34,9 @@ $tramiteDetail = $user->showDetail($arrayURI);
     </div>
     <div class="inputContainer">
       <span>IDIOMA: <?=$tramiteDetail['idioma']?></span>
+    </div>
+    <div class="inputContainer">
+      <span>OBSERVACIONES: <?=$tramiteDetail['observacion']?></span>
     </div>
   </div>
 
