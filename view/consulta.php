@@ -1,4 +1,8 @@
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   .detailContainer {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -15,16 +19,26 @@
     grid-template-columns: 1fr 2fr;
     gap: 20px;
     padding: 20px;
+    /* grid-template-rows: 100vh; */
   }
   .docsContainer .imagenPago img {
     /* display: block; */
     /* width: 90%; */
     width: 100%;
+    height: 450px;
+    object-fit: cover ;
   }
   .docsContainer .imagencopia object{
     /* width: 80%; */
     width: 100%;
     height: 500px;
+  }
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .infoContainer .infoDetail {
+    border: 2px solid red;
   }
 
 
@@ -69,8 +83,9 @@ if (isset($_POST['codtramite'])) {
   <div class="detailContainer">
     <div class="infoContainer">
 
+      <div class="infoDetail">
         <div class="inputContainer">
-        TRAMITE ID: <span class="tramiteID"><?=$tramiteDetail['tramite_id']?></span>
+          TRAMITE ID: <span class="tramiteID"><?=$tramiteDetail['tramite_id']?></span>
         </div>
         <div class="inputContainer">
           <span>PAGO ID: <?=$tramiteDetail['pago_id']?></span>
@@ -90,6 +105,11 @@ if (isset($_POST['codtramite'])) {
         <div class="inputContainer">
           <span>OBSERVACIONES: <?=$tramiteDetail['observacion']?></span>
         </div>
+      </div>
+
+      <div class="editDetail">
+
+      </div>
 
     </div>
 
@@ -161,7 +181,7 @@ if (isset($_POST['codtramite'])) {
 
   function cambiarVoucher() {
     // cambiar voucher
-    const formData = new FormData();
+    
 
     // Append the file(s) you want to send to the server
     // formData.append('file', fileDni); // 'file' is the name of the file field on the server
@@ -169,99 +189,114 @@ if (isset($_POST['codtramite'])) {
     // Get the file input element from the HTML document
     const fileInput = document.getElementById('fileVoucher');
 
-    // Get the selected file
-    const file = fileInput.files[0];
+    if (fileInput.value == '') {
+      alert("vacio");
+    }
+    else {
+      const formData = new FormData();
+      // Get the selected file
+      const file = fileInput.files[0];
 
-    // Append the file to the FormData object
-    formData.append('fileVoucher', file);
-    // console.log(formData);
-    formData.append('variable2', tramiteIdentificador);
-    console.dir(fileInput);
-    console.log("loko", fileInput.value);
+      // Append the file to the FormData object
+      formData.append('fileVoucher', file);
+      // console.log(formData);
+      formData.append('variable2', tramiteIdentificador);
+      console.dir(fileInput);
+      console.log("loko", fileInput.value);
 
-    // Send the FormData object using the Fetch API
-    fetch('<?= APP_URL . '/view/cambiar.php'?>', {
-      method: 'POST',
-      body: formData
-      // headers: {
-        // 'Content-Type': 'application/json'
-      // },
-      // body: JSON.stringify(data)
-    })
-      // .then(response => {
-      //   // Handle the server response
-      //   if (response.ok) {
-      //     console.log('File uploaded successfully');
-      //     console.log(response.json());
-   
-      //   } else {
-      //     console.error('Error uploading file');
-      //   }
-      // })
-      .then(response => response.text())
-      .then(data => {
-        console.log(data); // Log the response body text
-
-        let fileIn = document.querySelector('.imgVoucher');
-        fileIn.src = data;
-        console.log(fileIn.src);
-
+      // Send the FormData object using the Fetch API
+      fetch('<?= APP_URL . '/view/cambiar.php'?>', {
+        method: 'POST',
+        body: formData
+        // headers: {
+          // 'Content-Type': 'application/json'
+        // },
+        // body: JSON.stringify(data)
       })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+        // .then(response => {
+        //   // Handle the server response
+        //   if (response.ok) {
+        //     console.log('File uploaded successfully');
+        //     console.log(response.json());
+    
+        //   } else {
+        //     console.error('Error uploading file');
+        //   }
+        // })
+        .then(response => response.text())
+        .then(data => {
+          console.log(data); // Log the response body text
+
+          let fileIn = document.querySelector('.imgVoucher');
+          fileIn.src = data;
+          console.log(fileIn.src);
+
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    
   }
 
   function cambiarDoc() {
     // cambiar voucher
-    const formData = new FormData();
-
+    
     // Append the file(s) you want to send to the server
     // formData.append('file', fileDni); // 'file' is the name of the file field on the server
 
     // Get the file input element from the HTML document
     const fileInput = document.getElementById('fileDni');
 
-    // Get the selected file
-    const file = fileInput.files[0];
+    if (fileInput.value == '') {
+      alert("vacio");
+    }
+    else {
+      
+      const formData = new FormData();
+      // Get the selected file
+      const file = fileInput.files[0];
 
-    // Append the file to the FormData object
-    formData.append('fileDni', file);
-    formData.append('variable2', tramiteIdentificador);
+      // Append the file to the FormData object
+      formData.append('fileDni', file);
+      formData.append('variable2', tramiteIdentificador);
 
-    console.dir(fileInput);
+      console.dir(fileInput);
 
-    // Send the FormData object using the Fetch API
-    fetch('<?= APP_URL . '/view/cambiar.php'?>', {
-      method: 'POST',
-      body: formData
-      // headers: {
-        // 'Content-Type': 'application/json'
-      // },
-      // body: JSON.stringify(data)
-    })
-      // .then(response => {
-      //   // Handle the server response
-      //   if (response.ok) {
-      //     console.log('File uploaded successfully');
-      //     console.log(response.json());
-   
-      //   } else {
-      //     console.error('Error uploading file');
-      //   }
-      // })
-      .then(response => response.text())
-      .then(data => {
-        console.log(data); // Log the response body text
-
-        let fileIn = document.querySelector('.filedoc');
-        fileIn.data = data;
-        // console.log(fileIn.src);
-
+      // Send the FormData object using the Fetch API
+      fetch('<?= APP_URL . '/view/cambiar.php'?>', {
+        method: 'POST',
+        body: formData
+        // headers: {
+          // 'Content-Type': 'application/json'
+        // },
+        // body: JSON.stringify(data)
       })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+        // .then(response => {
+        //   // Handle the server response
+        //   if (response.ok) {
+        //     console.log('File uploaded successfully');
+        //     console.log(response.json());
+    
+        //   } else {
+        //     console.error('Error uploading file');
+        //   }
+        // })
+        .then(response => response.text())
+        .then(data => {
+          console.log(data); // Log the response body text
+
+          let fileIn = document.querySelector('.filedoc');
+          fileIn.data = data;
+          // console.log(fileIn.src);
+
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
   }
 
   
