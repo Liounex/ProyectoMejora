@@ -35,7 +35,7 @@ class ProcedureModels
     public function code($codigo, $dni, $voucher, $tipo_tramite_id, $default, $codet)
     {
         try {
-            $stament = $this->PRO->prepare('INSERT INTO tramite (pago_id, dni_user, voucher, tipo_tramite_id, estado_id, id_detalle)
+            $stament = $this->PRO->prepare('INSERT INTO tramite (pago_cod, dni_user, voucher, tipo_tramite_id, estado_id, id_detalle)
                                             VALUE(:pago, :usuario_id, :voucher, :tipo_tramite_id, :estado_id, :id_detalle)');
             $stament->bindParam(':pago', $codigo);
             $stament->bindParam(':usuario_id', $dni);
@@ -55,9 +55,9 @@ class ProcedureModels
     public function cash($codigo, $dni, $tipo_tramite_id, $cantidad, $fecha_now)
     {
         try {
-            $pago = $this->PRO->prepare('INSERT INTO pago (pago_id, dni_user, tipo_tramite_id, cantidad, fecha_presentacion)
-                                        VALUES (:pago_id, :usuario_id, :tipo_tramite_id, :cantidad, :fecha_presentacion)');
-            $pago->bindParam(':pago_id', $codigo);
+            $pago = $this->PRO->prepare('INSERT INTO pago (pago_cod, dni_user, tipo_tramite_id, cantidad, fecha_presentacion)
+                                        VALUES (:pago_cod, :usuario_id, :tipo_tramite_id, :cantidad, :fecha_presentacion)');
+            $pago->bindParam(':pago_cod', $codigo);
             $pago->bindParam(':usuario_id', $dni);
             $pago->bindParam(':tipo_tramite_id', $tipo_tramite_id);
             $pago->bindParam(':cantidad', $cantidad);

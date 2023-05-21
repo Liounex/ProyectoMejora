@@ -1,12 +1,11 @@
 <?php
 include_once __DIR__ . '/layout/headmenu.php';
 include_once __DIR__ . '/layout/nav.php';
-require_once(APP_ROOT . '/../Controllers/UserControllers.php');
+require_once APP_ROOT . '/../Controllers/UserControllers.php';
 $obj = new UserControllers();
 $datos = $obj->show($_SESSION['dni_user']);
 $datos2 = $obj->showadmin();
 ?>
-
 <!-- Todo para el Administrador-->
 <?php if ($_SESSION['tipo_usuario_id'] == 1) : ?>
   <div class="container-fluid py-4 mb-5">
@@ -126,9 +125,6 @@ $datos2 = $obj->showadmin();
           </div>
         </div>
       </div>
-      <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-        <a href="./pago" class="btn btn-success" type="button"><i class="fa fa-money"></i> Realizar Pago</a>
-      </div>
     </div>
   </div>
   <!-- ESTADO DE LOS TRAMITES -->
@@ -137,7 +133,6 @@ $datos2 = $obj->showadmin();
     <div class="row">
       <?php if ($datos) : ?>
         <?php foreach ($datos as $key => $value) : ?>
-          <?php $collapseId = "collapse" . $value['tramite_id'] ?>
           <div class="col-xl-3 col-sm-6 mb-xl-2 mb-4">
             <div class="card">
               <div class="card-body p-3">
@@ -146,7 +141,7 @@ $datos2 = $obj->showadmin();
                     <div class="numbers">
                       <p class="text-sm mb-0 text-uppercase font-weight-bold"><?= $value['nombre'] ?></p>
                       Codigo de pago
-                      <p class="text-sm mb-0 text-uppercase font-weight-bold"><?= $value['pago_id'] ?> </p>
+                      <p class="text-sm mb-0 text-uppercase font-weight-bold"><?= $value['pago_cod'] ?> </p>
                       <h5 class="font-weight-bolder"></h5>
                       <p class="mb-0">
                         <?php if ($value['estado_id'] == 1) : ?>
@@ -170,38 +165,11 @@ $datos2 = $obj->showadmin();
                           <?php $ico = 'fa fa-ban opacity-10'; ?>
                           <span class="text-danger text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                         <?php endif; ?>
-                        &nbsp;<a class="text-primary text-sm font-weight-bolder" data-bs-toggle="collapse" href="#<?= $collapseId ?>" role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>">
-                          Detalle
-                        </a>&nbsp;
+                      <form action="./detalle" method="POST" class="p-0 m-0">
+                        <input type="hidden" name="id" value="<?php echo $value['tramite_id']; ?>">
+                        <button type="submit" class="border border-0 bg-transparent p-0 text-success text-sm font-weight-bolder">Detalle</button>
+                      </form>
                       </p>
-                      <div class="collapse" id="<?= $collapseId ?>">
-                        <span><?= $value['descripciont'] ?></span><br>
-                        <?php if ($value['total'] == 0) : ?>
-                          <?php $statepage = 'No Pago' ?>
-                        <?php else : ?>
-                          <?php $statepage = 'Pagado' ?>
-                        <?php endif; ?>
-                        Idioma:
-                        <span class="text-sm font-weight-bolder"><?= $value['idioma'] ?></span><br>
-                        <?php if ($value['nivel'] == 0) : ?>
-                        <?php else : ?>
-                          Nivel:
-                          <span class="text-sm font-weight-bolder"><?= $value['nivel'] ?></span><br>
-                        <?php endif; ?>
-                        <?php if ($value['year'] == '0000-00-00') : ?>
-                        <?php else : ?>
-                          Año:
-                          <span class="text-sm font-weight-bolder"><?= $value['year'] ?></span><br>
-                        <?php endif; ?>
-                        Pago:
-                        <span class="text-sm font-weight-bolder"></span><?= $statepage ?><br>
-                        <?php if ($value['obser'] == '') : ?>
-                        <?php else : ?>
-                          Obser.
-                          <span class="text-sm font-weight-bolder"><?= $value['obser'] ?></span><br>
-                        <?php endif; ?>
-                        <i class="fa fa-money"></i>
-                      </div>
                     </div>
                   </div>
                   <div class="col-4 text-end">

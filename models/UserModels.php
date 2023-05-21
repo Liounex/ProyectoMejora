@@ -41,16 +41,16 @@ class UserModels
 	public function show($code)
 	{
 		try {
-			$sql = "SELECT t1.pago_id, t1.obser, t1.dni_user, t1.estado_id, t1.tramite_id,
+			$sql = "SELECT t1.pago_cod, t1.obser, t1.dni_user, t1.estado_id, t1.tramite_id,
 			t2.nombre, t2.descripciont, t2.costo,
 			t3.descripcion,
-			t4.idioma, t4.nivel, t4.year, t4.fechainit,
+			t4.idioma, t4.nivel, t4.year,
 			t5.total
 			FROM tramite t1
 			JOIN tipo_tramite t2 ON t1.tipo_tramite_id = t2.tipo_tramite_id
 			JOIN estado t3 ON t1.estado_id = t3.estado_id
 			JOIN detalle_tramite t4 ON t1.id_detalle = t4.id_detalle
-			JOIN pago t5 ON  t1.pago_id = t5.pago_id
+			JOIN pago t5 ON  t1.pago_cod = t5.pago_cod
 			WHERE t1.dni_user = :code";
 			$query = $this->PDO->prepare($sql);
 			$query->bindParam(':code', $code);
@@ -67,7 +67,7 @@ class UserModels
 	{
 		//			t4.nombres, t4.ap_paterno, t4.ap_materno,			t5.id_detalle, t5.idioma, t5.nivel, t5.year, t5.fechainit
 		try {
-			$sql = "SELECT t1.tramite_id, t1.pago_id, t1.dni_user,
+			$sql = "SELECT t1.tramite_id, t1.pago_cod, t1.dni_user,
 			t2.nombre, t2.descripciont,
 			t3.descripcion,
 			t4.idioma, t4.nivel, t4.year, t4.fechainit,
@@ -76,7 +76,7 @@ class UserModels
 			FROM tramite t1 JOIN tipo_tramite t2 ON t1.tipo_tramite_id = t2.tipo_tramite_id
 			JOIN estado t3 ON t1.estado_id = t3.estado_id
 			JOIN detalle_tramite t4 ON t1.id_detalle = t4.id_detalle
-			JOIN pago t5 ON t1.pago_id = t5.pago_id
+			JOIN pago t5 ON t1.pago_cod = t5.pago_cod
 			JOIN usuario t6 ON t1.dni_user = t6.dni_user";
 			$query = $this->PDO->prepare($sql);
 			$query->execute();
@@ -90,7 +90,7 @@ class UserModels
 	public function showdocs($data)
 	{
 		try {
-			$sql = "SELECT t1.tramite_id, t1.pago_id, t1.dni_user,
+			$sql = "SELECT t1.tramite_id, t1.pago_cod, t1.dni_user,
 			t2.nombre, t2.descripciont,
 			t3.descripcion,
 			t4.idioma, t4.nivel, t4.year, t4.fechainit,
@@ -99,7 +99,7 @@ class UserModels
 			FROM tramite t1 JOIN tipo_tramite t2 ON t1.tipo_tramite_id = t2.tipo_tramite_id
 			JOIN estado t3 ON t1.estado_id = t3.estado_id
 			JOIN detalle_tramite t4 ON t1.id_detalle = t4.id_detalle
-			JOIN pago t5 ON t1.pago_id = t5.pago_id
+			JOIN pago t5 ON t1.pago_cod = t5.pago_cod
 			JOIN usuario t6 ON t1.dni_user = t6.dni_user WHERE t2.nombre = :data";
 			$query = $this->PDO->prepare($sql);
 			$query->bindParam(':data', $data);
@@ -150,6 +150,32 @@ class UserModels
 			$this->PDO = null;
 		} catch (PDOException $e) {
 			echo 'Error al conectar a la base de datos', $e->getMessage();
+		}
+	}
+
+	public function description($code)
+	{
+		try {
+			$sql = "SELECT t1.pago_cod, t1.obser, t1.dni_user, t1.estado_id, t1.tramite_id, t1.copia,
+			t2.nombre, t2.descripciont, t2.costo,
+			t3.descripcion,
+			t4.idioma, t4.nivel, t4.year,
+			t5.total, t5.status,
+            t6.nombres, t6.ap_paterno, t6.ap_materno
+			FROM tramite t1
+			JOIN tipo_tramite t2 ON t1.tipo_tramite_id = t2.tipo_tramite_id
+			JOIN estado t3 ON t1.estado_id = t3.estado_id
+			JOIN detalle_tramite t4 ON t1.id_detalle = t4.id_detalle
+			JOIN pago t5 ON  t1.pago_cod = t5.pago_cod
+            JOIN usuario t6 ON t1.dni_user = t6.dni_user
+			WHERE t1.tramite_id = :code";
+			$query = $this->PDO->prepare($sql);
+			$query->bindParam(':code', $code);
+			$query->execute();
+			return $query->fetchAll();
+			$this->PDO = null;
+		} catch (PDOException $e) {
+			echo "Error al conectar a lsa base de datos: " . $e->getMessage();
 		}
 	}
 }

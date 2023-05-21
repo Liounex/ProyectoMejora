@@ -16,7 +16,7 @@ class UserSearchModels
     public function search($code)
     {
         try {
-            $sql = "SELECT t1.tramite_id, t1.pago_id,
+            $sql = "SELECT t1.tramite_id, t1.pago_cod,
             t2.dni_user, t2.nombres, t2.ap_paterno, t2.ap_materno, t2.correo, t2.telefono, t2.tipo_usuario_id,
             t3.tipo_tramite_id ,t3.descripciont
             FROM tramite t1

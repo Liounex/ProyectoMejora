@@ -17,8 +17,18 @@ class UserControllers
             $username = $_POST['username'];
             $password = $_POST['password'];
             if (empty($username) || empty($password)) {
-                echo '<link rel="icon" type="image/png" href="./assets/img/favicon.png">';
-                echo '<div class="alert alert-danger text-white">Nombre de Usuario o contraseña vacio</div>';
+                echo "
+                <script>
+                Swal.fire({
+                    title: 'Algo salio mal',
+                    text: 'Los campos estan vacios',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                })
+                </script>
+                ";
+                /* echo '<link rel="icon" type="image/png" href="./assets/img/favicon.png">';
+                echo '<div class="alert alert-danger text-white">Nombre de Usuario o contraseña vacio</div>'; */
             } else {
                 $stament = $this->model->login($username, $password);
 
@@ -26,8 +36,19 @@ class UserControllers
                     header('Location: ' . APP_URL . '/view/dashboard');
                     exit();
                 } else {
-                    echo '<link rel="icon" type="image/png" href="./assets/img/favicon.png">';
-                    echo '<div class="alert alert-warning text-white">Usuario No Existe</div>';
+                    echo "
+                    <script>
+                    Swal.fire({
+                        title: 'Algo salio mal',
+                        text: 'El usuario no se encuentra registrado',
+                        icon: 'warning',
+                        confirmButtonText: 'Aceptar'
+                    })
+                    </script>
+                    ";
+
+                    /* echo '<link rel="icon" type="image/png" href="./assets/img/favicon.png">';
+                    echo '<div class="alert alert-warning text-white">Usuario No Existe</div>'; */
                 }
             }
         }
@@ -101,6 +122,12 @@ class UserControllers
         if ($_GET['cod'] == 'examen') {
             header('Location: ' . APP_URL . '/view/examenes?id=' . $_GET['cod']);
         }
+        return $statement;
+    }
+
+    public function description($code)
+    {
+        $statement = $this->model->description($code);
         return $statement;
     }
 }
