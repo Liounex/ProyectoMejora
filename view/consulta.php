@@ -174,20 +174,19 @@ if (isset($_POST['codtramite'])) {
 
     // Append the file to the FormData object
     formData.append('fileVoucher', file);
-    console.log(formData);
+    // console.log(formData);
+    formData.append('variable2', tramiteIdentificador);
+    console.dir(fileInput);
+    console.log("loko", fileInput.value);
 
-    const data = {
-      array1: formData,
-      array2: tramiteIdentificador
-    };
     // Send the FormData object using the Fetch API
     fetch('<?= APP_URL . '/view/cambiar.php'?>', {
       method: 'POST',
-      // body: formData
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
+      body: formData
+      // headers: {
+        // 'Content-Type': 'application/json'
+      // },
+      // body: JSON.stringify(data)
     })
       // .then(response => {
       //   // Handle the server response
@@ -203,9 +202,9 @@ if (isset($_POST['codtramite'])) {
       .then(data => {
         console.log(data); // Log the response body text
 
-        // let fileIn = document.querySelector('.imgVoucher');
-        // fileIn.src = data;
-        // console.log(fileIn.src);
+        let fileIn = document.querySelector('.imgVoucher');
+        fileIn.src = data;
+        console.log(fileIn.src);
 
       })
       .catch(error => {
@@ -228,20 +227,18 @@ if (isset($_POST['codtramite'])) {
 
     // Append the file to the FormData object
     formData.append('fileDni', file);
+    formData.append('variable2', tramiteIdentificador);
 
-    const data = {
-      array1: formData,
-      array2: tramiteIdentificador
-    };
+    console.dir(fileInput);
 
     // Send the FormData object using the Fetch API
     fetch('<?= APP_URL . '/view/cambiar.php'?>', {
       method: 'POST',
-      // body: formData
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
+      body: formData
+      // headers: {
+        // 'Content-Type': 'application/json'
+      // },
+      // body: JSON.stringify(data)
     })
       // .then(response => {
       //   // Handle the server response

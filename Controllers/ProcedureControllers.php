@@ -64,13 +64,18 @@ class ProcedureControllers
     // }
 
     public function getUserId($number) {
-        $stament = $this->model->getUserId($number);
-        return $stament; 
+      $stament = $this->model->getUserId($number);
+      return $stament; 
     }
 
-    public function updateImagenPago($number) {
-        $stament = $this->model->updateImagenPago($number);
-        return $stament; 
+    public function updateImagenPago($number, $codigo) {
+      $stament = $this->model->updateImagenPago($number, $codigo);
+      return $stament; 
+    }
+
+    public function updateDoc($number, $codigo) {
+      $stament = $this->model->updateDoc($number, $codigo);
+      return $stament; 
     }
 
 

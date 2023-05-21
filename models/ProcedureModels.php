@@ -142,23 +142,41 @@ class ProcedureModels
 
     }
 
-    public function updateImagenPago($imagePath ) {
+    public function updateImagenPago($numbers, $codigo) {
         try {
 
-            $statement = $this->PRO->prepare('INSERT INTO detalle_tramite (tramite_id, nivel)
-            VALUES (:tramite_id, :nivel)');
-            $statement->bindParam(':tramite_id', $tramite_id);
-            $statement->bindParam(':nivel', $nivel);
-            return ($statement->execute()) ? $this->PRO->lastInsertId() : false;
-            $this->PRO = null;
+          $statement = 'UPDATE tramite SET voucher = :numbers WHERE tramite_id = :codigo ';
+
+          $query = $this->PRO->prepare($statement);
+          $query->bindParam(':numbers', $numbers);
+          $query->bindParam(':codigo', $codigo);
+          $query->execute();
+          return $query->fetch(PDO::FETCH_ASSOC);
+          $this->PRO = null;
 
 
         } catch (PDOException $e) {
-            echo "Error al conectar a la base de datos: " . $e->getMessage();
+          echo "Error al czonectar a la base de datos: " . $e->getMessage();
         }
-
-
     }
+
+    public function updateDoc($numbers, $codigo) {
+      try {
+
+        $statement = 'UPDATE tramite SET copia = :numbers WHERE tramite_id = :codigo ';
+
+        $query = $this->PRO->prepare($statement);
+        $query->bindParam(':numbers', $numbers);
+        $query->bindParam(':codigo', $codigo);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+        $this->PRO = null;
+
+
+      } catch (PDOException $e) {
+        echo "Error al czonectar a la base de datos: " . $e->getMessage();
+      }
+  }
 
     // public function detailExamenTwo($tramite_id, $nivel) {
     //     try {
