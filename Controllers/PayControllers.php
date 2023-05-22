@@ -14,13 +14,24 @@ class PayControllers
 
     public function mostrar($id)
     {
-        $stament = $this->model->mostrar($id);
-        return $stament;
+        $statement = $this->model->mostrar($id);
+        return $statement;
     }
 
     public function actualizar($id, $estado, $fecha)
     {
-        $stament = $this->model->actualizar($id, $estado, $fecha);
-        return $stament;
+        $statement = $this->model->actualizar($id, $estado, $fecha);
+        return $statement;
+    }
+
+    public function costo($id)
+    {
+        $statement = $this->model->costo($id);
+
+        if ($statement !== false) {
+            return $statement['costo'];
+        } else {
+            return 0; // Valor predeterminado si no se encontraron resultados
+        }
     }
 }

@@ -22,6 +22,7 @@ $datos2 = $obj->showadmin();
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">DETALLE</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">PAGO</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SOLICITANTE</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">CANTIDAD</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">FECHA DE PRESENTACION</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ACCIONES</th>
                 </tr>
@@ -43,11 +44,14 @@ $datos2 = $obj->showadmin();
                         <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] . ' ' . $value2['year'] ?></p>
                       </td>
                       <td>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['total'] ?></p>
+                        <p class="text-xs text-secondary mb-0"><?= $value2['status'] ?></p>
                       </td>
                       <td>
                         <h6 class="mb-0 text-sm"><?= $value2['nombres'] ?></h6>
                         <p class="text-xs text-secondary mb-0"><?= $value2['ap_paterno'] . ' ' . $value2['ap_materno'] ?></p>
+                      </td>
+                      <td>
+                        <p class="text-xs text-secondary mb-0"><?= $value2['cantidad'] ?></p>
                       </td>
                       <td>
                         <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>

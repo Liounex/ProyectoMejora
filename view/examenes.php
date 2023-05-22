@@ -19,6 +19,7 @@ $datos = $obj->showdata($_GET['id']);
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">DETALLE</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">PAGO</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SOLICITANTE</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">CANTIDAD</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">FECHA DE PRESENTACION</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ACCIONES</th>
               </tr>
@@ -40,32 +41,35 @@ $datos = $obj->showdata($_GET['id']);
                       <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] . ' ' . $value2['year'] ?></p>
                     </td>
                     <td>
-                      <p class="text-xs text-secondary mb-0"><?= $value2['total'] ?></p>
+                      <p class="text-xs text-secondary mb-0"><?= $value2['status'] ?></p>
                     </td>
                     <td>
                       <h6 class="mb-0 text-sm"><?= $value2['nombres'] ?></h6>
                       <p class="text-xs text-secondary mb-0"><?= $value2['ap_paterno'] . ' ' . $value2['ap_materno'] ?></p>
                     </td>
                     <td>
+                      <p class="text-xs text-secondary mb-0"><?= $value2['cantidad'] ?></p>
+                    </td>
+                    <td>
                       <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
                     </td>
                     <td>
-                        <a class="btn" href="<?= APP_URL . '/view/content/accept?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Aceptar"><i class="fa fa-check-circle-o"></i></a>
-                        <a class="btn" data-bs-toggle="collapse" href="#<?= $collapseId ?>" role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>" title="Observacion">
-                          <i class="fa fa-eye"></i>
-                        </a>
-                        <a class="btn" href="<?= APP_URL . '/view/content/decline?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Rechazar"><i class="fa fa-ban"></i></a>
-                        <!--Boton de Observacion y un collapse -->
-                        <div class="collapse" id="<?= $collapseId ?>">
-                          <form action="<?= APP_URL . '/view/content/observation?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" method="post">
-                            <div>
-                              <!-- form-control form-control-lg -->
-                              <input type="text" class="form-control mb-1" placeholder="Observacion" aria-label="Observacion" name="obser" required>
-                              <button type="submit" class="btn btn-success">Enviar</button>
-                            </div>
-                          </form>
-                        </div>
-                      </td>
+                      <a class="btn" href="<?= APP_URL . '/view/content/accept?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Aceptar"><i class="fa fa-check-circle-o"></i></a>
+                      <a class="btn" data-bs-toggle="collapse" href="#<?= $collapseId ?>" role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>" title="Observacion">
+                        <i class="fa fa-eye"></i>
+                      </a>
+                      <a class="btn" href="<?= APP_URL . '/view/content/decline?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Rechazar"><i class="fa fa-ban"></i></a>
+                      <!--Boton de Observacion y un collapse -->
+                      <div class="collapse" id="<?= $collapseId ?>">
+                        <form action="<?= APP_URL . '/view/content/observation?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" method="post">
+                          <div>
+                            <!-- form-control form-control-lg -->
+                            <input type="text" class="form-control mb-1" placeholder="Observacion" aria-label="Observacion" name="obser" required>
+                            <button type="submit" class="btn btn-success">Enviar</button>
+                          </div>
+                        </form>
+                      </div>
+                    </td>
                   </tr>
                 <?php endforeach; ?>
               <?php else : ?>

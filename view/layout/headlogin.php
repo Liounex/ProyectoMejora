@@ -18,9 +18,9 @@
   <link href="/proyectomejora/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="/proyectomejora/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
-
   <script src="https://www.paypal.com/sdk/js?client-id=AVUiaXyUPSgJqxipeSeAJBOqqLRWuMAnXPEOiXIcKaFp3LllEKXSRhDAuMpKubk_9kO6PGwXYN3CyJPP&currency=USD&components=buttons"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body class="">

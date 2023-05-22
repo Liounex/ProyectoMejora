@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../config/config.php';
-require_once (APP_ROOT . '/../config/Database.php');
+require_once(APP_ROOT . '/../config/Database.php');
 
 class PayModels
 {
@@ -35,5 +35,15 @@ class PayModels
         $query->bindParam(':id', $id);
         $query->execute();
         return $query;
+    }
+
+    public function costo($id)
+    {
+        $sql = "SELECT costo FROM `tipo_tramite` WHERE tipo_tramite_id = :id";
+        $query = $this->PDO->prepare($sql);
+        $query->bindParam(':id', $id);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

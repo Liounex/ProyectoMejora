@@ -20,6 +20,7 @@ $datos = $obj->showdata($_GET['id']);
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">DETALLE</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">PAGO</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SOLICITANTE</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">CANTIDAD</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">FECHA DE PRESENTACION</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ACCIONES</th>
               </tr>
@@ -29,28 +30,31 @@ $datos = $obj->showdata($_GET['id']);
                 <?php foreach ($datos as $key => $value) : ?>
                   <?php $collapseId = "collapse" . $value['tramite_id'] ?>
                   <tr>
-                    <td>
-                      <h6 class="mb-0 text-sm"><?= $value['nombre'] ?></h6>
-                      <p class="text-xs text-secondary mb-0"><?= $value['descripciont'] ?></p>
-                    </td>
-                    <td>
-                      <p class="text-xs text-secondary mb-0"><?= $value['descripcion'] ?></p>
-                    </td>
-                    <td>
-                      <h6 class="mb-0 text-sm"><?= $value['idioma'] ?></h6>
-                      <p class="text-xs text-secondary mb-0"><?= $value['nivel'] . ' ' . $value['year'] ?></p>
-                    </td>
-                    <td>
-                      <p class="text-xs text-secondary mb-0"><?= $value['total'] ?></p>
-                    </td>
-                    <td>
-                      <h6 class="mb-0 text-sm"><?= $value['nombres'] ?></h6>
-                      <p class="text-xs text-secondary mb-0"><?= $value['ap_paterno'] . ' ' . $value['ap_materno'] ?></p>
-                    </td>
-                    <td>
-                      <p class="text-xs text-secondary mb-0"><?= $value['fechainit'] ?></p>
-                    </td>
-                    <td>
+                      <td>
+                        <h6 class="mb-0 text-sm"><?= $value['nombre'] ?></h6>
+                        <p class="text-xs text-secondary mb-0"><?= $value['descripciont'] ?></p>
+                      </td>
+                      <td>
+                        <p class="text-xs text-secondary mb-0"><?= $value['descripcion'] ?></p>
+                      </td>
+                      <td>
+                        <h6 class="mb-0 text-sm"><?= $value['idioma'] ?></h6>
+                        <p class="text-xs text-secondary mb-0"><?= $value['nivel'] . ' ' . $value['year'] ?></p>
+                      </td>
+                      <td>
+                        <p class="text-xs text-secondary mb-0"><?= $value['status'] ?></p>
+                      </td>
+                      <td>
+                        <h6 class="mb-0 text-sm"><?= $value['nombres'] ?></h6>
+                        <p class="text-xs text-secondary mb-0"><?= $value['ap_paterno'] . ' ' . $value['ap_materno'] ?></p>
+                      </td>
+                      <td>
+                        <p class="text-xs text-secondary mb-0"><?= $value['cantidad'] ?></p>
+                      </td>
+                      <td>
+                        <p class="text-xs text-secondary mb-0"><?= $value['fechainit'] ?></p>
+                      </td>
+                      <td>
                         <a class="btn" href="<?= APP_URL . '/view/content/accept?id=' . $value["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Aceptar"><i class="fa fa-check-circle-o"></i></a>
                         <a class="btn" data-bs-toggle="collapse" href="#<?= $collapseId ?>" role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>" title="Observacion">
                           <i class="fa fa-eye"></i>
@@ -67,7 +71,7 @@ $datos = $obj->showdata($_GET['id']);
                           </form>
                         </div>
                       </td>
-                  </tr>
+                    </tr>
                 <?php endforeach; ?>
               <?php else : ?>
                 <td colspan="7">

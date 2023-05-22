@@ -11,15 +11,15 @@ class ProcedureControllers
         $this->model = new ProcedureModels();
     }
 
-    public function newprocedure($dni, $nombre, $correo, $celular, $idtipo)
+    public function newprocedure($dni, $nombre, $ap, $am, $correo, $celular, $idtipo)
     {
-        $stament = $this->model->newprocedure($dni, $nombre, $correo, $celular, $idtipo);
+        $stament = $this->model->newprocedure($dni, $nombre, $ap, $am, $correo, $celular, $idtipo);
         return ($stament != false) ? true : false;
     }
 
-    public function cash($codigo, $dni, $tipo_tramite_id, $cantidad, $fecha_now)
+    public function cash($codigo, $dni, $tipo_tramite_id, $cantidad, $total, $fecha_now)
     {
-        $stament = $this->model->cash($codigo, $dni, $tipo_tramite_id, $cantidad, $fecha_now);
+        $stament = $this->model->cash($codigo, $dni, $tipo_tramite_id, $cantidad, $total, $fecha_now);
         return ($stament != false) ? true : false;
     }
 
@@ -37,5 +37,11 @@ class ProcedureControllers
 
         $stament = $this->model->detail($id_tramite, strtoupper($idioma), strtoupper($nivel), $año, $f_init);
         return ($stament != false) ? true : false;
+    }
+
+    public function obsevations($id, $obs1, $obs2, $obs3)
+    {
+        $statement = $this->model->obsevations($id, $obs1, $obs2, $obs3);
+        return $statement;
     }
 }

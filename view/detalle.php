@@ -23,8 +23,19 @@
                                     <p class="text-x text-secondary mb-2">Nombre Completo: <?= $value['nombres'] ?></p>
                                     <p class="text-x text-secondary mb-2">Apellido Completo: <?= $value['ap_paterno'] . ' ' . $value['ap_materno'] ?></p>
                                     <!-- Solo si el estado se encuentra en Observado -->
-                                    <p class="text-x text-secondary mb-2">Observaciones: <?= $value['nombre'] ?></p>
-
+                                    <?php $observations = [$value['obs1'], $value['obs2'], $value['obs3']]; ?>
+                                    <?php if (empty(array_filter($observations))) : ?>
+                                        <p class="text-x text-secondary mb-2">Sin Observaciones</p>
+                                    <?php else : ?>
+                                        <p class="text-x text-secondary mb-2">
+                                            Observaciones <br>
+                                            <?php foreach ($observations as $index => $observation) : ?>
+                                                <?php if (!empty($observation)) : ?>
+                                                    <?= ($index + 1) ?>. <?= $observation ?> <br>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </p>
+                                    <?php endif; ?>
                                     <?php if ($value['status'] == 0) : ?>
                                         <p class="text-x text-secondary mb-2">Estado de pago: Sin Pago <a href="./pago"><i class="fa fa-money"></i></a></p>
                                     <?php else : ?>

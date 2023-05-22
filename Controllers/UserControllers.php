@@ -107,9 +107,9 @@ class UserControllers
         return $statement;
     }
 
-    public function observation($code, $status, $obser)
+    public function updateObservations($id, $obs, $status)
     {
-        $statement = $this->model->observation($code, $status, $obser);
+        $statement = $this->model->updateObservations($id, $obs, $status);
         if ($_GET['cod'] == 'all') {
             header('Location: ' . APP_URL . '/view/tramiteus?id=' . $_GET['cod']);
         }
@@ -124,10 +124,30 @@ class UserControllers
         }
         return $statement;
     }
-
     public function description($code)
     {
         $statement = $this->model->description($code);
         return $statement;
+    }
+
+    public function actualizarDatos($dni, $nombres, $ap, $am, $correo, $telefono, $idioma, $voucher, $copia)
+    {
+        $stament = $this->model->updateregister($dni, $nombres, $ap, $am, $correo, $telefono, $idioma, $voucher, $copia);
+        if ($stament) {
+            echo "
+                <script>
+                    Swal.fire({
+                        title: 'Ok',
+                        text: 'Los Datos se actualizaron correctamente',
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = '../tramite';
+                        }
+                    });
+                </script>
+                ";
+        }
     }
 }
