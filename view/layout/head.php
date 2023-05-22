@@ -68,6 +68,7 @@
 							<li><a href="https://indi.unsch.edu.pe/index/reglamento" class="open-link-newTab"><i class="fa fa-file-text-o"></i>&nbsp; Matriculate</a></li>
 							<li><a href="<?= APP_URL . '/view/registro' ?>" target=""><i class="fa fa-star-o"></i>&nbsp; Inicia Trámite</a></li>
 							<li><a href="<?= APP_URL . '/view/pago' ?>" target=""><i class="fa fa-gavel"></i>&nbsp; Realizar pagos</a></li>
+							<li><a href="<?= APP_URL . '/view/estado' ?>" target=""><i class="fa fa-gavel"></i>&nbsp; Ver el estado de mis tramites</a></li>
 						</ul>
 					</div>
 				</div>

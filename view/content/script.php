@@ -29,8 +29,8 @@
                                 text: 'Su pago a sido procesado',
                                 icon: 'success',
                                 confirmButtonText: 'Aceptar'
-                            }).then(() => {
-                                window.location.href = '../view/detalle';
+                            }).then(function() {
+                                window.location.href = 'pago';
                             });
                         } else {
                             Swal.fire({

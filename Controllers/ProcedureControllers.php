@@ -44,4 +44,9 @@ class ProcedureControllers
         $statement = $this->model->obsevations($id, $obs1, $obs2, $obs3);
         return $statement;
     }
+
+    public function showDetails($codigo) {
+        $stament = $this->model->showDetails($codigo);
+        return $stament;
+      }
 }

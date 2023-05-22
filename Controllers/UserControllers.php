@@ -150,4 +150,10 @@ class UserControllers
                 ";
         }
     }
+
+    public function showDetail($code)
+    {
+        $statement = $this->model->showDetail($code);
+        return $statement;
+    }
 }

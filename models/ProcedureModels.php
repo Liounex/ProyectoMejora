@@ -106,4 +106,20 @@ class ProcedureModels
             echo "Error al conectar a la base de datos: " . $e->getMessage();
         }
     }
+
+    public function showDetails($codigo) {
+        try {
+
+          $sql = "SELECT * FROM tramite WHERE
+          pago_cod = :codigo";
+          $query = $this->PRO->prepare($sql);
+          $query->bindParam(':codigo', $codigo);
+          $query->execute();
+          return $query->fetchAll();
+          // return $query->fetch();
+          $this->PRO = null;
+        } catch (PDOException $e) {
+          echo "Error al conectar a la base de datos: " . $e->getMessage();
+        }
+      }
 }
