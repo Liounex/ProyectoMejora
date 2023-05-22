@@ -28,9 +28,9 @@ class ProcedureControllers
     }
 
 
-    public function code($tramite_id, $pago_id, $imagen, $idioma, $fecha)
+    public function code($tramite_id, $pago_id, $imagen, $doc,  $idioma, $fecha)
     {
-        $stament = $this->model->code($tramite_id, $pago_id, $imagen, $idioma, $fecha);
+        $stament = $this->model->code($tramite_id, $pago_id, $imagen, $doc, $idioma, $fecha);
         // if ($stament) {
         //     include_once APP_ROOT . '/../view/modal.php';
         // }
@@ -75,6 +75,16 @@ class ProcedureControllers
 
     public function updateDoc($number, $codigo) {
       $stament = $this->model->updateDoc($number, $codigo);
+      return $stament; 
+    }
+
+    public function showDetails($codigo) {
+      $stament = $this->model->showDetails($codigo);
+      return $stament; 
+    }
+
+    public function updateDetails($texto, $codigo) {
+      $stament = $this->model->updateDetails($texto, $codigo);
       return $stament; 
     }
 

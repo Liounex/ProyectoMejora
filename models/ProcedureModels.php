@@ -49,7 +49,7 @@ class ProcedureModels
     }
 
     //Codigo de Pago e inicio de un tramite
-    public function code($tramite_id, $pago_id, $imagen, $idioma, $fecha)
+    public function code($tramite_id, $pago_id, $imagen, $cod, $idioma, $fecha)
     {
         try {
             // $stament = $this->PRO->prepare('INSERT INTO tramite (pago_id, dni_user, voucher, tipo_tramite_id, estado_id, id_detalle)
@@ -62,11 +62,12 @@ class ProcedureModels
             // $stament->bindParam(':id_detalle', $codet);
             // return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
             // $this->PRO = null;
-            $stament = $this->PRO->prepare('INSERT INTO tramite (tramite_id, pago_id, voucher, idioma, fecha_presentacion)
-            VALUE(:tramite_id, :pago_id, :voucher, :idioma, :fecha_presentacion)');
+            $stament = $this->PRO->prepare('INSERT INTO tramite (tramite_id, pago_id, voucher, copia, idioma, fecha_presentacion)
+            VALUE(:tramite_id, :pago_id, :voucher, :idioma, :doc, :fecha_presentacion)');
             $stament->bindParam(':tramite_id', $tramite_id);
             $stament->bindParam(':pago_id', $pago_id);
             $stament->bindParam(':voucher', $imagen);
+            $stament->bindParam(':doc', $cod);
             $stament->bindParam(':idioma', $idioma);
             $stament->bindParam(':fecha_presentacion', $fecha);
             return ($stament->execute()) ? $this->PRO->lastInsertId() : false;
@@ -195,5 +196,37 @@ class ProcedureModels
 
 
     // }
+  
+    public function showDetails($codigo) {
+      try {
+  
+        $sql = "SELECT * FROM detalle_tramite WHERE
+        tramite_id = :codigo";
+        $query = $this->PRO->prepare($sql);
+        $query->bindParam(':codigo', $codigo);
+        $query->execute();
+        return $query->fetchAll();
+        // return $query->fetch();
+        $this->PRO = null;
+      } catch (PDOException $e) {
+        echo "Error al conectar a la base de datos: " . $e->getMessage();
+      }
+    }
+
+    public function updateDetails($texto, $codigo) {
+      try {
+  
+        $sql = "UPDATE detalle_tramite SET nivel = :texto WHERE detalle_tramite_id = :codigo";
+        $query = $this->PRO->prepare($sql);
+        $query->bindParam(':texto', $texto);
+        $query->bindParam(':codigo', $codigo);
+        $query->execute();
+        return $query->fetchAll();
+        // return $query->fetch();
+        $this->PRO = null;
+      } catch (PDOException $e) {
+        echo "Error al conectar a la base de datos: " . $e->getMessage();
+      }
+    }
 
 }

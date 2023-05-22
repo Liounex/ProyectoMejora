@@ -50,7 +50,7 @@ echo $cantidadD."</br>";
 echo $date."</br>";
 
 // insertar datos a tabla tramite
-$user->code($tramiteId, $pagoId, $rutaImage, $idioma, $date);
+$user->code($tramiteId, $pagoId,$rutaFile, $rutaImage, $idioma, $date);
 
 
 // inserta detalle_tramite

@@ -38,7 +38,80 @@
     flex-direction: column;
   }
   .infoContainer .infoDetail {
-    border: 2px solid red;
+    border: 2px solid blue;
+    padding: 5px 10px;
+    margin: 20px 10px;
+    border-radius: 15px;
+  }
+  .infoContainer .editDetail {
+    border: 2px solid blue;
+    padding: 5px 10px;
+    margin: 20px 10px;
+    border-radius: 15px;
+  }
+
+  /* @media (max-width: 768px) { */
+  @media (max-width: 990px) {
+    /* .container {
+      width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    } */
+    .detailContainer {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+
+    }
+    .infoContainer {
+      flex-direction: row;
+    }
+    .infoContainer div {
+      width: 400px;
+      
+    }
+
+  }
+
+  @media (max-width: 860px) {
+    /* .container {
+      width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    } */
+    .detailContainer {
+      display: grid;
+      /* grid-template-columns: 500px; */
+      grid-template-rows: auto;
+
+    }
+    .infoContainer {
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+    .infoContainer div {
+      width: 340px;
+      
+    }
+
+  }
+
+  @media (max-width: 745px) {
+    .infoContainer {
+      flex-direction: column;
+      /* justify-content: space-evenly; */
+    }
+
+    .detailContainer .docsContainer {
+      /* display: flex; */
+      /* flex-direction: column; */
+      display: grid;
+      /* grid-template-columns: 1fr 2fr; */
+      gap: 20px;
+      padding: 20px;
+      /* grid-template-rows: 100vh; */
+    }
+
   }
 
 
@@ -48,12 +121,15 @@
 <?php
 include_once __DIR__ . '/layout/headlogin.php';
 require_once __DIR__ . '/../Controllers/UserControllers.php';
+require_once __DIR__ . '/../Controllers/ProcedureControllers.php';
 
 $newQuery = false;
 if (isset($_POST['codtramite'])) {
   $user = new UserControllers();
+  $doc = new ProcedureControllers();
   $arrayURI = $_POST['codtramite'];
   $tramiteDetail = $user->showDetail($arrayURI);
+  $docDetail = $doc->showDetails($arrayURI);
 
   $newQuery = true;
 }
@@ -84,6 +160,7 @@ if (isset($_POST['codtramite'])) {
     <div class="infoContainer">
 
       <div class="infoDetail">
+        <h4>Información Básica</h4>
         <div class="inputContainer">
           TRAMITE ID: <span class="tramiteID"><?=$tramiteDetail['tramite_id']?></span>
         </div>
@@ -109,7 +186,26 @@ if (isset($_POST['codtramite'])) {
 
       <div class="editDetail">
 
-      </div>
+        <h4>Detalles del Tramite</h4 >
+        <!-- <form action=""> -->
+          <?php 
+          $repeticiones = 0;
+          foreach ($docDetail as $value):?>
+            
+            <div class="mb-3">
+              <input type="text" class="valoresentrada" placeholder="Nivel" id ="<?=$value[0]?>" aria-label="username" name="doc<?=$value[0]?>" value="<?=$value[1]?>" maxlength="14" required>
+            </div>
+
+          <?php
+           $repeticiones += 1;
+           endforeach?>
+          
+          
+
+          <button type="submit" name="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0" onclick="infoNivel()">Realizar cambios</button>
+        
+        <!-- </form> -->
+      </div>  
 
     </div>
 
@@ -126,7 +222,7 @@ if (isset($_POST['codtramite'])) {
             <input type="file" name="fileVoucher"  id="fileVoucher" class="form-control form-control-lg" aria-label="fileVoucher" required>
           </div>
           <div class="text-center">
-            <button type="submit" name="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0" onclick="cambiarVoucher()">Solicitar</button>
+            <button type="submit" name="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0" onclick="cambiarVoucher()">Realizar Cambios</button>
           </div>
         <!-- </form> -->
 
@@ -147,7 +243,7 @@ if (isset($_POST['codtramite'])) {
           </div>
 
           <div class="text-center">
-            <button type="submit" name="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0"  onclick="cambiarDoc()">Solicitar</button>
+            <button type="submit" name="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0"  onclick="cambiarDoc()">Realizar Cambios</button>
           </div>
         
       </div>
@@ -299,6 +395,114 @@ if (isset($_POST['codtramite'])) {
 
   }
 
+  function valoresVacios(cadena) {
+
+    // let longitudCadena = cadena.length;
+    let arr = [];
+
+    for (let index = 0; index < cadena.length; index++) {
+      // const element = array[index];
+      if (cadena[index] == '' || cadena[index] == ' ') {
+        arr.push(0);
+      }
+      else {
+        arr.push(1);
+      }
+      
+    }
+
+    let estado = arr.some((x) => x==1);
+    console.log(arr);
+    if (estado) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  function esVacio(nodos) {
+    let arr = [];
+    nodos.forEach(nodo => {
+      console.log("BEBE", nodo.value);
+      if (nodo.value == ''  || valoresVacios(nodo.value)) {
+        console.log("VACIO", nodo.value.length);
+        arr.push(0);
+      }
+      else {
+        console.log("LLENO");   
+        arr.push(1);
+      }
+
+    });
+
+    let empty = arr.some((x) => x == 0);
+    
+    if(empty) {
+      return true
+    } 
+    else {
+      return false;
+    }
+    
+  }
+
+  function infoNivel() {
+
+    let values = document.querySelectorAll(".valoresentrada");
+
+    // es vacio
+    let isEmpty = esVacio(values);
+    console.log("BOOLEAN", isEmpty); 
+
+    if(isEmpty) {
+      alert("Campos vacios");
+    }
+    else {
+      let arrprincipal = [];
+      values.forEach(value=> {
+
+        let arr = [];
+        arr.push( value.value, tramiteIdentificador, value.id);
+        console.log(arr);
+
+        arrprincipal.push(arr);
+      });
+      console.log(arrprincipal);
+
+      fetch('<?= APP_URL . '/view/editar.php'?>', {
+        method: 'POST',
+        // body: arrprincipal
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(arrprincipal)
+      })
+        // .then(response => {
+        //   // Handle the server response
+        //   if (response.ok) {
+        //     console.log('File uploaded successfully');
+        //     console.log(response.json());
+    
+        //   } else {
+        //     console.error('Error uploading file');
+        //   }
+        // })
+        .then(response => response.text())
+        .then(data => {
+          console.log(data); // Log the response body text
+
+          
+
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    
+
+  }
   
 
 
