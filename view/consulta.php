@@ -180,6 +180,9 @@ if (isset($_POST['codtramite'])) {
           <span>APELLIDOS: <?=$tramiteDetail['apellidos']?></span>
         </div>
         <div class="inputContainer">
+          <span>ESTADO: <?=$tramiteDetail['descripcion']?></span>
+        </div>
+        <div class="inputContainer">
           <span>OBSERVACIONES: <?=$tramiteDetail['observacion']?></span>
         </div>
       </div>

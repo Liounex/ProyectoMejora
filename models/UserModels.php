@@ -79,8 +79,7 @@ class UserModels
 	{
 		try {
 
-			$sql = "SELECT t.tramite_id, t.voucher, t.copia,  tt.nombre, t.idioma, p.pago_id, p.total, t.observacion, p.pago_id,
-			u.nombres, CONCAT(u.ap_paterno, ' ', u.ap_materno) apellidos
+			$sql = "SELECT t.tramite_id, t.voucher, t.copia,  tt.nombre, t.idioma, p.pago_id, p.total, t.observacion, p.pago_id, u.nombres, CONCAT(u.ap_paterno, ' ', u.ap_materno) apellidos, e.descripcion
 						FROM tramite t 
 							INNER JOIN pago p
 							ON t.pago_id = p.pago_id
@@ -88,6 +87,8 @@ class UserModels
 							ON tt.tipo_tramite_id = p.tipo_tramite_id
 							INNER JOIN usuario u
 							ON p.usuario_id = u.usuario_id
+              INNER JOIN estado e
+              ON e.estado_id = t.estado_id
 						WHERE t.tramite_id  = :codigo";
 			$query = $this->PDO->prepare($sql);
 			$query->bindParam(':codigo', $codigo);
