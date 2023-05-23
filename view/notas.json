@@ -1,0 +1,44 @@
+{
+  "74202093": {
+    "nombres" : "pepo",
+    "apellidos" : "demo test",
+    "telefono" : "977541011",
+    "cursos" : [
+      {
+        "idioma": "Ingles",
+        "nivel": "Nivel 1",
+        "horas" : "128",
+        "anio": "2021",
+        "nota" : "15"
+      },
+      { 
+        "idioma": "Ingles",
+        "nivel": "Nivel 2",
+        "horas" : "128",
+        "anio": "2021",
+        "nota" : "17"
+      },
+      { 
+        "idioma": "Quechua",
+        "nivel": "Nivel 1",
+        "horas" : "128",
+        "anio": "2021",
+        "nota" : "16"
+      }
+    ]
+  },
+  
+  "74202099": {
+    "nombres" : "pepo",
+    "apellidos" : "demo test",
+    "telefono" : "977541011",
+    "ingles" : {
+      "nivel 1": {   
+        "horas" : "120",
+        "anio": "2020",
+        "nota" : "15"
+      }
+    }
+  }
+  
+}
