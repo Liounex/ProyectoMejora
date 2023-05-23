@@ -208,6 +208,9 @@ if (isset($_POST['codtramite'])) {
           <button type="submit" name="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0" onclick="infoNivel()">Realizar cambios</button>
         
         <!-- </form> -->
+
+        <h4>Enlaces</h4>
+        <p>Lista: <a href="./content/createCertificado.php?id=<?=$docDetail[0][0]?>" target="_blank">Visualizar</a></p>
       </div>  
 
     </div>

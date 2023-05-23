@@ -213,6 +213,30 @@ class ProcedureModels
       }
     }
 
+    public function showMoreDetails($codigo) {
+      try {
+  
+        $sql = "SELECT u.dni, t.idioma, dt.nivel 
+        FROM detalle_tramite dt
+          INNER JOIN tramite t
+            ON dt.tramite_id = t.tramite_id
+            INNER JOIN pago p
+            ON p.pago_id = t.pago_id
+            INNER JOIN usuario u
+            ON u.usuario_id = p.usuario_id
+        WHERE
+        dt.detalle_tramite_id = :codigo";
+        $query = $this->PRO->prepare($sql);
+        $query->bindParam(':codigo', $codigo);
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+        // return $query->fetch();
+        $this->PRO = null;
+      } catch (PDOException $e) {
+        echo "Error al conectar a la base de datos: " . $e->getMessage();
+      }
+    }
+
     public function updateDetails($texto, $codigo) {
       try {
   

@@ -83,6 +83,11 @@ class ProcedureControllers
       return $stament; 
     }
 
+    public function showMoreDetails($codigo) {
+      $stament = $this->model->showMoreDetails($codigo);
+      return $stament; 
+    }
+
     public function updateDetails($texto, $codigo) {
       $stament = $this->model->updateDetails($texto, $codigo);
       return $stament; 
