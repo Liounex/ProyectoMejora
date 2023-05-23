@@ -62,7 +62,7 @@ $pdf->AddPage();
 // $pdf->Cell(40,10,'Hello World!');
 // $pdf->Cell(60,10,'Powered by FPDF.',0,1,'C');
 // Insert a logo in the top-left corner at 300 dpi
-$pdf->Image('./template_4.png', 0, 0, 297, 210);
+$pdf->Image('./template_5.png', 0, 0, 297, 210);
 
 // $pdf->AddFont('ArialUnicode', '', './font/courier.php');
 // $pdf->SetFont('ArialUnicode', '', 12);
