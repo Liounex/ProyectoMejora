@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Dni : <?= $data['dni_user'] ?>
           </li>
           <li class="list-group-item">
-            Nombre : <?= $data['nombre'] ?>
+            Nombre : <?= $data['nombres'] ?>
           </li>
           <li class="list-group-item">
             Precio : <?= number_format($data['total'], 2) . ' Soles Peruanos' ?>
@@ -71,6 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <?php endif; ?>
     <?php endif; ?>
   <?php endif; ?>
+  <?php include_once __DIR__ . '/layout/footerlogin.php'; ?>
 </div>
-<?php include_once __DIR__ . '/content/script.php' ?>
-<?php include_once __DIR__ . '/layout/footerlogin.php'; ?>
+<?php include_once __DIR__ . '/content/script.php'; ?>

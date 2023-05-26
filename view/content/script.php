@@ -54,7 +54,7 @@
                 // Obtener los datos necesarios para generar el PDF
                 var idPago = '<?= $id ?>';
                 var fechaActual = new Date().toISOString(); // Obtener la fecha actual en formato ISO
-                var nombre = '<?= $data['nombre'] ?>';
+                var nombre = '<?= $data['nombres'] ?>';
                 var dni = '<?= $data['dni_user'] ?>';
                 var descripcion = '<?= $data['descripciont'] ?>';
                 var precio = '<?= $data['total'] ?>';

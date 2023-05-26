@@ -16,9 +16,12 @@ class PayModels
     public function mostrar($id)
     {
         $sql = "SELECT t1.dni_user, t1.cantidad, t1.total, t1.status,
-        t2.nombre, t2.descripciont, t2.costo
+        t2.nombre, t2.descripciont, t2.costo,
+        u.nombres
         FROM pago t1
-        JOIN tipo_tramite t2 ON t1.tipo_tramite_id = t2.tipo_tramite_id WHERE pago_cod = :id";
+        JOIN tipo_tramite t2 ON t1.tipo_tramite_id = t2.tipo_tramite_id
+        JOIN usuario u ON t1.dni_user = u.dni_user
+        WHERE pago_cod = :id";
         $query = $this->PDO->prepare($sql);
         $query->bindParam(':id', $id);
         $query->execute();
