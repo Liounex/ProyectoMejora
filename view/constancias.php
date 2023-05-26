@@ -29,48 +29,49 @@ $datos = $obj->showdata($_GET['id']);
                 <?php foreach ($datos as $key => $value2) : ?>
                   <?php $collapseId = "collapse" . $value2['tramite_id'] ?>
                   <tr>
-                      <td>
-                        <h6 class="mb-0 text-sm"><?= $value2['nombre'] ?></h6>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['descripciont'] ?></p>
-                      </td>
-                      <td>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['descripcion'] ?></p>
-                      </td>
-                      <td>
-                        <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] . ' ' . $value2['year'] ?></p>
-                      </td>
-                      <td>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['status'] ?></p>
-                      </td>
-                      <td>
-                        <h6 class="mb-0 text-sm"><?= $value2['nombres'] ?></h6>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['ap_paterno'] . ' ' . $value2['ap_materno'] ?></p>
-                      </td>
-                      <td>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['cantidad'] ?></p>
-                      </td>
-                      <td>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
-                      </td>
-                      <td>
-                        <a class="btn" href="<?= APP_URL . '/view/content/accept?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Aceptar"><i class="fa fa-check-circle-o"></i></a>
-                        <a class="btn" data-bs-toggle="collapse" href="#<?= $collapseId ?>" role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>" title="Observacion">
-                          <i class="fa fa-eye"></i>
-                        </a>
-                        <a class="btn" href="<?= APP_URL . '/view/content/decline?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Rechazar"><i class="fa fa-ban"></i></a>
-                        <!--Boton de Observacion y un collapse -->
-                        <div class="collapse" id="<?= $collapseId ?>">
-                          <form action="<?= APP_URL . '/view/content/observation?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" method="post">
-                            <div>
-                              <!-- form-control form-control-lg -->
-                              <input type="text" class="form-control mb-1" placeholder="Observacion" aria-label="Observacion" name="obser" required>
-                              <button type="submit" class="btn btn-success">Enviar</button>
-                            </div>
-                          </form>
-                        </div>
-                      </td>
-                    </tr>
+                    <td>
+                      <h6 class="mb-0 text-sm"><?= $value2['nombre'] ?></h6>
+                      <p class="text-xs text-secondary mb-0"><?= $value2['descripciont'] ?></p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0"><?= $value2['descripcion'] ?></p>
+                    </td>
+                    <td>
+                      <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
+                      <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] . ' ' . $value2['year'] ?></p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0"><?= $value2['status'] ?></p>
+                    </td>
+                    <td>
+                      <h6 class="mb-0 text-sm"><?= $value2['nombres'] ?></h6>
+                      <p class="text-xs text-secondary mb-0"><?= $value2['ap_paterno'] . ' ' . $value2['ap_materno'] ?></p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0"><?= $value2['cantidad'] ?></p>
+                    </td>
+                    <td>
+                      <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
+                    </td>
+                    <td>
+                      <a class="btn" href="<?= APP_URL . '/view/content/certi?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Generar"><i class="fa fa-file-o"></i></a>
+                      <a class="btn" href="<?= APP_URL . '/view/content/accept?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Aceptar"><i class="fa fa-check-circle-o"></i></a>
+                      <a class="btn" data-bs-toggle="collapse" href="#<?= $collapseId ?>" role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>" title="Observacion">
+                        <i class="fa fa-eye"></i>
+                      </a>
+                      <a class="btn" href="<?= APP_URL . '/view/content/decline?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Rechazar"><i class="fa fa-ban"></i></a>
+                      <!--Boton de Observacion y un collapse -->
+                      <div class="collapse" id="<?= $collapseId ?>">
+                        <form action="<?= APP_URL . '/view/content/observation?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" method="post">
+                          <div>
+                            <!-- form-control form-control-lg -->
+                            <input type="text" class="form-control mb-1" placeholder="Observacion" aria-label="Observacion" name="obser" required>
+                            <button type="submit" class="btn btn-success">Enviar</button>
+                          </div>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
                 <?php endforeach; ?>
               <?php else : ?>
                 <td colspan="7">

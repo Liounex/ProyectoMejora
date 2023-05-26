@@ -2,10 +2,10 @@
 include_once __DIR__ . '/layout/headlogin.php';
 ?>
 <h4 class="font-weight-bolder">Continue el tramite</h4>
-<p class="mb-0">Complete los datos correspondientes</p>
+<label class="mb-0">Complete los datos correspondientes</label>
 </div>
 <div class="card-body">
-    <form role="form" action="<?= APP_URL . '/view/content/reupdate' ?>" method="POST" autocapitalize="off">
+    <form role="form" action="<?= APP_URL . '/view/content/reupdate' ?>" method="POST" autocapitalize="off" enctype="multipart/form-data">
         <i class="fa fa-question-circle" aria-hidden="true" title="Use el codigo de pago que recibio"></i>
         <div class="input-group mb-3">
             <input type="text" class="form-control form-control-lg" id="codigo" name="codigo" placeholder="Codigo de Pago" aria-label="codigopago" aria-describedby="basic-addon2" required>
@@ -47,11 +47,11 @@ include_once __DIR__ . '/layout/headlogin.php';
         <div id="prueba"></div>
         <label for="">COPIA DE DNI</label>
         <div class="mb-3">
-            <input type="file" name="fileDni" id="fileDni" class="form-control form-control-lg" aria-label="fileDni" accept=".pdf">
+            <input type="file" name="copydni" id="copydni" class="form-control form-control-lg" aria-label="copydni" accept=".pdf">
         </div>
         <label for="">VAUCHER</label>
         <div class="mb-3">
-            <input type="file" name="fileVoucher" id="fileVoucher" class="form-control form-control-lg" aria-label="fileVoucher" accept=".jpg, .jpeg, .png">
+            <input type="file" name="vaucher" id="vaucher" class="form-control form-control-lg" aria-label="vaucher" accept=".jpg, .jpeg, .png">
         </div>
         <div id="prueba"></div>
         <div class="text-center">

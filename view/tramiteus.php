@@ -57,6 +57,7 @@ $datos2 = $obj->showadmin();
                         <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
                       </td>
                       <td>
+                        <a class="btn" href="<?= APP_URL . '/view/content/certi?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Generar"><i class="fa fa-file-o"></i></a>
                         <a class="btn" href="<?= APP_URL . '/view/content/accept?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Aceptar"><i class="fa fa-check-circle-o"></i></a>
                         <a class="btn" data-bs-toggle="collapse" href="#<?= $collapseId ?>" role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>" title="Observacion">
                           <i class="fa fa-eye"></i>
@@ -150,35 +151,43 @@ $datos2 = $obj->showadmin();
                       <p class="mb-0">
                         <?php if ($value['estado_id'] == 1) : ?>
                           <?php $bg = 'icon icon-shape bg-gradient-primary shadow-warning text-center rounded-circle'; ?>
-                          <?php $ico = 'fa fa-get-pocket opacity-10'; ?>
+                          <?php $ico = '<i class="fa fa-get-pocket opacity-10" aria-hidden="true"></i>'; ?>
                           <span class="text-primary text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                         <?php elseif ($value['estado_id'] == 2) : ?>
                           <?php $bg = 'icon icon-shape bg-gradient-info shadow-warning text-center rounded-circle'; ?>
-                          <?php $ico = 'fa fa-clock-o opacity-10'; ?>
+                          <?php $ico = '<i class="fa fa-clock-o opacity-10" aria-hidden="true"></i>'; ?>
                           <span class="text-secondary text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                         <?php elseif ($value['estado_id'] == 3) : ?>
                           <?php $bg = 'icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle'; ?>
-                          <?php $ico = 'fa fa-eye opacity-10'; ?>
+                          <?php $ico = '<i class="fa fa-eye opacity-10" aria-hidden="true"></i>'; ?>
                           <span class="text-warning text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                         <?php elseif ($value['estado_id'] == 4) : ?>
                           <?php $bg = 'icon icon-shape bg-gradient-success shadow-warning text-center rounded-circle'; ?>
-                          <?php $ico = 'fa fa-thumbs-o-up opacity-10'; ?>
-                          <span class="text-success text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
-                        <?php else : ?>
-                          <?php $bg = 'icon icon-shape bg-gradient-danger shadow-warning text-center rounded-circle'; ?>
-                          <?php $ico = 'fa fa-ban opacity-10'; ?>
-                          <span class="text-danger text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
-                        <?php endif; ?>
-                      <form action="./detalle" method="POST" class="p-0 m-0">
-                        <input type="hidden" name="id" value="<?php echo $value['tramite_id']; ?>">
-                        <button type="submit" class="border border-0 bg-transparent p-0 text-success text-sm font-weight-bolder">Detalle</button>
-                      </form>
-                      </p>
+                          <?php $ico = '<i class="fa fa-thumbs-o-up opacity-10" aria-hidden="true"></i>'; ?>
+                                <form action="./content/vercerti" method="POST">
+                                  <input type="hidden" name="tramite" value="<?= $value['descripciont'] ?>">
+                                  <input type="hidden" name="name" value="<?= $value['nombres'] ?>">
+                                  <input type="hidden" name="ap" value="<?= $value['ap_paterno'] ?>">
+                                  <input type="hidden" name="am" value="<?= $value['ap_materno'] ?>">
+                                  <input type="hidden" name="idioma" value="<?= $value['idioma'] ?>">
+                                  <button type="submit" class="btn btn-success">Descargar Certificado</button>
+                                </form>
+                      <span class="text-success text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                    <?php else : ?>
+                      <?php $bg = 'icon icon-shape bg-gradient-danger shadow-warning text-center rounded-circle'; ?>
+                      <?php $ico = '<i class="fa fa-ban opacity-10" aria-hidden="true"></i>'; ?>
+                      <span class="text-danger text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
+                    <?php endif; ?>
+                    <form action="./detalle" method="POST" class="p-0 m-0">
+                      <input type="hidden" name="id" value="<?php echo $value['tramite_id']; ?>">
+                      <button type="submit" class="border border-0 bg-transparent p-0 text-info text-sm font-weight-bolder">Detalle</button>
+                    </form>
+                    </p>
                     </div>
                   </div>
                   <div class="col-4 text-end">
                     <div class="<?= $bg ?>">
-                      <i class="<?= $ico ?>" aria-hidden="true"></i>
+                      <?= $ico; ?>
                     </div>
                   </div>
                 </div>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Plantilla de Certificado</title>
+    <style>
+        .container {
+            width: 850px;
+            height: 400px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Agregado para centrar el contenido */
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .info {
+            margin-bottom: 20px;
+        }
+
+        .info p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #555;
+            position: relative;
+        }
+
+        .signature {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .signature p {
+            display: inline-block;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .signature p::before {
+            content: "Firma digital aquí";
+            display: block;
+            font-size: 14px;
+            color: #888;
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+        }
+
+        .signature img {
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .pattern {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
+            z-index: -1;
+        }
+
+        .pattern::before,
+        .pattern::after {
+            content: "";
+            display: block;
+            height: 100%;
+            width: 20px;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .pattern::before {
+            left: 0;
+            background-color: #f35f13;
+        }
+
+        .pattern::after {
+            right: 0;
+            background-color: #1c82e8;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="pattern"></div>
+        <h1 style="color: #337ab7;">{tipo}</h1>
+        <div class="info">
+            <p style="font-size: 22px;">Otorgado a: <b style="text-transform: uppercase;">{apellido} {nombre}</b></p>
+            <br>
+            <p style="font-size: 22px;">
+                Por haber concluido satisfactoriamente sus estudios en el idioma <b
+                    style="text-transform: uppercase;">{idioma}.</b><br>
+                Se le confiere el/la presente <b style="text-transform: uppercase;">{tipo}</b> a solicitud del interesado(a) y para
+                sus fines que considere pertinentes.
+            </p>
+        </div>
+        <br>
+        <br>
+        <div class="signature" style="display: flex; justify-content: center; align-items: center;">
+            <div style="text-align: center;">
+                <p>DR. Antonio Jeri Chavez<br>
+                    Rector</p>
+                <p>Econ. Carlos Alberto Ascue Medina<br>
+                    Gerente General CPBS</p>
+                <p>Prof. Wilmer Ribera Fuentes<br>
+                    Gerente General INDI</p>
+            </div>
+        </div>
+
+
+        <div class="footer">
+            Este certificado es válido y fue generado automáticamente.
+        </div>
+    </div>
+</body>
+
+</html>

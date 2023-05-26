@@ -16,14 +16,15 @@ function buscar() {
                 if (datos === null)  {
                     alert('El código no se encuentra registrado');
                 } else {
-                    $('#dni').val(datos.dni);
-                    $('#nombre').val(datos.nombre);
-                    $('#correo').val(datos.correo);
-                    $('#telefono').val(datos.telefono);
-                    $('#ap_paterno').val(datos.ap_paterno);
-                    $('#ap_materno').val(datos.ap_materno);
-                    $('#tprocedure').val(datos.tipotramite);
-                    $('#cantidad').val(datos.cantidad);
+                    $('#dni').attr('value', datos.dni);
+                    $('#nombre').attr('value', datos.nombre);
+                    $('#correo').attr('value', datos.correo);
+                    $('#telefono').attr('value', datos.telefono);
+                    $('#ap_paterno').attr('value', datos.ap_paterno);
+                    $('#ap_materno').attr('value', datos.ap_materno);
+                    $('#tprocedure').attr('value', datos.tipotramite);
+                    $('#cantidad').attr('value', datos.cantidad);
+/*                     $('#idioma').val(datos.idioma); */
 
                     let cantidad = datos.cantidad;
                     let tipoTramite = datos.tipotramite;

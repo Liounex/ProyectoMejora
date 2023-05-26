@@ -54,6 +54,7 @@ $datos = $obj->showdata($_GET['id']);
                       <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
                     </td>
                     <td>
+                    <a class="btn" href="<?= APP_URL . '/view/content/certi?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Generar"><i class="fa fa-file-o"></i></a>
                       <a class="btn" href="<?= APP_URL . '/view/content/accept?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Aceptar"><i class="fa fa-check-circle-o"></i></a>
                       <a class="btn" data-bs-toggle="collapse" href="#<?= $collapseId ?>" role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>" title="Observacion">
                         <i class="fa fa-eye"></i>

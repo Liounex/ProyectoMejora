@@ -24,8 +24,8 @@ class UserSearchControllers
             "ap_paterno" => $row["ap_paterno"],
             "ap_materno" => $row["ap_materno"],
             "tipotramite" => $row["nombre"],
-            "cantidad" => $row["cantidad"]
-
+            "cantidad" => $row["cantidad"],
+/*             "idioma" => $row["idioma"] */
         );
         return $data;
     }

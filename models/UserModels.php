@@ -45,12 +45,14 @@ class UserModels
 			t2.nombre, t2.descripciont, t2.costo,
 			t3.descripcion,
 			t4.idioma, t4.nivel, t4.year,
-			t5.total
+			t5.total,
+            u.ap_paterno, u.ap_materno, u.nombres
 			FROM tramite t1
 			JOIN tipo_tramite t2 ON t1.tipo_tramite_id = t2.tipo_tramite_id
 			JOIN estado t3 ON t1.estado_id = t3.estado_id
 			JOIN detalle_tramite t4 ON t1.id_detalle = t4.id_detalle
 			JOIN pago t5 ON  t1.pago_cod = t5.pago_cod
+            JOIN usuario u ON t1.dni_user = u.dni_user
 			WHERE t1.dni_user = :code";
 			$query = $this->PDO->prepare($sql);
 			$query->bindParam(':code', $code);
@@ -179,7 +181,7 @@ class UserModels
 	public function description($code)
 	{
 		try {
-			$sql = "SELECT t1.pago_cod, t1.dni_user, t1.estado_id, t1.tramite_id, t1.copia,
+			$sql = "SELECT t1.pago_cod, t1.dni_user, t1.estado_id, t1.tramite_id, t1.copia, t1.voucher,
 			t2.nombre, t2.descripciont, t2.costo,
 			t3.descripcion,
 			t4.idioma, t4.nivel, t4.year,
@@ -204,7 +206,7 @@ class UserModels
 		}
 	}
 
-	public function updateregister($dni, $nombres, $ap, $am, $correo, $telefono, $idioma, $voucher, $copia)
+	public function updateregister($dni, $nombres, $ap, $am, $correo, $telefono, $idioma)
 	{
 		try {
 			$this->PDO->beginTransaction();
@@ -214,7 +216,7 @@ class UserModels
 			JOIN detalle_tramite ON tramite.id_detalle = detalle_tramite.id_detalle
 			JOIN pago ON usuario.dni_user = pago.dni_user
 			SET usuario.dni_user = :dni, usuario.nombres = :nombres, usuario.ap_paterno = :ap, usuario.ap_materno = :am, usuario.correo = :correo, usuario.telefono = :telefono,
-			tramite.dni_user = :dni, tramite.voucher = :voucher, tramite.copia = :copia,
+			tramite.dni_user = :dni,
 			detalle_tramite.idioma = :idioma
 			WHERE usuario.dni_user = :dni_user";
 
@@ -226,8 +228,8 @@ class UserModels
 			$query->bindParam(':correo', $correo);
 			$query->bindParam(':telefono', $telefono);
 			$query->bindParam(':idioma', $idioma);
-			$query->bindParam(':voucher', $voucher);
-			$query->bindParam(':copia', $copia);
+			/* 			$query->bindParam(':voucher', $voucher);
+			$query->bindParam(':copia', $copia); */
 			$query->bindParam(':dni_user', $dni);
 			$this->PDO->commit();
 			$this->PDO = null;

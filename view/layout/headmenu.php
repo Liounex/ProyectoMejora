@@ -29,8 +29,11 @@ session_start();
         elseif (strpos($_SERVER['REQUEST_URI'], 'constancias')) {
           echo 'Constancias';
         }
-        else {
+        elseif (strpos($_SERVER['REQUEST_URI'], 'examenes')) {
           echo 'Examenes';
+        }
+        else {
+          echo 'Detalle';
         }
       }
     ?>

@@ -16,8 +16,11 @@
               elseif (strpos($_SERVER['REQUEST_URI'], 'constancias')) {
                 $paginacion = 'Constancias';
               }
-              else {
+              elseif (strpos($_SERVER['REQUEST_URI'], 'examenes')) {
                 $paginacion = 'Examenes';
+              }
+              else {
+                $paginacion = 'Detalle';
               }
             }
           ?>
