@@ -71,6 +71,7 @@ $datos = $obj->showdata($_GET['id']);
                           </div>
                         </form>
                       </div>
+                      <a class="btn" href="<?= APP_URL . '/view/detail?id=' . $value2["tramite_id"]?>" title="Detalle"><i class="fa fa-info"></i></a>
                     </td>
                   </tr>
                 <?php endforeach; ?>

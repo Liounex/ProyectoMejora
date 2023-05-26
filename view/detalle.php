@@ -111,5 +111,5 @@
     </div>
     <?php include_once __DIR__ . '/layout/footermenu.php'; ?>
 <?php else : ?>
-    <?php header('Location: tramiteus'); ?>
+    <?php header('Location: dashboard'); ?>
 <?php endif; ?>

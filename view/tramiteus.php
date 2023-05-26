@@ -41,10 +41,14 @@ $datos2 = $obj->showadmin();
                       </td>
                       <td>
                         <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] . ' ' . $value2['year'] ?></p>
+                        <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] ?></p>
                       </td>
                       <td>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['status'] ?></p>
+                        <?php if ($value2['status'] == 1) : ?>
+                          <p class="text-xs text-secondary mb-0">Pagado</p>
+                        <?php else : ?>
+                          <p class="text-xs text-secondary mb-0">Sin Pagar</p>
+                        <?php endif; ?>
                       </td>
                       <td>
                         <h6 class="mb-0 text-sm"><?= $value2['nombres'] ?></h6>
@@ -73,6 +77,7 @@ $datos2 = $obj->showadmin();
                             </div>
                           </form>
                         </div>
+                        <a class="btn" href="<?= APP_URL . '/view/detail?id=' . $value2["tramite_id"]?>" title="Detalle"><i class="fa fa-info"></i></a>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -164,14 +169,14 @@ $datos2 = $obj->showadmin();
                         <?php elseif ($value['estado_id'] == 4) : ?>
                           <?php $bg = 'icon icon-shape bg-gradient-success shadow-warning text-center rounded-circle'; ?>
                           <?php $ico = '<i class="fa fa-thumbs-o-up opacity-10" aria-hidden="true"></i>'; ?>
-                                <form action="./content/vercerti" method="POST">
-                                  <input type="hidden" name="tramite" value="<?= $value['descripciont'] ?>">
-                                  <input type="hidden" name="name" value="<?= $value['nombres'] ?>">
-                                  <input type="hidden" name="ap" value="<?= $value['ap_paterno'] ?>">
-                                  <input type="hidden" name="am" value="<?= $value['ap_materno'] ?>">
-                                  <input type="hidden" name="idioma" value="<?= $value['idioma'] ?>">
-                                  <button type="submit" class="btn btn-success">Descargar Certificado</button>
-                                </form>
+                      <form action="./content/vercerti" method="POST">
+                        <input type="hidden" name="tramite" value="<?= $value['descripciont'] ?>">
+                        <input type="hidden" name="name" value="<?= $value['nombres'] ?>">
+                        <input type="hidden" name="ap" value="<?= $value['ap_paterno'] ?>">
+                        <input type="hidden" name="am" value="<?= $value['ap_materno'] ?>">
+                        <input type="hidden" name="idioma" value="<?= $value['idioma'] ?>">
+                        <button type="submit" class="btn btn-success">Descargar Certificado</button>
+                      </form>
                       <span class="text-success text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                     <?php else : ?>
                       <?php $bg = 'icon icon-shape bg-gradient-danger shadow-warning text-center rounded-circle'; ?>

@@ -33,3 +33,4 @@ $dompdf->render();
 
 // Descargar el archivo PDF en lugar de mostrarlo en el navegador
 $dompdf->stream('certificado.pdf', ['Attachment' => true]);
+

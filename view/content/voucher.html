@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Voucher de Pago</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .voucher {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            max-width: 400px;
+        }
+
+        .voucher p {
+            margin: 10px 0;
+        }
+
+        .voucher .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .voucher .header h2 {
+            margin: 0;
+        }
+
+        .voucher .details {
+            margin-bottom: 20px;
+        }
+
+        .voucher .details p {
+            margin: 5px 0;
+        }
+
+        .voucher .footer {
+            text-align: right;
+        }
+
+        .voucher .footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="voucher">
+        <div class="header">
+            <h2>Voucher de Pago</h2>
+        </div>
+        <div class="details">
+            <p><strong>ID de Pago:</strong> {id_pago}</p>
+            <p><strong>Fecha:</strong> {fecha}</p>
+            <p><strong>Nombre:</strong> {nombre}</p>
+            <p><strong>Dni:</strong> {dni}</p>
+            <p><strong>Descripcion:</strong> {descripcion}</p>
+            <p><strong>Precio:</strong> {precio} </p>
+            <p><strong>Precio en Dolares:</strong> {dolar}</p>
+        </div>
+        <div class="footer">
+            <p>¡Gracias por su pago!</p>
+        </div>
+    </div>
+</body>
+
+</html>
