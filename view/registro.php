@@ -18,7 +18,7 @@
       <input type="number" class="form-control form-control-lg" placeholder="Cantidad" aria-label="Cantidad" name="cantidad" id="cantidadDocs" value="1" min="1" max="5" required>
     </div>
     <div class="mb-3">
-      <input type="text" class="form-control form-control-lg" placeholder="Dni" aria-label="Dni" name="dni" required>
+      <input type="text" onkeypress="return valideKey(event);" maxlength="8"  class="form-control form-control-lg" placeholder="Dni" aria-label="Dni" name="dni" required>
     </div>
     <div class="mb-3">
       <input type="text" class="form-control form-control-lg" placeholder="Nombre" aria-label="nombre" name="nombre" required>
@@ -33,7 +33,7 @@
       <input type="email" class="form-control form-control-lg" placeholder="Correo" aria-label="correo" name="correo" required>
     </div>
     <div class="mb-3">
-      <input type="text" class="form-control form-control-lg" placeholder="Numero de celular" aria-label="celular" name="celular" required>
+      <input type="text" onkeypress="return valideKey(event);" maxlength="9" class="form-control form-control-lg" placeholder="Numero de celular" aria-label="celular" name="celular" required>
     </div>
     <div class="mb-3">
       <input type="hidden" class="form-control form-control-lg" placeholder="" aria-label="" name="idtipo" value="3">
@@ -64,5 +64,19 @@
       testOption.readOnly = false;
     }
   });
+
+
+  function valideKey(evt) {
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    if (code == 8) { // backspace.
+      return true;
+    } else if (code >= 48 && code <= 57) { // is a number.
+      return true;
+    } else { // other keys.
+      return false;
+    }
+  }
+
 </script>
 <?php include_once __DIR__ . '/layout/footerlogin.php' ?>
+

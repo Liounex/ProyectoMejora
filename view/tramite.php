@@ -12,7 +12,7 @@ include_once __DIR__ . '/layout/headlogin.php';
             <button class="input-group-text" type="button" id="btn-buscar"><i class="fa fa-search"></i></button>
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control form-control-lg" placeholder="Dni" aria-label="Dni" name="dni" id="dni" required>
+            <input type="text" onkeypress="return valideKey(event);" maxlength="8" class="form-control form-control-lg" placeholder="Dni" aria-label="Dni" name="dni" id="dni" required>
         </div>
         <div class="mb-3">
             <input type="text" class="form-control form-control-lg" placeholder="Nombre" aria-label="nombre" name="nombre" id="nombre" required>
@@ -27,7 +27,7 @@ include_once __DIR__ . '/layout/headlogin.php';
             <input type="email" class="form-control form-control-lg" placeholder="Correo" aria-label="correo" name="correo" id="correo" required>
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control form-control-lg" placeholder="Telefono" aria-label="telefono" name="telefono" id="telefono" required>
+            <input type="text" onkeypress="return valideKey(event);" maxlength="8" class="form-control form-control-lg" placeholder="Telefono" aria-label="telefono" name="telefono" id="telefono" required>
         </div>
         <div class="mb-3">
             <input type="text" name="tprocedure" id="tprocedure" class="form-control form-control-lg" aria-label="tipo_tramite" placeholder="Tipo de tramite" required>
@@ -51,7 +51,7 @@ include_once __DIR__ . '/layout/headlogin.php';
         </div>
         <label for="">VAUCHER</label>
         <div class="mb-3">
-            <input type="file" name="vaucher" id="vaucher" class="form-control form-control-lg" aria-label="vaucher" accept=".jpg, .jpeg, .png">
+            <input type="file" name="vaucher" id="vaucher" class="form-control form-control-lg" aria-label="vaucher" accept=".jpg, .jpeg, .png, .pdf">
         </div>
         <div id="prueba"></div>
         <div class="text-center">
@@ -67,5 +67,17 @@ include_once __DIR__ . '/layout/headlogin.php';
 <script src="<?= APP_URL . '/assets/js/select.js' ?>"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<?= APP_URL . '/assets/js/validate.js' ?>"></script>
+<script>
+  function valideKey(evt) {
+    var code = (evt.which) ? evt.which : evt.keyCode;
+    if (code == 8) { // backspace.
+      return true;
+    } else if (code >= 48 && code <= 57) { // is a number.
+      return true;
+    } else { // other keys.
+      return false;
+    }
+  }
 
+</script>
 <?php include_once __DIR__ . '/layout/footerlogin.php' ?>
