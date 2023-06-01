@@ -1,11 +1,17 @@
-<?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
-    <?php
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') :
     include_once __DIR__ . '/layout/headmenu.php';
     include_once __DIR__ . '/layout/nav.php';
     require_once(APP_ROOT . '/../Controllers/UserControllers.php');
-    ?>
-    <?php $obj = new UserControllers(); ?>
-    <?php $datos = $obj->description($_POST['id']); ?>
+
+    $obj = new UserControllers();
+    $datos = $obj->description($_POST['id']);
+    $dolar = 0.00; // Valor predeterminado para $dolar
+?>
+
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AVUiaXyUPSgJqxipeSeAJBOqqLRWuMAnXPEOiXIcKaFp3LllEKXSRhDAuMpKubk_9kO6PGwXYN3CyJPP&currency=USD&components=buttons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <div class="container-fluid py-4">
         <div class="row">
             <h5 class="text-white">DETALLE DE TRAMITE</h5>
@@ -35,13 +41,19 @@
                                             <?php endforeach; ?>
                                         </p>
                                     <?php endif; ?>
+                                    <p class="text-x text-secondary mb-2">Precio : <?= number_format($value['total'], 2) . ' Soles Peruanos' ?> </p>
+                                    <?php
+                                    if (is_array($datos) && isset($value['total'])) {
+                                        $dolar = number_format(floatval($value['total']) / 3.70, 2);
+                                    }
+                                    ?>
                                     <?php if ($value['status'] == 0) : ?>
-                                        <p class="text-x text-secondary mb-2">Estado de pago: Sin Pago <a href="./pago"><i class="fa fa-money"></i></a></p>
+                                        <p class="text-x text-secondary mb-2">Estado de pago: Sin Pago</p>
+                                        <div id="paypal-button-container"></div>
                                     <?php else : ?>
                                         <p class="text-x text-secondary mb-2">Estado de pago: Pagado</p>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
-
                                 <form action="./content/updatedoc" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="cod" id="cod" value="<?= $value['pago_cod'] ?>">
 
@@ -62,9 +74,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-xl-8 col-sm-6 mb-xl-0 mb-4">
-<!--                 <i class="fa fa-file m-1" style="font-size:20px;color:white"></i> -->
+                <!--                 <i class="fa fa-file m-1" style="font-size:20px;color:white"></i> -->
                 <div class="card">
                     <div class="card-body p-3">
                         <label>Copia de dni</label>
@@ -110,6 +121,7 @@
     </div>
     </div>
     <?php include_once __DIR__ . '/layout/footermenu.php'; ?>
+    <?php include_once __DIR__ . '/content/uscript.php'; ?>
 <?php else : ?>
     <?php header('Location: dashboard'); ?>
 <?php endif; ?>

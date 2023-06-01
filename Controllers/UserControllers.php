@@ -88,6 +88,26 @@ class UserControllers
         }
         return $statement;
     }
+    public function direcacept($code, $status)
+    {
+        $statement = $this->model->accept($code, $status);
+        if ($statement) {
+            echo "
+            <script>
+            Swal.fire({
+                title: 'OK',
+                text: 'Se genrero el certificado',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '../tramiteus';
+                }
+            });
+            </script>
+            ";
+        }
+    }
 
     public function decline($code, $status)
     {
@@ -124,10 +144,12 @@ class UserControllers
         }
         return $statement;
     }
+
     public function description($code)
     {
         $statement = $this->model->description($code);
         return $statement;
+        
     }
 
     public function actualizarDatos($dni, $nombres, $ap, $am, $correo, $telefono, $idioma)

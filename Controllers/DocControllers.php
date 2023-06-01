@@ -89,13 +89,18 @@ class DocControllers
         }
     }
 
+    public function verestado($cod)
+    {
+        $statement = $this->model->verdoc($cod);
+        return $statement;
+    }
+
     public function actualizardocnuevo($cod, $pdf, $vaucher)
     {
         // Verificar si los archivos ya existen en la base de datos
         $existingData = $this->model->obtenerDatosDoc($cod);
-
         if ($existingData && $existingData['voucher'] === $vaucher && $existingData['copia'] === $pdf) {
-/*             echo "
+            /*             echo "
                 <script>
                     Swal.fire({
                         title: 'Información',
@@ -149,7 +154,7 @@ class DocControllers
                     ";
                 } */
             } else {
-/*                 echo "
+                /*                 echo "
                     <script>
                         Swal.fire({
                             title: 'Información',

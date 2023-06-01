@@ -34,14 +34,30 @@ $datos = $obj->showdata($_GET['id']);
                       <p class="text-xs text-secondary mb-0"><?= $value2['descripciont'] ?></p>
                     </td>
                     <td>
-                      <p class="text-xs text-secondary mb-0"><?= $value2['descripcion'] ?></p>
+                      <?php if ($value2['descripcion'] == 'Finalizado') : ?>
+                        <p class="text-xs text-whte mb-0 btn btn-success"><?= $value2["descripcion"] ?></p>
+                      <?php elseif ($value2['descripcion'] == 'Rechazado') : ?>
+                        <p class="text-xs text-white mb-0 btn btn-danger"><?= $value2["descripcion"] ?></p>
+                      <?php elseif ($value2['descripcion'] == 'En Proceso') : ?>
+                        <p class="text-xs text-white mb-0 btn btn-primary"><?= $value2["descripcion"] ?></p>
+                      <?php elseif ($value2['descripcion'] == 'Observado') : ?>
+                        <p class="text-xs text-white mb-0 btn btn-warning"><?= $value2["descripcion"] ?></p>
+                        <?php elseif ($value2['descripcion'] == 'Iniciado') : ?>
+                        <p class="text-xs text-white mb-0 btn btn-info"><?= $value2["descripcion"] ?></p>
+                      <?php endif; ?>
                     </td>
                     <td>
                       <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
-                      <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] . ' ' . $value2['year'] ?></p>
+                      <?php if (!empty($value2['nivel']) || $value2['year']) : ?>
+                        <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] . ' ' . $value2['year'] ?></p>
+                      <?php endif; ?>
                     </td>
                     <td>
-                      <p class="text-xs text-secondary mb-0"><?= $value2['status'] ?></p>
+                      <?php if ($value2['status'] == 1) : ?>
+                        <p class="text-xs text-secondary mb-0"><i class='fas fa-donate' style='font-size:38px;color:green'></i></p>
+                      <?php else : ?>
+                        <p class="text-xs text-secondary mb-0"><i class='fas fa-donate' style='font-size:38px;color:red'></i></p>
+                      <?php endif; ?>
                     </td>
                     <td>
                       <h6 class="mb-0 text-sm"><?= $value2['nombres'] ?></h6>
@@ -54,7 +70,6 @@ $datos = $obj->showdata($_GET['id']);
                       <p class="text-xs text-secondary mb-0"><?= $value2['fechainit'] ?></p>
                     </td>
                     <td>
-                      <a class="btn" href="<?= APP_URL . '/view/content/certi?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Generar"><i class="fa fa-file-o"></i></a>
                       <a class="btn" href="<?= APP_URL . '/view/content/accept?id=' . $value2["tramite_id"] . '&cod=' . $_GET["id"] ?>" title="Aceptar"><i class="fa fa-check-circle-o"></i></a>
                       <a class="btn" data-bs-toggle="collapse" href="#<?= $collapseId ?>" role="button" aria-expanded="false" aria-controls="<?= $collapseId ?>" title="Observacion">
                         <i class="fa fa-eye"></i>
@@ -70,7 +85,7 @@ $datos = $obj->showdata($_GET['id']);
                           </div>
                         </form>
                       </div>
-                      <a class="btn" href="<?= APP_URL . '/view/detail?id=' . $value2["tramite_id"]?>" title="Detalle"><i class="fa fa-info"></i></a>
+                      <a class="btn" href="<?= APP_URL . '/view/detail?id=' . $value2["tramite_id"] ?>" title="Detalle"><i class="fa fa-info"></i></a>
                     </td>
                   </tr>
                 <?php endforeach; ?>

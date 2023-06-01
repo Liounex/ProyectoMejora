@@ -19,6 +19,9 @@
               elseif (strpos($_SERVER['REQUEST_URI'], 'examenes')) {
                 $paginacion = 'Examenes';
               }
+              elseif (strpos($_SERVER['REQUEST_URI'], 'finalizado')) {
+                $paginacion = 'Finalizado';
+              }
               else {
                 $paginacion = 'Detalle';
               }

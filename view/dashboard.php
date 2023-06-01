@@ -10,5 +10,9 @@ include_once __DIR__ . '/layout/nav.php';
   <div class="container-fluid py-4">
     <h1 class="text-white">Ventana Usuario </h1>
   </div>
+<?php elseif ($_SESSION['tipo_usuario_id'] == 4) : ?>
+  <div class="container-fluid py-4">
+    <h1 class="text-white">Ventana Director </h1>
+  </div>
 <?php endif; ?>
 <?php include_once __DIR__ . '/layout/footermenu.php'; ?>
