@@ -45,8 +45,9 @@ class ProcedureControllers
         return $statement;
     }
 
-    public function showDetails($codigo) {
-        $stament = $this->model->showDetails($codigo);
-        return $stament;
-      }
+    public function showDetails($codigo)
+    {
+        $statement = $this->model->showDetails($codigo);
+        return $statement;
+    }
 }

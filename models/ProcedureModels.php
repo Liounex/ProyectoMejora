@@ -107,19 +107,28 @@ class ProcedureModels
         }
     }
 
-    public function showDetails($codigo) {
+    public function showDetails($codigo)
+    {
         try {
-
-          $sql = "SELECT * FROM tramite WHERE
-          pago_cod = :codigo";
-          $query = $this->PRO->prepare($sql);
-          $query->bindParam(':codigo', $codigo);
-          $query->execute();
-          return $query->fetchAll();
-          // return $query->fetch();
-          $this->PRO = null;
+            $sql = "SELECT t.pago_cod, t.estado_id, t.tramite_id, t.voucher, t.copia,
+            tt.nombre, tt.descripciont,
+            dt.idioma,
+            u.nombres, u.ap_paterno, u.ap_materno,
+            o.obs1, o.obs2, o.obs3
+            FROM tramite t
+            JOIN tipo_tramite tt ON t.tipo_tramite_id = tt.tipo_tramite_id
+            JOIN usuario u ON t.dni_user = u.dni_user
+            JOIN detalle_tramite dt ON t.id_detalle = dt.id_detalle
+            JOIN observacion o ON t.id_detalle = o.id_detalle
+            WHERE t.tramite_id = :codigo";
+            $query = $this->PRO->prepare($sql);
+            $query->bindParam(':codigo', $codigo);
+            $query->execute();
+            $this->PRO = null; // Mover esta línea antes del return
+            return $query;
         } catch (PDOException $e) {
-          echo "Error al conectar a la base de datos: " . $e->getMessage();
+            echo "Error al conectar a la base de datos: " . $e->getMessage();
+            return false;
         }
-      }
+    }
 }

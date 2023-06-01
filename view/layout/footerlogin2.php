@@ -1,13 +1,18 @@
 </div>
 </div>
+<style>
+    #js-content-container {
+        max-height: 100%;
+        overflow-y: scroll;
+    }
+</style>
 <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-  <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('<?= APP_URL . '/assets/img/acceso4.png' ?>'); background-size: cover;">
-    <span class="mask bg-gradient-primary opacity-3"></span>
-    <h4 class="mt-5 text-white font-weight-bolder position-relative"></h4>
-    <p class="text-white position-relative"></p>
-  </div>
+    <div id="js-content-container">
+        <div id="resultado"></div>
+        <div id="voucher-container"></div>
+        <div id="copydni-container"></div>
+    </div>
 </div>
-
 </div>
 </div>
 </div>
@@ -19,13 +24,13 @@
 <script src="<?= APP_URL . '/assets/js/core/bootstrap.min.js' ?>"></script>
 <script src="<?= APP_URL . '/assets/js/plugins/smooth-scrollbar.min.js' ?>"></script>
 <script>
-  var win = navigator.platform.indexOf('Win') > -1;
-  if (win && document.querySelector('#sidenav-scrollbar')) {
-    var options = {
-      damping: '0.5'
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
-    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-  }
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>

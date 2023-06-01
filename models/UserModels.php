@@ -246,25 +246,24 @@ class UserModels
 	public function showDetail($codigo)
 	{
 		try {
-
-			$sql = "SELECT t.tramite_id, t.voucher, t.copia,  tt.nombre, p.pago_cod, p.total,
-			u.nombres, CONCAT(u.ap_paterno, ' ', u.ap_materno) apellidos,
-            o.obs1, o.obs2, o.obs3,
-            d.idioma
-			FROM tramite t
-			INNER JOIN pago p ON t.pago_cod = p.pago_cod
-			INNER JOIN tipo_tramite tt ON tt.tipo_tramite_id = p.tipo_tramite_id
-			INNER JOIN usuario u ON p.dni_user = u.dni_user
-			INNER JOIN observacion o ON t.id_detalle = o.id_detalle
-			INNER JOIN detalle_tramite d ON t.id_detalle = d.id_detalle
-			WHERE t.pago_cod = :codigo";
+			$sql = "SELECT t.tramite_id, t.voucher, t.copia,  tt.nombre, p.pago_cod, p.total, tt.descripciont,
+				u.nombres, CONCAT(u.ap_paterno, ' ', u.ap_materno) apellidos,
+				o.obs1, o.obs2, o.obs3,
+				d.idioma
+				FROM tramite t
+				INNER JOIN pago p ON t.pago_cod = p.pago_cod
+				INNER JOIN tipo_tramite tt ON tt.tipo_tramite_id = p.tipo_tramite_id
+				INNER JOIN usuario u ON p.dni_user = u.dni_user
+				INNER JOIN observacion o ON t.id_detalle = o.id_detalle
+				INNER JOIN detalle_tramite d ON t.id_detalle = d.id_detalle
+				WHERE u.dni_user = :codigo";
 			$query = $this->PDO->prepare($sql);
-			$query->bindParam(':codigo', $codigo);
+			$query->bindValue(':codigo', $codigo);
 			$query->execute();
-			return $query->fetch(PDO::FETCH_ASSOC);
+			return $query;
 			$this->PDO = null;
 		} catch (PDOException $e) {
-			echo "Error al conectar a lsa base de datos: " . $e->getMessage();
+			echo "Error al conectar a la base de datos: " . $e->getMessage();
 		}
 	}
 }
