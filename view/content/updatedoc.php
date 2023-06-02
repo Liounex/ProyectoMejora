@@ -50,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </script>
     ";
     }
-} else
-{
+} else {
     header('Location: ../tramiteus');
 }

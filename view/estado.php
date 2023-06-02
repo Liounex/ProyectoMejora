@@ -33,11 +33,8 @@ if (isset($_POST['dni'])) {
     <button class="btn btn-tramite" id="btn-tramite-<?= $data['tramite_id'] ?>"><?php echo $data['descripciont']; ?></button>
   <?php endforeach; ?>
 <?php endif; ?>
-
 <?php include_once __DIR__ . '/layout/footerlogin2.php'; ?>
-
-<script src="<?= APP_URL . '/assets/js/update.js'?>"></script>
-
+<script src="<?=  APP_URL . '/assets/js/update.js'?>"></script>
 <script>
   function valideKey(evt) {
     var code = (evt.which) ? evt.which : evt.keyCode;

@@ -9,8 +9,6 @@
 <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
     <div id="js-content-container">
         <div id="resultado"></div>
-        <div id="voucher-container"></div>
-        <div id="copydni-container"></div>
     </div>
 </div>
 </div>
