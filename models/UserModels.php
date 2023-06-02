@@ -207,7 +207,7 @@ class UserModels
 		}
 	}
 
-	public function updateregister($dni, $nombres, $ap, $am, $correo, $telefono, $idioma)
+	public function updateregister($cod, $dni, $nombres, $ap, $am, $correo, $telefono, $idioma, $nivel)
 	{
 		try {
 			$this->PDO->beginTransaction();
@@ -218,8 +218,8 @@ class UserModels
 			JOIN pago ON usuario.dni_user = pago.dni_user
 			SET usuario.dni_user = :dni, usuario.nombres = :nombres, usuario.ap_paterno = :ap, usuario.ap_materno = :am, usuario.correo = :correo, usuario.telefono = :telefono,
 			tramite.dni_user = :dni,
-			detalle_tramite.idioma = :idioma
-			WHERE usuario.dni_user = :dni_user";
+			detalle_tramite.idioma = :idioma, detalle_tramite.nivel = :nivel
+			WHERE tramite.pago_cod = :cod";
 
 			$query = $this->PDO->prepare($sql);
 			$query->bindParam(':dni', $dni);
@@ -229,9 +229,10 @@ class UserModels
 			$query->bindParam(':correo', $correo);
 			$query->bindParam(':telefono', $telefono);
 			$query->bindParam(':idioma', $idioma);
+			$query->bindParam(':nivel', $nivel);
 			/* 			$query->bindParam(':voucher', $voucher);
 			$query->bindParam(':copia', $copia); */
-			$query->bindParam(':dni_user', $dni);
+			$query->bindParam(':cod', $cod);
 			$this->PDO->commit();
 			$this->PDO = null;
 			return ($query->execute()) ? true : false;

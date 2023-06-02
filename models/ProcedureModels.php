@@ -32,6 +32,20 @@ class ProcedureModels
         }
     }
 
+    public function userExists($dni)
+    {
+        try {
+            $statement = $this->PRO->prepare('SELECT COUNT(*) FROM usuario WHERE dni_user = :dni');
+            $statement->bindParam(':dni', $dni);
+            $statement->execute();
+            $count = $statement->fetchColumn();
+            return ($count > 0) ? true : false;
+        } catch (PDOException $e) {
+            echo "Error al conectar a la base de datos: " . $e->getMessage();
+            return false;
+        }
+    }
+
     //cantidad de documentos
 
 

@@ -152,9 +152,9 @@ class UserControllers
         
     }
 
-    public function actualizarDatos($dni, $nombres, $ap, $am, $correo, $telefono, $idioma)
+    public function actualizarDatos($cod, $dni, $nombres, $ap, $am, $correo, $telefono, $idioma, $nivel)
     {
-        $stament = $this->model->updateregister($dni, $nombres, $ap, $am, $correo, $telefono, $idioma);
+        $stament = $this->model->updateregister($cod,$dni, $nombres, $ap, $am, $correo, $telefono, $idioma, $nivel);
         if ($stament) {
             echo "
                 <script>

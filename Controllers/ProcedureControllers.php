@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../config/config.php';
-require_once(APP_ROOT . '/../models/ProcedureModels.php');
+require_once APP_ROOT . '/../models/ProcedureModels.php';
 class ProcedureControllers
 {
     private $model;
@@ -14,6 +14,12 @@ class ProcedureControllers
     public function newprocedure($dni, $nombre, $ap, $am, $correo, $celular, $idtipo)
     {
         $stament = $this->model->newprocedure($dni, $nombre, $ap, $am, $correo, $celular, $idtipo);
+        return ($stament != false) ? true : false;
+    }
+
+    public function userExists($dni)
+    {
+        $stament = $this->model->userExists($dni);
         return ($stament != false) ? true : false;
     }
 

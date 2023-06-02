@@ -35,8 +35,16 @@ include_once __DIR__ . '/layout/headlogin.php';
         <div class="mb-3">
             <select name="idioma" id="idioma" class="form-control form-control-lg" aria-label="tipo_tramite" required>
                 <option value="" disabled selected>Seleccione el idioma</option>
-                <option value="Ingles">Ingles</option>
-                <option value="Quechua">Quechua</option>
+                <option value="INGLES">Ingles</option>
+                <option value="QUECHUA">Quechua</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <select name="nivel" id="nivel" class="form-control form-control-lg" aria-label="tipo_tramite" required>
+                <option value="" disabled selected>Seleccione el Nivel</option>
+                <option value="BASICO">Basico</option>
+                <option value="INTERMEDIO">Intermedio</option>
+                <option value="AVANZADO">Avanzado</option>
             </select>
         </div>
         <div class="mb-3">

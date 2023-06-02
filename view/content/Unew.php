@@ -40,7 +40,12 @@ $total = $cantidad * $costoValor;
 
 
 //nuevo usuario
-$user->newprocedure($dni, $nombre, $ap, $am, $correo, $celular, $tipo);
+// Verificar si el usuario ya existe en la base de datos
+if (!$user->userExists($dni)) {
+  // El usuario no existe, guardar nuevo usuario
+  $user->newprocedure($dni, $nombre, $ap, $am, $correo, $celular, $tipo);
+}
+/* $user->newprocedure($dni, $nombre, $ap, $am, $correo, $celular, $tipo); */
 // nuevo tramite y genera el pago con la fecha de ahora
 //$user->cash($pago_id, $dni, $tramite, $cantidad, $date);
 $user->cash($pago_id, $dni, $tramite, $cantidad, $total, $date);

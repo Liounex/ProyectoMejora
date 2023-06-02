@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
     $idioma = $_POST['idioma'];
+    $nivel = $_POST['nivel'];
     $filedni = $_FILES['copydni'];
     $fileVoucher = $_FILES['vaucher'];
 
@@ -28,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sub = $ruta . '/' . $filedni['name'];
     $sb2 = $ruta . '/' . $fileVoucher['name'];
 
-    $update->actualizarDatos($dni, $nombre, $ap, $am, $correo, $telefono, $idioma);
+    $update->actualizarDatos($cod, $dni, $nombre, $ap, $am, $correo, $telefono, $idioma,$nivel);
 
     if (!empty($filedni['name']) && move_uploaded_file($filedni['tmp_name'], $sub)) {
         // El archivo copydni se ha movido correctamente a la ubicación deseada
@@ -52,9 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "
         <script>
             Swal.fire({
-                title: 'Error',
-                text: 'Debes seleccionar al menos un archivo para subir',
-                icon: 'warning',
+                title: 'Ok',
+                text: 'Datos Actualizados, 'Recuerde subir sus documentos'',
+                icon: 'success',
                 confirmButtonText: 'Aceptar'
             }).then((result) => {
                 if (result.isConfirmed) {
