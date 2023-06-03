@@ -48,9 +48,17 @@ $datos = $obj->showdata($_GET['id']);
                       <?php endif; ?>
                     </td>
                     <td>
-                      <h6 class=" mb-0 text-sm"><?= $value['idioma'] ?></h6>
-                      <?php if (!empty($value['nivel']) || $value['year']) : ?>
-                        <p class="text-xs text-secondary mb-0"><?= $value['nivel'] . ' ' . $value['year'] ?></p>
+                          <?php if ($value['idioma'] == 'EN PROCESO') : ?>
+                            <h6 class=" mb-0 text-sm">Sin Especificar</h6>
+                        <?php else : ?>
+                        <h6 class="mb-0 text-sm"><?= $value['idioma'] ?></h6>
+                      <?php endif; ?>
+                      <?php if ($value['nivel'] == 'EN PROCESO') : ?>
+                        <?php if (!empty($value['nivel'])) : ?>
+                          <p class="text-xs text-secondary mb-0">Sin Especificar</p>
+                        <?php endif; ?>
+                      <?php else : ?>
+                        <p class="mb-0 text-sm"><?= $value['nivel'] ?></p>
                       <?php endif; ?>
                     </td>
                     <td>

@@ -51,10 +51,18 @@
                             <p class="text-xs text-white mb-0 btn btn-info"><?= $value2["descripcion"] ?></p>
                           <?php endif; ?>
                         <td>
-                          <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
-                          <?php if (!empty($value2['nivel'])) : ?>
-                            <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] ?></p>
+                          <?php if ($value2['idioma'] == 'EN PROCESO') :?>
+                            <h6 class="mb-0 text-sm">Sin Especificar</h6>
+                          <?php else :?>
+                            <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
+                          <?php endif;?>
+                          <?php if ($value2['nivel'] == 'EN PROCESO') :?>
+                            <?php if (!empty($value2['nivel'])) : ?>
+                            <p class="text-xs text-secondary mb-0">Sin Especificar</p>
                           <?php endif; ?>
+                          <?php else :?>
+                            <p class="mb-0 text-sm"><?= $value2['nivel'] ?></p>
+                          <?php endif;?>
                         </td>
                         <td>
                           <?php if ($value2['status'] == 1) : ?>
@@ -272,7 +280,7 @@
                           <input type="hidden" name="ap" value="<?= $value['ap_paterno'] ?>">
                           <input type="hidden" name="am" value="<?= $value['ap_materno'] ?>">
                           <input type="hidden" name="idioma" value="<?= $value['idioma'] ?>">
-                          <button type="submit" class="btn btn-success">Descargar Certificado</button>
+                          <button type="submit" class="border border-0 bg-transparent"><i class="fa fa-file-text" style="font-size:20px;color:green" title="Descargar Certificado"></i></button>
                         </form>
                         <span class="text-success text-sm font-weight-bolder"><?= $value['descripcion'] ?></span>
                       <?php else : ?>

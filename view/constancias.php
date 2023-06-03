@@ -47,11 +47,19 @@ $datos = $obj->showdata($_GET['id']);
                       <?php endif; ?>
                     </td>
                     <td>
-                      <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
-                      <?php if (!empty($value2['nivel']) || $value2['year']) : ?>
-                        <p class="text-xs text-secondary mb-0"><?= $value2['nivel'] . ' ' . $value2['year'] ?></p>
-                      <?php endif; ?>
-                    </td>
+                          <?php if ($value2['idioma'] == 'EN PROCESO') :?>
+                            <h6 class="mb-0 text-sm">Sin Especificar</h6>
+                          <?php else :?>
+                            <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
+                          <?php endif;?>
+                          <?php if ($value2['nivel'] == 'EN PROCESO') :?>
+                            <?php if (!empty($value2['nivel'])) : ?>
+                            <p class="text-xs text-secondary mb-0">Sin Especificar</p>
+                          <?php endif; ?>
+                          <?php else :?>
+                            <p class="mb-0 text-sm"><?= $value2['nivel'] ?></p>
+                          <?php endif;?>
+                        </td>
                     <td>
                       <?php if ($value2['status'] == 1) : ?>
                         <p class="text-xs text-secondary mb-0"><i class='fas fa-donate' style='font-size:38px;color:green'></i></p>
