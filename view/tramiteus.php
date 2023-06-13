@@ -51,18 +51,18 @@
                             <p class="text-xs text-white mb-0 btn btn-info"><?= $value2["descripcion"] ?></p>
                           <?php endif; ?>
                         <td>
-                          <?php if ($value2['idioma'] == 'EN PROCESO') :?>
+                          <?php if ($value2['idioma'] == 'EN PROCESO') : ?>
                             <h6 class="mb-0 text-sm">Sin Especificar</h6>
-                          <?php else :?>
+                          <?php else : ?>
                             <h6 class="mb-0 text-sm"><?= $value2['idioma'] ?></h6>
-                          <?php endif;?>
-                          <?php if ($value2['nivel'] == 'EN PROCESO') :?>
-                            <?php if (!empty($value2['nivel'])) : ?>
-                            <p class="text-xs text-secondary mb-0">Sin Especificar</p>
                           <?php endif; ?>
-                          <?php else :?>
+                          <?php if ($value2['nivel'] == 'EN PROCESO') : ?>
+                            <?php if (!empty($value2['nivel'])) : ?>
+                              <p class="text-xs text-secondary mb-0">Sin Especificar</p>
+                            <?php endif; ?>
+                          <?php else : ?>
                             <p class="mb-0 text-sm"><?= $value2['nivel'] ?></p>
-                          <?php endif;?>
+                          <?php endif; ?>
                         </td>
                         <td>
                           <?php if ($value2['status'] == 1) : ?>

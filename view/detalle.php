@@ -22,52 +22,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
                         <div class="row">
                             <div class="col-12 text-start">
                                 <?php foreach ($datos as $key => $value) : ?>
-                                    <p class="text-x text-secondary mb-2">Codigo de pago: <?= $value['pago_cod'] ?></p>
-                                    <p class="text-x text-secondary mb-2">Tipo de Tramite: <?= $value['nombre'] ?></p>
-                                    <p class="text-x text-secondary mb-2">Descripcion: <?= $value['descripciont'] ?></p>
-                                    <p class="text-x text-secondary mb-2">Nombre Completo: <?= $value['nombres'] ?></p>
-                                    <p class="text-x text-secondary mb-2">Apellido Completo: <?= $value['ap_paterno'] . ' ' . $value['ap_materno'] ?></p>
+                                    <label class="text-x mb-2">Codigo de pago:</label>
+                                    <label class="text-x text-secondary mb-2" for=""> <?= $value['pago_cod'] ?></label><br>
+                                    <label class="text-x mb-2">Tipo de Tramite:</label>
+                                    <label class="text-x text-secondary mb-2" for=""> <?= $value['nombre'] ?></label><br>
+                                    <label class="text-x mb-2">Descripcion:</label>
+                                    <label class="text-x text-secondary mb-2" for=""> <?= $value['descripciont'] ?></label><br>
+                                    <label class="text-x mb-2">Nombre Completo:</label>
+                                    <label class="text-x text-secondary mb-2" for=""> <?= $value['nombres'] ?></label><br>
+                                    <label class="text-x mb-2">Apellido Completo:</label>
+                                    <label class="text-x text-secondary mb-2">Apellido Completo: <?= $value['ap_paterno'] . ' ' . $value['ap_materno'] ?></label><br>
                                     <!-- Solo si el estado se encuentra en Observado -->
                                     <?php $observations = [$value['obs1'], $value['obs2'], $value['obs3']]; ?>
                                     <?php if (empty(array_filter($observations))) : ?>
-                                        <p class="text-x text-secondary mb-2">Sin Observaciones</p>
+                                        <label class="text-x mb-2">Sin Observaciones</label><br>
                                     <?php else : ?>
-                                        <p class="text-x text-secondary mb-2">
+                                        <label class="text-x mb-2">
                                             Observaciones <br>
                                             <?php foreach ($observations as $index => $observation) : ?>
                                                 <?php if (!empty($observation)) : ?>
                                                     <?= ($index + 1) ?>. <?= $observation ?> <br>
                                                 <?php endif; ?>
                                             <?php endforeach; ?>
-                                        </p>
+                                        </label>
                                     <?php endif; ?>
-                                    <p class="text-x text-secondary mb-2">Precio : <?= number_format($value['total'], 2) . ' Soles Peruanos' ?> </p>
+                                    <label class="text-x mb-2"> Precio :</label>
+                                    <label class="text-x text-secondary mb-2"> <?= number_format($value['total'], 2) . ' Soles Peruanos' ?> </label><br>
                                     <?php
                                     if (is_array($datos) && isset($value['total'])) {
                                         $dolar = number_format(floatval($value['total']) / 3.70, 2);
                                     }
                                     ?>
                                     <?php if ($value['status'] == 0) : ?>
-                                        <p class="text-x text-secondary mb-2">Estado de pago: Sin Pago</p>
+                                        <label class="">Estado de pago:</label>
+                                        <label class="text-x text-secondary mb-2"> Sin Pago</label>
                                         <div id="paypal-button-container"></div>
                                     <?php else : ?>
-                                        <p class="text-x text-secondary mb-2">Estado de pago: Pagado</p>
+                                        <label class="">Estado de pago:</label>
+                                        <label class="text-x text-secondary mb-2"> Pagado</label>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
+                                <hr>
                                 <form action="./content/updatedoc" method="post" enctype="multipart/form-data">
-                                    <input type="hidden" name="cod" id="cod" value="<?= $value['pago_cod'] ?>">
+                                        <input type="hidden" name="cod" id="cod" value="<?= $value['pago_cod'] ?>">
 
-                                    <div class="mb-3">
-                                        <p>Voucher de Pago</p>
-                                        <input type="file" name="vaucher" id="vaucher" class="form-control form-control-lg" aria-label="" accept=".jpg, .jpeg, .png, .pdf">
-                                    </div>
-                                    <div class="mb-3">
-                                        <p>Copia de Dni</p>
-                                        <input type="file" name="copydni" id="copydni" class="form-control form-control-lg" aria-label="" accept=".pdf">
-                                    </div>
-                                    <div class="mb-3">
-                                        <button class="btn btn-primary">Subir</button>
-                                    </div>
+                                        <div class="mb-3">
+                                            <label>Voucher de Pago</label>
+                                            <input type="file" name="vaucher" id="vaucher" class="form-control form-control-lg" aria-label="" accept=".jpg, .jpeg, .png, .pdf">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label>Copia de Dni</label>
+                                            <input type="file" name="copydni" id="copydni" class="form-control form-control-lg" aria-label="" accept=".pdf">
+                                        </div>
+                                        <div class="mb-3">
+                                            <button class="btn btn-primary">Subir</button>
+                                        </div>
                                 </form>
                             </div>
                         </div>
