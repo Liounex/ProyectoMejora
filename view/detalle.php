@@ -4,6 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') :
     include_once __DIR__ . '/layout/nav.php';
     require_once(APP_ROOT . '/../Controllers/UserControllers.php');
 
+    
     $obj = new UserControllers();
     $datos = $obj->description($_POST['id']);
     $dolar = 0.00; // Valor predeterminado para $dolar
