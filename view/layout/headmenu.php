@@ -3,7 +3,7 @@ require_once __DIR__ . '/../../config/config.php';
 session_start();
 if (isset($_POST['cerrarSesion'])) {
   session_destroy();
-  header('Location: ' . APP_URL . '/view/login' . '');
+  header('Location: ' . APP_URL . '/view/auth/login' . '');
 }
 ?>
 <?php if (isset($_SESSION['dni_user'])) { ?>

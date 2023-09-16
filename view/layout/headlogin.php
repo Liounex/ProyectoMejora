@@ -21,6 +21,8 @@
   <script src="https://www.paypal.com/sdk/js?client-id=AVUiaXyUPSgJqxipeSeAJBOqqLRWuMAnXPEOiXIcKaFp3LllEKXSRhDAuMpKubk_9kO6PGwXYN3CyJPP&currency=USD&components=buttons"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body class="">
