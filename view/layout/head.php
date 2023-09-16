@@ -64,7 +64,7 @@
 						<span class="full-reset titles">Iniciar Sessión</span>
 						<ul class="list-unstyled full-reset">
 							<!-- <li><a href="#!" class="open-link-newTab"><i class="fa fa-university"></i>&nbsp; Dirección</a></li> -->
-							<li><a href="<?= APP_URL . '/view/login' ?>" class="" target="__black"><i class="fa fa-graduation-cap"></i>&nbsp; Inicia Sessión</a></li>
+							<li><a href="<?= APP_URL . '/view/auth/login' ?>" class="" target="__black"><i class="fa fa-graduation-cap"></i>&nbsp; Inicia Sessión</a></li>
 							<li><a href="https://indi.unsch.edu.pe/index/reglamento" class="open-link-newTab"><i class="fa fa-file-text-o"></i>&nbsp; Matriculate</a></li>
 							<li><a href="<?= APP_URL . '/view/registro' ?>" target="__black"><i class="fa fa-star-o"></i>&nbsp; Inicia Trámite</a></li>
 							<li><a href="<?= APP_URL . '/view/tramite' ?>" target="__black"><i class="fa fa-repeat"></i>&nbsp; Continuar Trámite</a></li>
